@@ -1,0 +1,44 @@
+name: Build and deploy app
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      IMAGE_URL: ${{ vars.GC_REGION }}-docker.pkg.dev/${{ vars.GC_PROJECT_ID }}/cloud-run-source-deploy/${{ vars.GC_REPO_NAME }}/${{ vars.GC_REPO_NAME }}:${{ github.sha }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - id: "auth"
+        name: Authenticate GCP
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: "${{ secrets.GCP_SA_KEY }}"
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+
+      - name: Use gcloud CLI
+        run: gcloud info
+
+      - name: Configure docker
+        run: gcloud auth configure-docker ${{ vars.GC_REGION }}-docker.pkg.dev
+
+      - name: Docker Build
+        run: docker build --no-cache -t ${{ env.IMAGE_URL }} . -f backend/Dockerfile
+
+      - name: Docker Push
+        run: docker push $IMAGE_URL
+
+      - name: Update Cloud Run service
+        uses: google-github-actions/deploy-cloudrun@v1
+        with:
+          region: ${{ vars.GC_REGION }}
+          service: ${{ vars.GC_REPO_NAME }}
+          image: ${{ env.IMAGE_URL }}
