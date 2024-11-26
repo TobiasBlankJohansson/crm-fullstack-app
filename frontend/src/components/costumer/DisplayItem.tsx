@@ -1,11 +1,11 @@
-type DisplayItem = {
+export type DisplayItemProp = {
   title: string;
   count: string;
   itemProperty: ItemProperty[];
-  Detail: Detail[];
+  detail: Detail[];
 };
 
-type Detail = {
+export type Detail = {
   title: string;
   value: string;
 };
@@ -14,14 +14,14 @@ export function DisplayItem({
   title,
   count,
   itemProperty,
-  Detail,
-}: DisplayItem) {
+  detail,
+}: DisplayItemProp) {
   return (
     <li>
       <h4>
         {count}. {title}
       </h4>
-      {Detail.map((detail) => {
+      {detail.map((detail) => {
         return (
           <p>
             {detail.title}. {detail.value}
