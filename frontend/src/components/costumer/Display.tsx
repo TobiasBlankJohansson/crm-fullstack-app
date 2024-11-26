@@ -1,3 +1,8 @@
-export function Display() {
-    return <section></section>
+type DisplayProp = {
+  title: string;
+  displayItems: List<DisplayItems>;
+};
+
+export function Display({ title }: DisplayProp) {
+  return <section></section>;
 }
