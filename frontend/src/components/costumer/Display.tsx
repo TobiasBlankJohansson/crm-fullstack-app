@@ -18,7 +18,7 @@ export function Display({ title, displayItems }: DisplayProp) {
               <DisplayItem
                 title={item.title}
                 detail={item.detail}
-                count="1"
+                count={item.count}
                 itemProperty={item.itemProperty}
               />
             );

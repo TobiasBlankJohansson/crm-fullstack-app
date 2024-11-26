@@ -24,7 +24,7 @@ export function DisplayItem({
       {detail.map((detail) => {
         return (
           <p>
-            {detail.title}. {detail.value}
+            {detail.title}: {detail.value}
           </p>
         );
       })}
