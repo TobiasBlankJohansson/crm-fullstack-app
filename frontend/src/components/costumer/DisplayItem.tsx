@@ -18,12 +18,12 @@ export function DisplayItem({
 }: DisplayItemProp) {
   return (
     <li>
-      <h4>
+      <h4 className="mt-4 text-blue-700 font-bold">
         {count}. {title}
       </h4>
       {detail.map((detail) => {
         return (
-          <p>
+          <p className="ml-4">
             {detail.title}: {detail.value}
           </p>
         );
