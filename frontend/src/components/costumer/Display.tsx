@@ -4,10 +4,10 @@ import { ItemProperty, ItemPropertyProp } from "./ItemProperty";
 
 type DisplayProp = {
   title: string;
-  displayItems: Display[];
+  displayItems: DisplayObject[];
 };
 
-type Display = {
+export type DisplayObject = {
   title: string;
   count: string;
   detail: Detail[];
@@ -15,7 +15,7 @@ type Display = {
 };
 
 export function Display({ title, displayItems }: DisplayProp) {
-  const [selected, SetSelected] = useState<number>(-1);
+  const [selected, SetSelected] = useState<number>(0);
   return (
     <section className="pt-20 pl-14 bg-slate-300 w-full h-full">
       <main className="flex h-full">
