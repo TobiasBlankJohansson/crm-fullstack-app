@@ -25,8 +25,8 @@ export function Sidebar() {
         <nav className="flex-1 p-4">
           <ul className="space-y-2">{sidebarOptions}</ul>
         </nav>
-        <div className="ml-4 p-4 border-t border-light-gray-700">
-          <div className="flex items-center">
+        <div className="p-4 border-t border-light-gray-700">
+          <div className="ml-4 flex items-center">
             <UserButton />
             <p className="ml-2">{user?.fullName}</p>
           </div>
