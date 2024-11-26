@@ -1,13 +1,21 @@
-import { DisplayItemProp, DisplayItem } from "./DisplayItem";
+import { useState } from "react";
+import { DisplayItem, Detail } from "./DisplayItem";
 import { ItemProperty, ItemPropertyProp } from "./ItemProperty";
 
 type DisplayProp = {
   title: string;
-  displayItems: DisplayItemProp[];
+  displayItems: Display[];
+};
+
+type Display = {
+  title: string;
+  count: string;
+  detail: Detail[];
   itemProperty: ItemPropertyProp[];
 };
 
-export function Display({ title, displayItems, itemProperty }: DisplayProp) {
+export function Display({ title, displayItems }: DisplayProp) {
+  const [selected, SetSelected] = useState<number>(-1);
   return (
     <section className="pt-20 pl-14 bg-slate-300 w-full h-full">
       <main className="flex h-full">
@@ -27,13 +35,15 @@ export function Display({ title, displayItems, itemProperty }: DisplayProp) {
             })}
           </ol>
         </section>
-        <section className="w-1/3 mr-20 h-4/5 bg-white rounded-2xl">
-          <ol className="m-5">
-            {itemProperty.map((item) => (
-              <ItemProperty title={item.title} info={item.info} />
-            ))}
-          </ol>
-        </section>
+        {selected > -1 && (
+          <section className="w-1/3 mr-20 h-4/5 bg-white rounded-2xl">
+            <ol className="m-5">
+              {displayItems[selected].itemProperty.map((item) => (
+                <ItemProperty title={item.title} info={item.info} />
+              ))}
+            </ol>
+          </section>
+        )}
       </main>
     </section>
   );
