@@ -1,3 +1,15 @@
+import { SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react";
+import { Sidebar } from "./components/Sidebar";
+
 export function App() {
-  return <h1 className="text-3xl font-bold underline">Welcome to ANCHOR!</h1>;
+  return (
+    <div>
+      <SignedOut>
+        <SignInButton />
+      </SignedOut>
+      <SignedIn>
+        <Sidebar />
+      </SignedIn>
+    </div>
+  );
 }
