@@ -1,7 +1,9 @@
+import { ItemPropertyProp } from "./ItemProperty";
+
 export type DisplayItemProp = {
   title: string;
   count: string;
-  itemProperty: ItemProperty[];
+  itemProperty: ItemPropertyProp[];
   detail: Detail[];
 };
 
