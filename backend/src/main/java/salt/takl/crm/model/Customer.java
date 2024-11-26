@@ -12,6 +12,8 @@ public class Customer {
     private String address;
     private String phoneNumber;
     private String email;
+    @ManyToOne
+    private User user;
 
     public Customer() {}
 
