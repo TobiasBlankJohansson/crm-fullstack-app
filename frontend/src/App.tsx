@@ -1,8 +1,3 @@
 export function App() {
-
-  return (
-    <>
-      <h1>Welcome to ANCHOR</h1>
-    </>
-  )
+  return <h1 className="text-3xl font-bold underline">Welcome to ANCHOR!</h1>;
 }
