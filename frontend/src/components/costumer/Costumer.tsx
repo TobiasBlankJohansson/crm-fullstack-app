@@ -35,7 +35,7 @@ export function Costumer() {
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, voluptatum?",
           ],
         },
-        { title: "Date", info: ["2013"] },
+        { title: "Date", info: ["203"] },
       ],
     },
   ];

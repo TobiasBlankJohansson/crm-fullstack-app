@@ -30,15 +30,17 @@ export function Display({ title, displayItems }: DisplayProp) {
                   title={item.title}
                   detail={item.detail}
                   count={item.count}
+                  selected={selected}
+                  SetSelected={SetSelected}
                 />
               );
             })}
           </ol>
         </section>
-        {selected > -1 && (
+        {selected > 0 && (
           <section className="w-1/3 mr-20 h-4/5 bg-white rounded-2xl">
             <ol className="m-5">
-              {displayItems[selected].itemProperty.map((item) => (
+              {displayItems[selected - 1].itemProperty.map((item) => (
                 <ItemProperty title={item.title} info={item.info} />
               ))}
             </ol>

@@ -2,6 +2,8 @@ export type DisplayItemProp = {
   title: string;
   count: string;
   detail: Detail[];
+  selected: number;
+  SetSelected: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export type Detail = {
@@ -13,12 +15,22 @@ export function DisplayItem({
   title,
   count,
   detail,
+  selected,
+  SetSelected,
 }: DisplayItemProp) {
   return (
     <li>
-      <h4 className="mt-4 text-blue-700 font-bold">
+      <button
+        onClick={() =>
+          SetSelected(() => {
+            const number = Number(count);
+            return number != selected ? number : 0;
+          })
+        }
+        className="mt-4 text-blue-700 font-bold"
+      >
         {count}. {title}
-      </h4>
+      </button>
       {detail.map((detail) => {
         return (
           <p className="ml-4">
