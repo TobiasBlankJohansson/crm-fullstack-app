@@ -6,4 +6,5 @@ import salt.takl.crm.model.Customer;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
+    Customer getCustomersById(Long id);
 }
