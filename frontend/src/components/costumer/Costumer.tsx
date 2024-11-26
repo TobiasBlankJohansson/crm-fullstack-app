@@ -1,3 +1,7 @@
+import { Display } from "./Display";
+
 export function Costumer() {
-  return <></>;
+  return <main>
+    <Display/>
+  </main>;
 }
