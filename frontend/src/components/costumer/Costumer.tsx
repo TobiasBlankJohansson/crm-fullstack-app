@@ -26,7 +26,15 @@ export function Costumer() {
       <aside className="h-full w-1/5 bg-white"></aside>
       <section className="h-full w-4/5 flex flex-col">
         <nav className="h-16 bg-slate-300 border-b-2 border-gray-400"></nav>
-        <Display title="project" displayItems={mockDisplayItems} />
+        <Display
+          title="project"
+          displayItems={mockDisplayItems}
+          itemProperty={[
+            { title: "Project name", info: ["Anchor"] },
+            { title: "Description", info: ["Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, voluptatum?"] },
+            { title: "Date", info: ["2003"] },
+          ]}
+        />
       </section>
     </main>
   );

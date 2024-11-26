@@ -5,10 +5,10 @@ export type ItemPropertyProp = {
 
 export function ItemProperty({ title, info }: ItemPropertyProp) {
   return (
-    <li>
-      <h2>{title}:</h2>
+    <li className="mt-4">
+      <h2 className="text-xl font-bold">{title}:</h2>
       {info.map((info) => (
-        <p>{info}</p>
+        <p className="mt-2">{info}</p>
       ))}
     </li>
   );

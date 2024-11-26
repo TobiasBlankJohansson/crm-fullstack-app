@@ -28,9 +28,11 @@ export function Display({ title, displayItems, itemProperty }: DisplayProp) {
           </ol>
         </section>
         <section className="w-1/3 mr-20 h-4/5 bg-white rounded-2xl">
-          {itemProperty.map((item) => (
-            <ItemProperty title={item.title} info={item.info} />
-          ))}
+          <ol className="m-5">
+            {itemProperty.map((item) => (
+              <ItemProperty title={item.title} info={item.info} />
+            ))}
+          </ol>
         </section>
       </main>
     </section>
