@@ -11,7 +11,7 @@ export function Display({ title, displayItems }: DisplayProp) {
       <h2 className="text-4xl">My {title}</h2>
       <main>
         <h3 className="ml-4 mt-8 font-bold">Listed {title}</h3>
-        <hr className="border-gray-400 border-b mt-1" />
+        <hr className="border-gray-400 border-b mt-1 w-40"/>
         <ol className="ml-4">
           {displayItems.map((item) => {
             return (
