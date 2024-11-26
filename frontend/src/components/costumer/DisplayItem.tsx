@@ -1,9 +1,6 @@
-import { ItemPropertyProp } from "./ItemProperty";
-
 export type DisplayItemProp = {
   title: string;
   count: string;
-  itemProperty: ItemPropertyProp[];
   detail: Detail[];
 };
 
@@ -15,7 +12,6 @@ export type Detail = {
 export function DisplayItem({
   title,
   count,
-  itemProperty,
   detail,
 }: DisplayItemProp) {
   return (
