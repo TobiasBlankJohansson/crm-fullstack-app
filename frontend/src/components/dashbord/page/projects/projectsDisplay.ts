@@ -5,7 +5,7 @@ import { ItemPropertyProp } from "../../display/ItemProperty";
 type ProjectDisplayProp = {
   name: string;
   duration: string;
-  costomer: string[];
+  costomers: string[];
   notes: string[];
   sales: sales[];
 };
@@ -15,7 +15,9 @@ type sales = {
   sale: string;
 };
 
-export const projectDisplay = (fetch: ProjectDisplayProp[]): DisplayObject[] => {
+export const projectDisplay = (
+  fetch: ProjectDisplayProp[]
+): DisplayObject[] => {
   let count = 0;
   const display: DisplayObject[] = fetch.map((fetch) => {
     count++;
@@ -44,7 +46,7 @@ const setItemProperty = (fetch: ProjectDisplayProp): ItemPropertyProp[] => {
   };
   const costomer: ItemPropertyProp = {
     title: "Costomer",
-    info: fetch.costomer,
+    info: fetch.costomers,
   };
   const notes: ItemPropertyProp = { title: "Sales", info: fetch.notes };
   const sales: ItemPropertyProp = {
