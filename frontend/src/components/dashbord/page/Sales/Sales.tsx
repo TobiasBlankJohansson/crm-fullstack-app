@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Sidebar } from "../../../Sidebar";
 import { Display, DisplayObject } from "../../display/Display";
 import { salesDisplay } from "./salesDisplay";
-import { getSales } from "@/api/Sales";
+import { getSales } from "@/api/sales";
 
 export function Sales() {
   const [costumers, setCostumers] = useState<DisplayObject[]>([]);
