@@ -3,6 +3,7 @@ package salt.takl.crm.model;
 import jakarta.persistence.*;
 
 import java.util.UUID;
+import java.util.List;
 
 @Entity
 public class Customer {
@@ -14,8 +15,19 @@ public class Customer {
     private String address;
     private String phoneNumber;
     private String email;
+
     @ManyToOne
     private User user;
+
+    @ElementCollection(targetClass = Tag.class)
+    @Enumerated(EnumType.STRING)
+    private List<Tag> tags;
+
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Project> projects;
+
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Contact> contacts;
 
     public Customer() {}
 
