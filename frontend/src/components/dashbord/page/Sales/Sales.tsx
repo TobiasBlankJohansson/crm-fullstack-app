@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { Sidebar } from "../../../Sidebar";
 import { Display, DisplayObject } from "../../display/Display";
-import { getCostumer } from "@/api/costumer";
 import { salesDisplay } from "./salesDisplay";
+import { getSales } from "@/api/sales";
 
 export function Costumer() {
   const [costumers, setCostumers] = useState<DisplayObject[]>([]);
 
   useEffect(() => {
     const getCostemers = async () => {
-      const fetchData = await getCostumer();
+      const fetchData = await getSales();
       const custumer = salesDisplay(fetchData);
       setCostumers(() => custumer);
     };
