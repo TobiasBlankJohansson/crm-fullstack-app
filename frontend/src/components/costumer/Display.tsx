@@ -20,7 +20,7 @@ export function Display({ title, displayItems }: DisplayProp) {
     <section className="pt-20 pl-14 w-full h-full">
       <main className="flex h-full">
         <section className="w-1/2 pl-5">
-          <h2 className="text-4xl">My {title}</h2>
+          <h2 className="text-4xl font-semibold">My {title}</h2>
           <h3 className="ml-4 mt-8 font-bold">Listed {title}</h3>
           <hr className="border-gray-400 border-b mt-1 w-48" />
           <ol className="ml-4">
