@@ -15,7 +15,7 @@ type sales = {
   sale: string;
 };
 
-export const salesDisplay = (fetch: ProjectDisplayProp[]): DisplayObject[] => {
+export const projectDisplay = (fetch: ProjectDisplayProp[]): DisplayObject[] => {
   let count = 0;
   const display: DisplayObject[] = fetch.map((fetch) => {
     count++;
