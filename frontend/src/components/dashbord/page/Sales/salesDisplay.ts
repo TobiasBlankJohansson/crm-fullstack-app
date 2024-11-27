@@ -37,6 +37,6 @@ const setItemProperty = (fetch: salesDisplayProp): ItemPropertyProp[] => {
     title: "Project",
     info: [fetch.project],
   };
-  const sale: ItemPropertyProp = { title: "Email", info: [fetch.sale] };
+  const sale: ItemPropertyProp = { title: "Sales", info: [fetch.sale] };
   return [name, company, project, sale];
 };

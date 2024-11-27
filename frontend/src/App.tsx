@@ -1,5 +1,6 @@
 import { SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react";
 import { Costumer } from "./components/dashbord/page/costumer/Costumer";
+import { Sales } from "./components/dashbord/page/Sales/Sales";
 
 export function App() {
   return (
@@ -8,7 +9,7 @@ export function App() {
         <SignInButton />
       </SignedOut>
       <SignedIn>
-        <Costumer />
+        <Sales />
       </SignedIn>
     </div>
   );
