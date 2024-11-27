@@ -1,12 +1,10 @@
 package salt.takl.crm.model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 import java.util.UUID;
 
+@Entity
 public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
