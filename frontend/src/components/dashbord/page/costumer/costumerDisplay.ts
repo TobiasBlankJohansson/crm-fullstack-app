@@ -1,6 +1,6 @@
-import { DisplayObject } from "../display/Display";
-import { Detail } from "../display/DisplayItem";
-import { ItemPropertyProp } from "../display/ItemProperty";
+import { DisplayObject } from "../../display/Display";
+import { Detail } from "../../display/DisplayItem";
+import { ItemPropertyProp } from "../../display/ItemProperty";
 
 type CostumerDisplayProp = {
   company: string;

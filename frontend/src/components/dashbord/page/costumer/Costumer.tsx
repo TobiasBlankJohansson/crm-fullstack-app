@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Sidebar } from "../Sidebar";
-import { Display, DisplayObject } from "../display/Display";
+import { Sidebar } from "../../../Sidebar";
+import { Display, DisplayObject } from "../../display/Display";
 import { getCostumer } from "@/api/costumer";
 import { costumerDisplay } from "./costumerDisplay";
 

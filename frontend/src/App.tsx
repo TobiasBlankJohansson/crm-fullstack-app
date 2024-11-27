@@ -1,5 +1,5 @@
 import { SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react";
-import { Costumer } from "./components/costumer/Costumer";
+import { Costumer } from "./components/dashbord/page/costumer/Costumer";
 
 export function App() {
   return (
