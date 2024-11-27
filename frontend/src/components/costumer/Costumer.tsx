@@ -13,14 +13,14 @@ export function Costumer() {
       const custumer = costumerDisplay(fetchData);
       setCostumers(() => custumer);
     };
-    getCostemers(); 
+    getCostemers();
   }, []);
 
   return (
     <main className="flex h-screen w-screen">
       <Sidebar />
       <section className="h-full w-4/5 flex flex-col">
-        <nav className="h-16 bg- border-b-2 border-gray-400"></nav>
+        <nav className="h-16 border-b-2 border-gray-400"></nav>
         <Display title="project" displayItems={costumers} />
       </section>
     </main>
