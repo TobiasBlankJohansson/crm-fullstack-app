@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { Sidebar } from "../../../Sidebar";
 import { Display, DisplayObject } from "../../display/Display";
 import { projectDisplay } from "./projectsDisplay";
+import { getProjects } from "@/api/project";
 
-export function Sales() {
+export function Projects() {
   const [costumers, setCostumers] = useState<DisplayObject[]>([]);
 
   useEffect(() => {
@@ -20,7 +21,7 @@ export function Sales() {
       <Sidebar />
       <section className="h-full w-4/5 flex flex-col">
         <nav className="h-16 border-b-2 border-gray-400"></nav>
-        <Display title="sales" displayItems={costumers} />
+        <Display title="projects" displayItems={costumers} />
       </section>
     </main>
   );
