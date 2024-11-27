@@ -1,5 +1,5 @@
 import { Sidebar } from "../Sidebar";
-import { Display, DisplayObject } from "./Display";
+import { Display, DisplayObject } from "../display/Display";
 
 export function Costumer() {
   const mockDisplayItems: DisplayObject[] = [

@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+
 export type DisplayItemProp = {
   title: string;
   count: string;
@@ -20,17 +22,18 @@ export function DisplayItem({
 }: DisplayItemProp) {
   return (
     <li>
-      <button
+      <Button
+        variant="link"
         onClick={() =>
           SetSelected(() => {
             const number = Number(count);
             return number != selected ? number : 0;
           })
         }
-        className="mt-4 text-blue-700 font-bold"
+        className="text-blue-700 font-bold pb-0 pl-0"
       >
         {count}. {title}
-      </button>
+      </Button>
       {detail.map((detail) => {
         return (
           <p className="ml-4">
