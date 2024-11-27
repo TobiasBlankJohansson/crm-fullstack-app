@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": "Manage Your Sales Efficiently",
+    "description": "Easily track and manage your sales with our intuitive CRM. Add, modify, or delete sales records effortlessly, and filter them by month to stay on top of performance. Streamline your sales process and focus on what matters most.",
+    "image": "/carousel-2.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Organize and Track Projects",
+    "description": "Keep all your projects organized and accessible. Whether you're working on multiple client initiatives or internal tasks, our CRM helps you track progress, manage deadlines, and ensure your team stays aligned on project goals.",
+    "image": "/carousel-1.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Build Stronger Customer Relationships",
+    "description": "With our CRM, you can manage customer data, track interactions, and ensure a personalized experience. Stay on top of your customers' needs and provide timely support, fostering long-term relationships that drive success.",
+    "image": "/carousel-3.jpg"
+  }
+]
