@@ -5,6 +5,7 @@ import salt.takl.crm.model.Customer;
 import salt.takl.crm.repository.CustomerRepository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class CustomerService {
@@ -29,7 +30,7 @@ public class CustomerService {
         customerRepository.delete(customer);
     }
 
-    public Customer getCustomerById(Long id) {
+    public Customer getCustomerById(UUID id) {
         return customerRepository.getCustomersById(id);
     }
 }
