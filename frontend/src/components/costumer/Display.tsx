@@ -17,7 +17,7 @@ export type DisplayObject = {
 export function Display({ title, displayItems }: DisplayProp) {
   const [selected, SetSelected] = useState<number>(0);
   return (
-    <section className="pt-20 pl-14 bg-slate-300 w-full h-full">
+    <section className="pt-20 pl-14 w-full h-full">
       <main className="flex h-full">
         <section className="w-1/2 pl-5">
           <h2 className="text-4xl">My {title}</h2>

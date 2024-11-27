@@ -1,3 +1,4 @@
+import { Sidebar } from "../Sidebar";
 import { Display, DisplayObject } from "./Display";
 
 export function Costumer() {
@@ -42,9 +43,9 @@ export function Costumer() {
 
   return (
     <main className="flex h-screen w-screen">
-      <aside className="h-full w-1/5 bg-white"></aside>
+      <Sidebar />
       <section className="h-full w-4/5 flex flex-col">
-        <nav className="h-16 bg-slate-300 border-b-2 border-gray-400"></nav>
+        <nav className="h-16 bg- border-b-2 border-gray-400"></nav>
         <Display title="project" displayItems={mockDisplayItems} />
       </section>
     </main>
