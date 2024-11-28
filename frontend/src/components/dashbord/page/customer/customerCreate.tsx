@@ -1,5 +1,5 @@
 import { ButtonCreate } from "../../create/ButtonCreate";
-import { CreateObject } from "../../create/Create";
+import { CreateObject } from "../../create/create";
 import { InputCreate } from "../../create/InputCreate";
 
 const id: string[] = [

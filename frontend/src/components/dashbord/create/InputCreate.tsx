@@ -1,3 +1,5 @@
+import { Input } from "@/components/ui/input";
+
 type InputCreateProp = {
   label: string;
   type: "text" | "email" | "tel";
@@ -7,8 +9,10 @@ type InputCreateProp = {
 export function InputCreate({ id, label, type }: InputCreateProp) {
   return (
     <>
-      <label>{label}</label>
-      <input type={type} id={id}></input>
+      <label className="flex items-center">{label}</label>
+      <div className="flex items-center">
+        <Input type={type} id={id}></Input>
+      </div>
     </>
   );
 }

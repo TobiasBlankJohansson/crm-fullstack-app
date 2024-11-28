@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { Sidebar } from "../../Sidebar";
-import { Display, DisplayObject } from "../../display/Display";
+import { DisplayObject } from "../../display/Display";
 import { getCostumer } from "@/api/costumer";
 import { customerDisplay } from "./customerDisplay";
-import { Create } from "../../create/Create";
-import { ButtonCreate } from "../../create/ButtonCreate";
+import { Create } from "../../create/create";
 import { costumerCreate } from "./customerCreate";
 
 export function Costumer() {
@@ -25,12 +24,8 @@ export function Costumer() {
     <main className="flex h-screen w-screen">
       <Sidebar />
       <section className="h-full w-4/5 flex flex-col">
-        <nav className="h-16 border-b-2 border-gray-400"></nav>
-        <Create
-          title={title}
-          onSubmit={create.onSubmit}
-          input={create.input}
-        />
+        <nav className="h-16 border-b-2 border-black"></nav>
+        <Create title={title} onSubmit={create.onSubmit} input={create.input} />
       </section>
     </main>
   );
