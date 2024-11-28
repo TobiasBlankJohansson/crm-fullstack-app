@@ -68,12 +68,12 @@ public class Project {
         this.ended = ended;
     }
 
-    public long getSales() {
+    public List<Sale> getSales() {
         return sales;
     }
 
-    public void setSales(long sales) {
-        this.sales = sales;
+    public void setSales(Sale sale) {
+        sales.add(sale);
     }
 
     public List<Customer> getCustomers() {
