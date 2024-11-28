@@ -6,7 +6,7 @@ const mockProject = [
   {
     name: "AI Development Project",
     duration: "6 months",
-    costomers: ["Tech Innovators Inc.", "Future AI Solutions"],
+    customers: ["Tech Innovators Inc.", "Future AI Solutions"],
     notes: [
       "Focus on advanced AI algorithms.",
       "Deliver by end of Q2.",
@@ -20,7 +20,7 @@ const mockProject = [
   {
     name: "Solar Panel Installation",
     duration: "3 months",
-    costomers: ["Green Energy Solutions"],
+    customers: ["Green Energy Solutions"],
     notes: [
       "Install 500 panels across 10 sites.",
       "Ensure compliance with local regulations.",
@@ -34,7 +34,7 @@ const mockProject = [
   {
     name: "Automated Assembly Line",
     duration: "8 months",
-    costomers: ["NextGen Robotics", "Industrial Systems Ltd."],
+    customers: ["NextGen Robotics", "Industrial Systems Ltd."],
     notes: [
       "Integrate advanced robotics with existing setup.",
       "Minimize downtime during deployment.",
@@ -48,7 +48,7 @@ const mockProject = [
   {
     name: "Cloud Infrastructure Upgrade",
     duration: "5 months",
-    costomers: ["CloudCom LLC"],
+    customers: ["CloudCom LLC"],
     notes: [
       "Enhance scalability for peak traffic.",
       "Ensure zero data loss during migration.",
@@ -62,7 +62,7 @@ const mockProject = [
   {
     name: "Telemedicine Platform",
     duration: "4 months",
-    costomers: ["HealthTech Solutions", "CareTech Partners"],
+    customers: ["HealthTech Solutions", "CareTech Partners"],
     notes: [
       "Build a HIPAA-compliant platform.",
       "Implement video calling and EHR integration.",

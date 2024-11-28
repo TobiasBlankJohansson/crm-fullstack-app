@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Sidebar } from "../../../Sidebar";
+import { Sidebar } from "../../Sidebar";
 import { Display, DisplayObject } from "../../display/Display";
 import { projectDisplay } from "./projectsDisplay";
 import { getProjects } from "@/api/project";
@@ -10,8 +10,8 @@ export function Projects() {
   useEffect(() => {
     const getProject = async () => {
       const fetchData = await getProjects();
-      const custumer = projectDisplay(fetchData);
-      setCostumers(() => custumer);
+      const customer = projectDisplay(fetchData);
+      setCostumers(() => customer);
     };
     getProject();
   }, []);

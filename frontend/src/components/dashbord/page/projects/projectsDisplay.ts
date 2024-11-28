@@ -5,7 +5,7 @@ import { ItemPropertyProp } from "../../display/ItemProperty";
 type ProjectDisplayProp = {
   name: string;
   duration: string;
-  costomers: string[];
+  customers: string[];
   notes: string[];
   sales: sales[];
 };
@@ -46,7 +46,7 @@ const setItemProperty = (fetch: ProjectDisplayProp): ItemPropertyProp[] => {
   };
   const costomer: ItemPropertyProp = {
     title: "Costomers",
-    info: fetch.costomers,
+    info: fetch.customers,
   };
   const notes: ItemPropertyProp = { title: "Notes", info: fetch.notes };
   const sales: ItemPropertyProp = {

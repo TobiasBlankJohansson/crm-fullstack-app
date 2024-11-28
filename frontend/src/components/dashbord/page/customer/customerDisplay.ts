@@ -2,7 +2,7 @@ import { DisplayObject } from "../../display/Display";
 import { Detail } from "../../display/DisplayItem";
 import { ItemPropertyProp } from "../../display/ItemProperty";
 
-type CostumerDisplayProp = {
+type CustomerDisplayProp = {
   company: string;
   project: string[];
   contact: contact[];
@@ -18,8 +18,8 @@ type contact = {
   email: string;
 };
 
-export const costumerDisplay = (
-  fetch: CostumerDisplayProp[]
+export const customerDisplay = (
+  fetch: CustomerDisplayProp[]
 ): DisplayObject[] => {
   let count = 0;
   const display: DisplayObject[] = fetch.map((fetch) => {
@@ -36,14 +36,14 @@ export const costumerDisplay = (
   return display;
 };
 
-const setDetails = (fetch: CostumerDisplayProp): Detail[] => {
+const setDetails = (fetch: CustomerDisplayProp): Detail[] => {
   const tag: Detail = { title: "Tag", value: fetch.tag.join(", ") };
   const phone: Detail = { title: "Phone", value: fetch.phone };
   const email: Detail = { title: "Email", value: fetch.email };
   return [tag, phone, email];
 };
 
-const setItemProperty = (fetch: CostumerDisplayProp): ItemPropertyProp[] => {
+const setItemProperty = (fetch: CustomerDisplayProp): ItemPropertyProp[] => {
   const company: ItemPropertyProp = { title: "Company", info: [fetch.company] };
   const project: ItemPropertyProp = {
     title: "Project",
