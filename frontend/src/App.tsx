@@ -8,7 +8,7 @@ export function App() {
         <SignInButton />
       </SignedOut>
       <SignedIn>
-        <Costumer/>
+        <Costumer />
       </SignedIn>
     </div>
   );
