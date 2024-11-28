@@ -5,6 +5,7 @@ import salt.takl.crm.model.Sale;
 import salt.takl.crm.repository.SaleRepository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class SalesService {
@@ -17,5 +18,9 @@ public class SalesService {
 
     public List<Sale> getAllSales() {
         return saleRepository.findAll();
+    }
+
+    public List<Sale> getSalesByCustomerId(UUID customerId) {
+        return saleRepository.findAllByCustomer_Id(customerId);
     }
 }
