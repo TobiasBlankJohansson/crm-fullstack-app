@@ -5,6 +5,7 @@ import { getCostumer } from "@/api/costumer";
 import { customerDisplay } from "./customerDisplay";
 import { Create } from "../../create/Create";
 import { ButtonCreate } from "../../create/ButtonCreate";
+import { costumerCreate } from "./customerCreate";
 
 export function Costumer() {
   const [costumers, setCostumers] = useState<DisplayObject[]>([]);
@@ -18,6 +19,7 @@ export function Costumer() {
     };
     getCostemers();
   }, []);
+  const create = costumerCreate();
   //<Display title={title} displayItems={costumers} />
   return (
     <main className="flex h-screen w-screen">
@@ -26,10 +28,8 @@ export function Costumer() {
         <nav className="h-16 border-b-2 border-gray-400"></nav>
         <Create
           title={title}
-          onSubmit={function (e: React.FormEvent<HTMLFormElement>): void {
-            throw new Error("Function not implemented.");
-          }}
-          input={[]}
+          onSubmit={create.onSubmit}
+          input={create.input}
         />
       </section>
     </main>
