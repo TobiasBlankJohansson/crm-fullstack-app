@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import data from "../data/carouselItems.json";
 
 export function Carousel() {
@@ -8,16 +8,16 @@ export function Carousel() {
     return data.map((slide, index) => {
       const isActive = index === currentSlide;
       const position =
-        index === (currentSlide + 1) % data.length
-          ? "translate-x-24 rotate-y-45 opacity-50 z-0"
+        index === (currentSlide + 1) % data.length 
+          ? "translate-x-24 rotate-y-45 opacity-50 z-0 scale-90"
           : index === (currentSlide - 1 + data.length) % data.length
-          ? "-translate-x-24 rotate-y--45 opacity-50 z-0"
-          : "translate-x-0 rotate-y-0 opacity-100 z-10";
+          ? "-translate-x-24 rotate-y--45 opacity-50 z-0 scale-90"
+          : "translate-x-0 rotate-y-0 opacity-100 z-10 scale-100";
 
       return (
         <div
           key={slide.id}
-          className={`absolute transition-transform duration-500 ease-in-out transform bg-gray-100 w-[44rem] h-[28rem] rounded-lg shadow-2xl flex items-center justify-center ${position}`}
+          className={`absolute transition-transform duration-500 ease-in-out transform bg-gray-100 w-[40rem] h-[26rem] rounded-lg shadow-2xl flex items-center justify-center ${position}`}
         >
           {isActive && (
             <div className="p-12 flex items-center">
@@ -38,33 +38,29 @@ export function Carousel() {
     });
   };
 
-  const nextSlide = () => {
-    setCurrentSlide((prevIndex) => (prevIndex === data.length - 1 ? 0 : prevIndex + 1));
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prevIndex) => (prevIndex === 0 ? data.length - 1 : prevIndex - 1));
+  const goToSlide = (index: SetStateAction<number>) => {
+    setCurrentSlide(index);
   };
 
   return (
-    <div className="relative flex justify-center items-center h-screen w-full">
-      <button
-        onClick={prevSlide}
-        className="absolute left-4 p-2 bg-gray-200 rounded-full hover:bg-gray-300 z-10"
-      >
-        &#8592;
-      </button>
-
-      <div className="relative flex items-center justify-center w-[60%] h-[auto]">
+    <div className="relative flex flex-col items-center justify-center h-screen w-full">   
+      <div className="relative flex items-center justify-center w-[60%] h-[auto] z-10">
         {renderSlides()}
       </div>
 
-      <button
-        onClick={nextSlide}
-        className="absolute right-4 p-2 bg-gray-200 rounded-full hover:bg-gray-300 z-10"
-      >
-        &#8594;
-      </button>
+      <div className="absolute bottom-1 flex space-x-4 z-10">
+        {data.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={`w-4 h-4 rounded-full transition-colors duration-300 ${
+              index === currentSlide
+                ? "bg-gray-800" 
+                : "bg-gray-400 hover:bg-gray-600" 
+            }`}
+          ></button>
+        ))}
+      </div>
     </div>
   );
 }
