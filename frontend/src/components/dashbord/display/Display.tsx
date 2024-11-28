@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { DisplayItem, Detail } from "./DisplayItem";
 import { ItemProperty, ItemPropertyProp } from "./ItemProperty";
-import { ScrollArea } from "@radix-ui/react-scroll-area";
 
 type DisplayProp = {
   title: string;
