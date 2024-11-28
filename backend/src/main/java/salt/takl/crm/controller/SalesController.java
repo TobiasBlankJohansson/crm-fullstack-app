@@ -20,14 +20,13 @@ public class SalesController {
 
     @GetMapping("/sales")
     public ResponseEntity<List<SalesResponseDTO>> getAllSales() {
-        // Fetch all customers and projects to aggregate sales data
         List<SalesResponseDTO> sales = customerService.getAllCustomers().stream()
                 .flatMap(customer -> customer.getProjects().stream()
                         .map(project -> new SalesResponseDTO(
                                 customer.getCompanyName(),
                                 customer.getCompanyName(),
                                 project.getName(),
-                                String.format("$%,.2f", project.getSales() / 100.0) // Format sales amount
+                                String.format("$%,.2f", project.getSales() / 100.0)
                         )))
                 .toList();
 
