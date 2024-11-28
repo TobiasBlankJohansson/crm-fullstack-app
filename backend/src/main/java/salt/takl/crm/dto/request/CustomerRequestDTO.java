@@ -1,4 +1,4 @@
-package salt.takl.crm.DTO;
+package salt.takl.crm.dto.request;
 
-public class CustomerRequestDTO {
+public record CustomerRequestDTO (){
 }

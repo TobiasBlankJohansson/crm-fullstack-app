@@ -23,7 +23,23 @@ public class Customer {
     @Enumerated(EnumType.STRING)
     private List<Tag> tags;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    public User getUser() {
+        return user;
+    }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public List<Project> getProjects() {
+        return projects;
+    }
+
+    public List<Contact> getContacts() {
+        return contacts;
+    }
+
+    @ManyToMany (mappedBy = "customers")
     private List<Project> projects;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
