@@ -6,6 +6,11 @@ type DisplayCreateProp = {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 };
 
+export type CreateObject = {
+  input: JSX.Element[];
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+};
+
 export function Create({ title, input, onSubmit }: DisplayCreateProp) {
   return (
     <section className="pt-20 pb-10 pl-14 w-full h-full">
