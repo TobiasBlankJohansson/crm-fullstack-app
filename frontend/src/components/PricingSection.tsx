@@ -1,52 +1,43 @@
 export function PricingSection() {
   return (
-    <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-8">
-      <div className="bg-white rounded-lg shadow-md p-6 text-center">
-        <h3 className="text-2xl font-bold mb-4 text-blue-700">Basic Plan</h3>
-        <p className="text-gray-600 mb-6">
-          Ideal for small teams just getting started with CRM tools.
+    <div>
+      <div className="text-center mb-20">
+        <h2 className="text-4xl font-bold text-blue-700 mb-10">
+          Flexible Pricing for Every Business
+        </h2>
+        <p className="text-lg text-gray-600">
+          Choose a plan that suits your needs. Whether you're just starting out or managing a
+          growing team, our transparent pricing ensures you get the best value for your investment.
+          No hidden fees, just powerful tools to enhance your business relationships.
         </p>
-        <p className="text-4xl font-bold text-blue-700 mb-4">$19</p>
-        <p className="text-sm text-gray-500 mb-6">Per user/month</p>
-        <button className="w-full bg-blue-700 text-white py-2 px-4 rounded-lg hover:bg-blue-600 mb-2">
-          Learn More
-        </button>
-        <button className="w-full bg-gray-200 text-blue-700 py-2 px-4 rounded-lg hover:bg-gray-300 mb-2">
-          Start Free Trial
-        </button>
-        <button className="w-full border border-blue-700 text-blue-700 py-2 px-4 rounded-lg hover:bg-blue-100">
-          Contact Sales
-        </button>
       </div>
-      <div className="bg-white rounded-lg shadow-md p-6 text-center">
-        <h3 className="text-2xl font-bold mb-4 text-blue-700">Professional Plan</h3>
-        <p className="text-gray-600 mb-6">Perfect for growing teams who need advanced features.</p>
-        <p className="text-4xl font-bold text-blue-700 mb-4">$49</p>
-        <p className="text-sm text-gray-500 mb-6">Per user/month</p>
-        <button className="w-full bg-blue-700 text-white py-2 px-4 rounded-lg hover:bg-blue-600 mb-2">
-          Learn More
-        </button>
-        <button className="w-full bg-gray-200 text-blue-700 py-2 px-4 rounded-lg hover:bg-gray-300 mb-2">
-          Start Free Trial
-        </button>
-        <button className="w-full border border-blue-700 text-blue-700 py-2 px-4 rounded-lg hover:bg-blue-100">
-          Contact Sales
-        </button>
-      </div>
-      <div className="bg-white rounded-lg shadow-md p-6 text-center">
-        <h3 className="text-2xl font-bold mb-4 text-blue-700">Enterprise Plan</h3>
-        <p className="text-gray-600 mb-6">Custom solutions for large teams and organizations.</p>
-        <p className="text-4xl font-bold text-blue-700 mb-4">Custom</p>
-        <p className="text-sm text-gray-500 mb-6">Contact us for pricing</p>
-        <button className="w-full bg-blue-700 text-white py-2 px-4 rounded-lg hover:bg-blue-600 mb-2">
-          Learn More
-        </button>
-        <button className="w-full bg-gray-200 text-blue-700 py-2 px-4 rounded-lg hover:bg-gray-300 mb-2">
-          Request a Demo
-        </button>
-        <button className="w-full border border-blue-700 text-blue-700 py-2 px-4 rounded-lg hover:bg-blue-100">
-          Contact Sales
-        </button>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="bg-white rounded-lg shadow-md p-6 text-center">
+          <h3 className="text-2xl font-bold text-blue-700 mb-4">Basic</h3>
+          <p className="text-lg text-gray-600 mb-4">Ideal for small businesses starting out.</p>
+          <p className="text-3xl font-bold mb-4">$9.99/month</p>
+          <button className="bg-blue-700 text-white py-2 px-4 rounded hover:bg-blue-600">
+            Get Started
+          </button>
+        </div>
+        <div className="bg-white rounded-lg shadow-md p-6 text-center">
+          <h3 className="text-2xl font-bold text-blue-700 mb-4">Pro</h3>
+          <p className="text-lg text-gray-600 mb-4">
+            Perfect for growing businesses with more needs.
+          </p>
+          <p className="text-3xl font-bold mb-4">$29.99/month</p>
+          <button className="bg-blue-700 text-white py-2 px-4 rounded hover:bg-blue-600">
+            Get Started
+          </button>
+        </div>
+        <div className="bg-white rounded-lg shadow-md p-6 text-center">
+          <h3 className="text-2xl font-bold text-blue-700 mb-4">Enterprise</h3>
+          <p className="text-lg text-gray-600 mb-4">Comprehensive tools for large organizations.</p>
+          <p className="text-3xl font-bold mb-4">Custom Pricing</p>
+          <button className="bg-blue-700 text-white py-2 px-4 rounded hover:bg-blue-600">
+            Contact Sales
+          </button>
+        </div>
       </div>
     </div>
   );
