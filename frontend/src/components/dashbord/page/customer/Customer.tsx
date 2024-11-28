@@ -7,6 +7,7 @@ import { Create } from "../../create/create";
 
 export function Costumer() {
   const [costumers, setCostumers] = useState<DisplayObject[]>([]);
+  const title = "customer";
 
   useEffect(() => {
     const getCostemers = async () => {
@@ -16,13 +17,13 @@ export function Costumer() {
     };
     getCostemers();
   }, []);
-//<Display title="customer" displayItems={costumers} />
+  //<Display title={title} displayItems={costumers} />
   return (
     <main className="flex h-screen w-screen">
       <Sidebar />
       <section className="h-full w-4/5 flex flex-col">
         <nav className="h-16 border-b-2 border-gray-400"></nav>
-        <Create/>
+        <Create title={title} />
       </section>
     </main>
   );
