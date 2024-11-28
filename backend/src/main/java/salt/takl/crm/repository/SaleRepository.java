@@ -10,4 +10,6 @@ import java.util.UUID;
 @Repository
 public interface SaleRepository extends JpaRepository <Sale, UUID> {
     List<Sale> findAllByCustomer_Id(UUID customerId);
+
+    List<Sale> findAllByProject_Id(UUID projectId);
 }

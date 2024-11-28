@@ -19,6 +19,9 @@ public class Customer {
     @ManyToOne
     private User user;
 
+    @OneToMany
+    private List<Sale> sales;
+
     @ElementCollection(targetClass = Tag.class)
     @Enumerated(EnumType.STRING)
     private List<Tag> tags;

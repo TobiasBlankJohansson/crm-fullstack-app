@@ -16,6 +16,38 @@ public class Sale {
     @ManyToOne
     private Project project;
 
+    public long getSalesAmount() {
+        return salesAmount;
+    }
+
+    public void setSalesAmount(long salesAmount) {
+        this.salesAmount = salesAmount;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
     private long salesAmount;
 
     public String name() {

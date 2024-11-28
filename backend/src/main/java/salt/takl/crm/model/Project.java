@@ -19,7 +19,8 @@ public class Project {
     private LocalDateTime started;
     private LocalDateTime ended;
 
-    private long sales;
+    @OneToMany
+    private List<Sale> sales;
 
     @ManyToMany
     List<Customer> customers;

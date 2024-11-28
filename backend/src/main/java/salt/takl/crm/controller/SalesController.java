@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import salt.takl.crm.dto.response.SalesResponseDTO;
 import salt.takl.crm.service.CustomerService;
+import salt.takl.crm.service.SalesService;
 
 import java.util.List;
 
@@ -13,22 +14,21 @@ import java.util.List;
 @RequestMapping("/api")
 public class SalesController {
     private final CustomerService customerService;
+    private final SalesService salesService;
 
-    public SalesController(CustomerService customerService) {
+    public SalesController(CustomerService customerService, SalesService salesService) {
         this.customerService = customerService;
+        this.salesService = salesService;
     }
 
     @GetMapping("/sales")
     public ResponseEntity<List<SalesResponseDTO>> getAllSales() {
-        List<SalesResponseDTO> sales = customerService.getAllCustomers().stream()
-                .flatMap(customer -> customer.getProjects().stream()
-                        .map(project -> new SalesResponseDTO(
-                                customer.getCompanyName(),
-                                customer.getCompanyName(),
-                                project.getName(),
-                                String.format("$%,.2f", project.getSales() / 100.0)
-                        )))
-                .toList();
+        List<SalesResponseDTO> sales = salesService.getAllSales().stream().map(sale -> new SalesResponseDTO(
+                sale.name(),
+                sale.getCustomer().getCompanyName(),
+                sale.project(),
+                Long.toString(sale.getSalesAmount())
+        )).toList();
 
         return ResponseEntity.ok(sales);
     }

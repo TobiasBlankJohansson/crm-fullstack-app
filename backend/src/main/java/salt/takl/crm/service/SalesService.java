@@ -23,4 +23,8 @@ public class SalesService {
     public List<Sale> getSalesByCustomerId(UUID customerId) {
         return saleRepository.findAllByCustomer_Id(customerId);
     }
+
+    public List<Sale> getSalesByProjectId(UUID projectId) {
+        return saleRepository.findAllByProject_Id(projectId);
+    }
 }
