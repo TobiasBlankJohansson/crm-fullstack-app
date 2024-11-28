@@ -1,14 +1,13 @@
 import AboutSection from "../components/AboutSection";
 import { Carousel } from "../components/Carousel";
 import ContactForm from "../components/ContactForm";
-import { HomePageHeader } from "../components/HomePageHeader";
 import { PricingSection } from "../components/PricingSection";
 
 export function HomePage() {
   return (
     <div>
-      <HomePageHeader />
-      <div id="home" className="h-screen flex items-center justify-center">
+      <div id="home" className="h-screen flex flex-col items-center justify-start px-4 pb-10 pt-10">
+        <h1 className="text-3xl font-bold text-blue-700">Manage, Organize, and Build: Unlock the Power of Our CRM</h1>
         <Carousel />
       </div>
       <div id="about" className="h-screen flex items-center justify-center bg-white">
