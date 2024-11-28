@@ -44,11 +44,11 @@ export function Carousel() {
 
   return (
     <div className="relative flex flex-col items-center justify-center h-screen w-full">   
-      <div className="relative flex items-center justify-center w-[60%] h-[auto] z-10">
+      <div className="relative flex items-center justify-center w-[60%] h-[auto] mb-20  z-10">
         {renderSlides()}
       </div>
 
-      <div className="absolute bottom-1 flex space-x-4 z-10">
+      <div className="absolute bottom-20 flex space-x-4 z-10">
         {data.map((_, index) => (
           <button
             key={index}

@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function AboutSection() {
   return (
     <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-8">
