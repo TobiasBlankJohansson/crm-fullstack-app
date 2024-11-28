@@ -27,7 +27,7 @@ public class SalesController {
                 sale.name(),
                 sale.getCustomer().getCompanyName(),
                 sale.project(),
-                Long.toString(sale.getSalesAmount())
+                sale.getSalesAmount().toPlainString()
         )).toList();
 
         return ResponseEntity.ok(sales);

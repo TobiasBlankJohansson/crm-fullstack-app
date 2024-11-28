@@ -19,7 +19,7 @@ public class Customer {
     @ManyToOne
     private User user;
 
-    @OneToMany
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Sale> sales;
 
     @ElementCollection(targetClass = Tag.class)

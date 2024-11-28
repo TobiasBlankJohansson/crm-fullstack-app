@@ -17,7 +17,9 @@ public class SalesService {
     }
 
     public List<Sale> getAllSales() {
-        return saleRepository.findAll();
+        List<Sale> sales = saleRepository.findAll();
+        sales.forEach(sale -> System.out.println("Retrieved Sale: " + sale));
+        return sales;
     }
 
     public List<Sale> getSalesByCustomerId(UUID customerId) {

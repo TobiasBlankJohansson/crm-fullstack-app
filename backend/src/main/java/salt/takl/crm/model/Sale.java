@@ -2,6 +2,7 @@ package salt.takl.crm.model;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity
@@ -16,11 +17,11 @@ public class Sale {
     @ManyToOne
     private Project project;
 
-    public long getSalesAmount() {
+    public BigDecimal getSalesAmount() {
         return salesAmount;
     }
 
-    public void setSalesAmount(long salesAmount) {
+    public void setSalesAmount(BigDecimal salesAmount) {
         this.salesAmount = salesAmount;
     }
 
@@ -48,7 +49,7 @@ public class Sale {
         this.id = id;
     }
 
-    private long salesAmount;
+    private BigDecimal salesAmount;
 
     public String name() {
         return this.customer.getCompanyName();
@@ -60,7 +61,7 @@ public class Sale {
 
     public Sale () {}
 
-    public Sale(Customer customer, Project project, long salesAmount) {
+    public Sale(Customer customer, Project project, BigDecimal salesAmount) {
         this.customer = customer;
         this.project = project;
         this.salesAmount = salesAmount;

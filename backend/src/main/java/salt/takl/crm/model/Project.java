@@ -3,6 +3,7 @@ package salt.takl.crm.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,8 +20,8 @@ public class Project {
     private LocalDateTime started;
     private LocalDateTime ended;
 
-    @OneToMany
-    private List<Sale> sales;
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Sale> sales = new ArrayList<>();
 
     @ManyToMany
     List<Customer> customers;
