@@ -49,7 +49,7 @@ function inputs() {
   const contact = (
     <ButtonCreate
       id={id[2]}
-      label={"Project"}
+      label={"Contact"}
       click={function (
         setObject: React.Dispatch<React.SetStateAction<object[]>>
       ): void {
@@ -60,11 +60,9 @@ function inputs() {
   const tag = (
     <ButtonCreate
       id={id[3]}
-      label={"Project"}
-      click={function (
-        setObject: React.Dispatch<React.SetStateAction<object[]>>
-      ): void {
-        throw new Error("Function not implemented.");
+      label={"Tag"}
+      click={(setObject) => {
+        setObject((prev) => [...prev, { title: 10 }]);
       }}
     />
   );
