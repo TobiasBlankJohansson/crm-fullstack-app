@@ -5,5 +5,10 @@ type InputCreateProp = {
 };
 
 export function InputCreate({ id, label, type }: InputCreateProp) {
-  return <></>;
+  return (
+    <>
+      <label>{label}</label>
+      <input type={type} id={id}></input>
+    </>
+  );
 }
