@@ -2,12 +2,7 @@ import { Button } from "@/components/ui/button";
 
 type CreateProp = {
   title: string;
-  input: (buttonCreate | inputCreate)[];
-};
-
-type buttonCreate = {
-  label: string;
-  action: () => void;
+  input: JSX.Element[];
 };
 
 type inputCreate = {
@@ -15,9 +10,7 @@ type inputCreate = {
   type: "text" | "email" | "tel";
 };
 
-
-
-export function Create({ title, input}: CreateProp) {
+export function Create({ title, input }: CreateProp) {
   return (
     <section className="pt-20 pb-10 pl-14 w-full h-full">
       <main className="flex h-full w-full justify-center items-center">
