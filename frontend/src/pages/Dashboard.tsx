@@ -1,6 +1,5 @@
 import { SignedIn, useUser } from "@clerk/clerk-react";
 import { Sidebar } from "../components/dashboard/Sidebar";
-import { DashboardHeader } from "../components/dashboard/DashboardHeader";
 import customersData from "../data/customersData.json";
 import salesData from "../data/salesData.json";
 import projectsData from "../data/projectsData.json";
@@ -11,6 +10,7 @@ export function Dashboard() {
   const sortedCustomers = [...customersData].sort(
     (a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
   );
+  
   const latestCustomers = sortedCustomers.slice(0, 3).map((customer, index) => (
     <div key={index}>
       <h3 className="text-l font-semibold text-gray-600 mt-5">{customer.company}</h3>
