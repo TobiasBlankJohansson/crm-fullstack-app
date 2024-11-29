@@ -62,9 +62,9 @@ function inputs() {
       id={id[3]}
       label={"Tag"}
       click={(setObject) => {
-        setObject((prev) => [...prev, { title: 10 }]);
+        document.getElementById("my_modal_1").showModal();
       }}
-    />
+    ></ButtonCreate>
   );
 
   const address = <InputCreate id={id[4]} label="Address" type="text" />;
@@ -72,6 +72,10 @@ function inputs() {
   const email = <InputCreate id={id[6]} label="Email" type="email" />;
 
   return [company, project, contact, tag, address, phone, email];
+}
+
+function addTag(setObject) {
+  return <></>;
 }
 
 function onSubmit(e: React.FormEvent<HTMLFormElement>) {
