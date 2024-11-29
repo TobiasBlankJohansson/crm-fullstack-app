@@ -3,7 +3,7 @@ import { Sidebar } from "../../Sidebar";
 import { DisplayObject } from "../../display/Display";
 import { getCostumer } from "@/api/costumer";
 import { customerDisplay } from "./customerDisplay";
-import { Create } from "../../create/create";
+import { Create } from "../../create/Create";
 import { costumerCreate } from "./customerCreate";
 
 export function Costumer() {

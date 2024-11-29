@@ -1,7 +1,6 @@
 import { SignedIn, SignedOut } from "@clerk/clerk-react";
 import { HomePage } from "./pages/HomePage";
 import { HomePageHeader } from "./components/HomePageHeader";
-import { Projects } from "./components/dashbord/page/projects/Projects";
 import { Costumer } from "./components/dashbord/page/customer/Customer";
 
 export function App() {

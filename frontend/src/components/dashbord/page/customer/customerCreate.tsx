@@ -1,6 +1,6 @@
 import { Input } from "@/components/ui/input";
 import { ButtonCreate } from "../../create/ButtonCreate";
-import { CreateObject } from "../../create/create";
+import { CreateObject } from "../../create/Create";
 import { InputCreate } from "../../create/InputCreate";
 import { Button } from "@/components/ui/button";
 import { UUID } from "crypto";
