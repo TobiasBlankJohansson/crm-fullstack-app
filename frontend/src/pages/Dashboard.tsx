@@ -46,7 +46,6 @@ export function Dashboard() {
       <div className="flex">
         <Sidebar />
         <div className="flex-1">
-          <DashboardHeader />
           <main className="mt-16 p-8">
             <h2 className="text-3xl font-semibold text-blue-700 text-center mb-8 mt-10">
               Welcome to ANCHOR {user?.firstName}!
