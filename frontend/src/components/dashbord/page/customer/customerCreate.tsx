@@ -2,6 +2,7 @@ import { Input } from "@/components/ui/input";
 import { ButtonCreate } from "../../create/ButtonCreate";
 import { CreateObject } from "../../create/create";
 import { InputCreate } from "../../create/InputCreate";
+import { Button } from "@/components/ui/button";
 
 const id: string[] = [
   "CostumerCreate-1",
@@ -72,12 +73,8 @@ function addTag(
         <h3 className="font-bold text-lg">Add tag</h3>
         <form method="dialog" className="">
           <label>Tag</label>
-          <Input id={modalId+"Tag"} type="text"></Input>
-          <button 
-          className="btn mt-3" 
-          onClick={()=>setObject((prev=>[...prev,{ title: {document.getElementById(modalId+"Tag").value} }]))} >
-            Close
-          </button>
+          <Input id={modalId + "Tag"} type="text"></Input>
+          <Button className="mt-2">Close</Button>
         </form>
       </div>
     </dialog>
@@ -100,9 +97,9 @@ function addContact(
           <Input type="tel"></Input>
           <label>Email</label>
           <Input type="email"></Input>
-          <button className="btn mt-3" onClick={() => {}}>
+          <Button className="mt-2" onClick={() => {}}>
             Close
-          </button>
+          </Button>
         </form>
       </div>
     </dialog>
