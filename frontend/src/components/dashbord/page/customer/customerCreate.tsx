@@ -165,15 +165,38 @@ function addTag(
 
 function onSubmit(e: React.FormEvent<HTMLFormElement>) {
   e.preventDefault();
-  const list = id.map((id) => document.getElementById(id).value);
+  const list = id.map(
+    (id) => (document.getElementById(id) as HTMLInputElement).value
+  );
   const save: CreateDto = {
     company: list[0],
-    project: list[1],
-    contact: list[2],
-    tag: list[3],
+    project: JSON.parse(list[1]).map((project: project) => project.id),
+    contact: JSON.parse(list[2]).map((contact: contact) => {
+      return {
+        name: contact.title,
+        phone: contact.phone,
+        email: contact.email,
+      };
+    }),
+    tag: JSON.parse(list[3]).map((tag: tag) => tag.title),
     address: list[4],
     phone: list[5],
     email: list[6],
   };
   console.log(save);
+
+  type project = {
+    title: string;
+    id: string;
+  };
+
+  type contact = {
+    title: string;
+    phone: string;
+    email: string;
+  };
+
+  type tag = {
+    title: string;
+  };
 }
