@@ -8,7 +8,7 @@ export function Sidebar() {
     <li key={index}>
       <a
         href={item.href}
-        className="block px-4 py-2 rounded hover:bg-blue-700 hover:text-white flex items-center"
+        className="block px-4 py-2 rounded hover:bg-blue hover:text-white flex items-center"
       >
         {item.icon}
         {item.name}
