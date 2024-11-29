@@ -2,7 +2,7 @@ import AddIcon from "../../assets/icons/AddIcon";
 
 export function DashboardHeader() {
   return (
-    <header className="fixed top-0 left-64 w-[calc(100%-16rem)] h-16 bg-transparent border-b border-gray-300 flex items-center px-6 shadow-sm">
+    <header className="h-16 border-b-2 border-gray-400 flex justify-end pr-10 shadow-sm">
       <div className="flex items-center gap-4 ml-auto">
         <input
           type="text"

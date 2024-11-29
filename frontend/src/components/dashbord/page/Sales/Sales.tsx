@@ -3,6 +3,7 @@ import { Sidebar } from "../../../dashboard/Sidebar";
 import { Display, DisplayObject } from "../../display/Display";
 import { getSales } from "@/api/sales";
 import { salesDisplay } from "./salesDisplay";
+import { DashboardHeader } from "@/components/dashboard/DashboardHeader";
 
 export function Sales() {
   const [sales, setSales] = useState<DisplayObject[]>([]);
@@ -20,7 +21,7 @@ export function Sales() {
     <main className="flex h-screen w-screen">
       <Sidebar />
       <section className="h-full w-4/5 flex flex-col">
-        <nav className="h-16 border-b-2 border-gray-400"></nav>
+        <DashboardHeader />
         <Display title="sales" displayItems={sales} />
       </section>
     </main>
