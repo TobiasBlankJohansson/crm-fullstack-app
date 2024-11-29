@@ -1,3 +1,4 @@
+import { CreateDto } from "@/api/costumer";
 import { ButtonCreate } from "../../create/ButtonCreate";
 import { CreateObject } from "../../create/Create";
 import { InputCreate } from "../../create/InputCreate";
@@ -14,22 +15,6 @@ const id: string[] = [
   "CostumerCreate-6",
   "CostumerCreate-7",
 ];
-
-type CreateDto = {
-  company: string;
-  project: string[];
-  contact: contact[];
-  tag: string[];
-  address: string;
-  phone: string;
-  email: string;
-};
-
-type contact = {
-  name: string;
-  phone: string;
-  email: string;
-};
 
 export function costumerCreate(): CreateObject {
   const input: JSX.Element[] = inputs();

@@ -1,5 +1,23 @@
+export type CreateDto = {
+  company: string;
+  project: string[];
+  contact: {
+    name: string;
+    phone: string;
+    email: string;
+  }[];
+  tag: string[];
+  address: string;
+  phone: string;
+  email: string;
+};
+
 export const getCostumer = async () => {
   return mockCostumer;
+};
+
+export const createCostumer = async (newCostumer: CreateDto) => {
+  return newCostumer && true;
 };
 
 const mockCostumer = [
