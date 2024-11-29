@@ -74,13 +74,27 @@ function addTag(
         <form method="dialog" className="">
           <label>Tag</label>
           <Input id={modalId + "Tag"} type="text"></Input>
-          <Button className="mt-2">Close</Button>
+          <Button className="mt-2" onClick={onClick}>
+            Create
+          </Button>
         </form>
       </div>
     </dialog>
   ));
-  document.getElementById(modalId).showModal();
+
+  (document.getElementById(modalId) as HTMLDialogElement).showModal();
+
+  function onClick() {
+    setObject((prev) => [
+      ...prev,
+      {
+        title: (document.getElementById(modalId + "Tag") as HTMLInputElement)
+          .value,
+      },
+    ]);
+  }
 }
+
 function addContact(
   setObject: React.Dispatch<React.SetStateAction<object[]>>,
   setModal: React.Dispatch<React.SetStateAction<JSX.Element>>
@@ -92,19 +106,30 @@ function addContact(
         <h3 className="font-bold text-lg">Add tag</h3>
         <form method="dialog">
           <label>Name</label>
-          <Input type="text"></Input>
+          <Input id={modalId + "Name"} type="text"></Input>
           <label>Phone</label>
-          <Input type="tel"></Input>
+          <Input id={modalId + "Phone"} type="tel"></Input>
           <label>Email</label>
-          <Input type="email"></Input>
-          <Button className="mt-2" onClick={() => {}}>
-            Close
+          <Input id={modalId + "Email"} type="email"></Input>
+          <Button className="mt-2" onClick={onClick}>
+            Create
           </Button>
         </form>
       </div>
     </dialog>
   ));
-  document.getElementById(modalId).showModal();
+  (document.getElementById(modalId) as HTMLDialogElement)?.showModal();
+
+  function onClick() {
+    const name = (document.getElementById(modalId + "Tag") as HTMLInputElement)
+      .value;
+    const phone = (document.getElementById(modalId + "Tag") as HTMLInputElement)
+      .value;
+    const email = (document.getElementById(modalId + "Tag") as HTMLInputElement)
+      .value;
+
+    setObject((prev) => [...prev, { title: name, phone: phone, email: email }]);
+  }
 }
 
 function onSubmit(e: React.FormEvent<HTMLFormElement>) {
