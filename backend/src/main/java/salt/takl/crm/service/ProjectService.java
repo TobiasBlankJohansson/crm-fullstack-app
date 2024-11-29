@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class ProjectService {
@@ -20,6 +21,12 @@ public class ProjectService {
 
     public List<ProjectResponseDTO> getAllProjects() {
         List<Project> projects = projectRepository.findAll();
+
+        return projects.stream().map(this::mapToDTO).toList();
+    }
+
+    public List<ProjectResponseDTO> getProjectsByCustomerId(UUID customerId) {
+        List<Project> projects = projectRepository.findProjectsByCustomerId(customerId);
 
         return projects.stream().map(this::mapToDTO).toList();
     }
