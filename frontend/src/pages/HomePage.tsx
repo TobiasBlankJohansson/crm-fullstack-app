@@ -1,7 +1,7 @@
-import AboutSection from "../components/AboutSection";
-import { Carousel } from "../components/Carousel";
-import ContactForm from "../components/ContactForm";
-import { PricingSection } from "../components/PricingSection";
+import AboutSection from "../components/homepage/AboutSection";
+import { Carousel } from "../components/homepage/Carousel";
+import ContactForm from "../components/homepage/ContactForm";
+import { PricingSection } from "../components/homepage/PricingSection";
 
 export function HomePage() {
   return (

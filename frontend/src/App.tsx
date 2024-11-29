@@ -1,19 +1,21 @@
-import { SignedIn, SignedOut } from "@clerk/clerk-react";
+import { SignedOut } from "@clerk/clerk-react";
 import { HomePage } from "./pages/HomePage";
-import { HomePageHeader } from "./components/HomePageHeader";
-import { Projects } from "./components/dashbord/page/projects/Projects";
-
+import { HomePageHeader } from "./components/homepage/HomePageHeader";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Dashboard } from "./pages/Dashboard";
 
 export function App() {
   return (
     <div>
-      <SignedOut>
-        <HomePageHeader />
-        <HomePage />
-      </SignedOut>
-      <SignedIn>
-        <Projects />
-      </SignedIn>
+      <BrowserRouter>
+        <SignedOut>
+          <HomePageHeader />
+          <HomePage />
+        </SignedOut>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
