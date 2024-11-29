@@ -10,7 +10,7 @@ type PropButtonCreate = {
 };
 
 export function ButtonCreate({ id, label, click }: PropButtonCreate) {
-  const [objects, setObject] = useState<object[]>([{ title: 10 }]);
+  const [objects, setObject] = useState<object[]>([]);
   const [modal, setModal] = useState<JSX.Element>(<></>);
 
   return (

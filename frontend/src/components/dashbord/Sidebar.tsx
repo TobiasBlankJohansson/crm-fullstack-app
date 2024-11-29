@@ -1,5 +1,5 @@
 import { UserButton, useUser } from "@clerk/clerk-react";
-import { menuItems } from "../../helpers/SidebarItems";
+import { menuItems } from "../data/SidebarItems";
 
 export function Sidebar() {
   const { user } = useUser();

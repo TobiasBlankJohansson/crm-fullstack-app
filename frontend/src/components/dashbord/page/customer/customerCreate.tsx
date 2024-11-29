@@ -1,3 +1,4 @@
+import { Input } from "@/components/ui/input";
 import { ButtonCreate } from "../../create/ButtonCreate";
 import { CreateObject } from "../../create/create";
 import { InputCreate } from "../../create/InputCreate";
@@ -47,24 +48,10 @@ function inputs() {
     />
   );
   const contact = (
-    <ButtonCreate
-      id={id[2]}
-      label={"Contact"}
-      click={function (
-        setObject: React.Dispatch<React.SetStateAction<object[]>>
-      ): void {
-        throw new Error("Function not implemented.");
-      }}
-    />
+    <ButtonCreate id={id[2]} label={"Contact"} click={addContact} />
   );
   const tag = (
-    <ButtonCreate
-      id={id[3]}
-      label={"Tag"}
-      click={(setObject) => {
-        document.getElementById("my_modal_1").showModal();
-      }}
-    ></ButtonCreate>
+    <ButtonCreate id={id[3]} label={"Tag"} click={addTag}></ButtonCreate>
   );
 
   const address = <InputCreate id={id[4]} label="Address" type="text" />;
@@ -74,8 +61,53 @@ function inputs() {
   return [company, project, contact, tag, address, phone, email];
 }
 
-function addTag(setObject) {
-  return <></>;
+function addTag(
+  setObject: React.Dispatch<React.SetStateAction<object[]>>,
+  setModal: React.Dispatch<React.SetStateAction<JSX.Element>>
+) {
+  const modalId = "addTagCustomer";
+  setModal(() => (
+    <dialog id={modalId} className="modal">
+      <div className="modal-box  bg-white">
+        <h3 className="font-bold text-lg">Add tag</h3>
+        <form method="dialog" className="">
+          <label>Tag</label>
+          <Input id={modalId+"Tag"} type="text"></Input>
+          <button 
+          className="btn mt-3" 
+          onClick={()=>setObject((prev=>[...prev,{ title: {document.getElementById(modalId+"Tag").value} }]))} >
+            Close
+          </button>
+        </form>
+      </div>
+    </dialog>
+  ));
+  document.getElementById(modalId).showModal();
+}
+function addContact(
+  setObject: React.Dispatch<React.SetStateAction<object[]>>,
+  setModal: React.Dispatch<React.SetStateAction<JSX.Element>>
+) {
+  const modalId = "addContactCustomer";
+  setModal(() => (
+    <dialog id={modalId} className="modal">
+      <div className="modal-box  bg-white">
+        <h3 className="font-bold text-lg">Add tag</h3>
+        <form method="dialog">
+          <label>Name</label>
+          <Input type="text"></Input>
+          <label>Phone</label>
+          <Input type="tel"></Input>
+          <label>Email</label>
+          <Input type="email"></Input>
+          <button className="btn mt-3" onClick={() => {}}>
+            Close
+          </button>
+        </form>
+      </div>
+    </dialog>
+  ));
+  document.getElementById(modalId).showModal();
 }
 
 function onSubmit(e: React.FormEvent<HTMLFormElement>) {
