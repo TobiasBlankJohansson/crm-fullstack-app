@@ -1,5 +1,5 @@
 import { SetStateAction, useState } from "react";
-import data from "../data/carouselItems.json";
+import data from "../../data/carouselItems.json";
 
 export function Carousel() {
   const [currentSlide, setCurrentSlide] = useState(0);

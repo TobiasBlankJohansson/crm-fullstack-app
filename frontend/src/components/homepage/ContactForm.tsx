@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function ContactForm() {
   return (
     <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-8">
