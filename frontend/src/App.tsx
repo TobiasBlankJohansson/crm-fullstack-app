@@ -1,6 +1,6 @@
 import { SignedOut } from "@clerk/clerk-react";
 import { HomePage } from "./pages/HomePage";
-import { HomePageHeader } from "./components/HomePageHeader";
+import { HomePageHeader } from "./components/homepage/HomePageHeader";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Dashboard } from "./pages/Dashboard";
 

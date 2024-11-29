@@ -1,4 +1,4 @@
-import AddIcon from "../assets/icons/AddIcon";
+import AddIcon from "../../assets/icons/AddIcon";
 
 export function DashboardHeader() {
   return (

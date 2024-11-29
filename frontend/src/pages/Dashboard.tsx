@@ -1,6 +1,6 @@
 import { SignedIn, useUser } from "@clerk/clerk-react";
-import { Sidebar } from "../components/Sidebar";
-import { DashboardHeader } from "../components/DashboardHeader";
+import { Sidebar } from "../components/dashboard/Sidebar";
+import { DashboardHeader } from "../components/dashboard/DashboardHeader";
 import customersData from "../data/customersData.json";
 import salesData from "../data/salesData.json";
 import projectsData from "../data/projectsData.json";
