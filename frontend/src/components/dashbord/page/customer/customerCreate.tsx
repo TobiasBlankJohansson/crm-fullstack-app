@@ -121,11 +121,11 @@ function addContact(
   (document.getElementById(modalId) as HTMLDialogElement)?.showModal();
 
   function onClick() {
-    const name = (document.getElementById(modalId + "Tag") as HTMLInputElement)
+    const name = (document.getElementById(modalId + "Name") as HTMLInputElement)
       .value;
-    const phone = (document.getElementById(modalId + "Tag") as HTMLInputElement)
+    const phone = (document.getElementById(modalId + "Phone") as HTMLInputElement)
       .value;
-    const email = (document.getElementById(modalId + "Tag") as HTMLInputElement)
+    const email = (document.getElementById(modalId + "Email") as HTMLInputElement)
       .value;
 
     setObject((prev) => [...prev, { title: name, phone: phone, email: email }]);
