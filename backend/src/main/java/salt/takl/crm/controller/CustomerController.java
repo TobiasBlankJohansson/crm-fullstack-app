@@ -48,7 +48,12 @@ public class CustomerController {
         Customer customer = customerService.getCustomerById(UUID.fromString(customerId));
         List<ContactResponseDTO> contacts = customer.getContacts()
                 .stream()
-                .map(contact -> new ContactResponseDTO(contact.getId(), contact.getFirstName(), contact.getPhone(), contact.getEmail())).toList();
+                .map(contact -> new ContactResponseDTO(
+                        contact.getId(),
+                        contact.getFirstName(),
+                        contact.getPhone(),
+                        contact.getEmail())
+                ).toList();
         List<String> projects = customer.getProjects()
                 .stream()
                 .map(Project::getName)
