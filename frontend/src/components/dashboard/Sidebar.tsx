@@ -1,22 +1,19 @@
 import { menuItems } from "@/data/SidebarItems";
 import { UserButton, useUser } from "@clerk/clerk-react";
-<<<<<<<< HEAD:frontend/src/components/dashbord/Sidebar.tsx
-========
-import { menuItems } from "../../data/SidebarItems";
->>>>>>>> 17312fc1269cf42a36c8e4026af85e8125508375:frontend/src/components/dashboard/Sidebar.tsx
+import { Link } from "react-router-dom";
 
 export function Sidebar() {
   const { user } = useUser();
 
   const sidebarOptions = menuItems.map((item, index) => (
     <li key={index}>
-      <a
-        href={item.href}
+      <Link
+        to={item.to}
         className="px-4 py-2 rounded hover:bg-blue hover:text-white flex items-center"
       >
         {item.icon}
         {item.name}
-      </a>
+      </Link>
     </li>
   ));
 

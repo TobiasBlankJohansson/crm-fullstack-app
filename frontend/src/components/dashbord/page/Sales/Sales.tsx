@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Sidebar } from "../../Sidebar";
+import { Sidebar } from "../../../dashboard/Sidebar";
 import { Display, DisplayObject } from "../../display/Display";
 import { getSales } from "@/api/sales";
 import { salesDisplay } from "./salesDisplay";
