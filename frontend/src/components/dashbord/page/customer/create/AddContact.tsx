@@ -24,8 +24,9 @@ export function addContact(
       </div>
     </dialog>
   ));
+  setTimeout(() => {
   (document.getElementById(modalId) as HTMLDialogElement)?.showModal();
-
+  },0);
   function onClick() {
     const name = (document.getElementById(modalId + "Name") as HTMLInputElement)
       .value;
