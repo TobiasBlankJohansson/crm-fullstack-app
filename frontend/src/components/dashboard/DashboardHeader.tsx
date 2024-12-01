@@ -1,6 +1,10 @@
 import AddIcon from "../../assets/icons/AddIcon";
 
-export function DashboardHeader() {
+type DashboardHeaderProp = {
+  path: string;
+};
+
+export function DashboardHeader({ path }: DashboardHeaderProp) {
   return (
     <header className="h-16 border-b-2 border-gray-400 flex justify-end pr-10 shadow-sm">
       <div className="flex items-center gap-4 ml-auto">

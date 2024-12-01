@@ -2,11 +2,7 @@ import { menuItems } from "@/data/SidebarItems";
 import { UserButton, useUser } from "@clerk/clerk-react";
 import { Link } from "react-router-dom";
 
-type SidebarProp = {
-  path: string;
-};
-
-export function Sidebar({ path }: SidebarProp) {
+export function Sidebar() {
   const { user } = useUser();
 
   const sidebarOptions = menuItems.map((item, index) => (
