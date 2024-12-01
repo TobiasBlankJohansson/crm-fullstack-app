@@ -1,3 +1,4 @@
+import { getProjectSelection } from "@/api/project";
 import { Button } from "@/components/ui/button";
 import { UUID } from "crypto";
 
@@ -15,7 +16,7 @@ export function addProject(
   let items: ProjectInfo[] = [];
 
   const fetchItems = async () => {
-    items = await getItem();
+    items = await getProjectSelection();
     renderModal();
   };
 

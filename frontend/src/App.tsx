@@ -6,7 +6,7 @@ import { Dashboard } from "./pages/Dashboard";
 import { Costumer } from "./components/dashbord/page/customer/Customer";
 import { Sales } from "./components/dashbord/page/Sales/Sales";
 import { Projects } from "./components/dashbord/page/projects/Projects";
-
+import { Toaster } from "./components/ui/toaster";
 
 export function App() {
   return (
@@ -23,6 +23,7 @@ export function App() {
           <Route path="/customer" element={<Costumer />} />
         </Routes>
       </BrowserRouter>
+      <Toaster />
     </div>
   );
 }

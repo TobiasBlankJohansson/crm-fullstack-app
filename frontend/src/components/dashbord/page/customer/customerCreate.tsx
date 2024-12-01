@@ -5,6 +5,7 @@ import { InputCreate } from "../../create/InputCreate";
 import { addContact } from "./create/AddContact";
 import { addProject } from "./create/AddProject";
 import { addTag } from "./create/AddTag";
+import { toast } from "@/hooks/use-toast";
 
 const id: string[] = [
   "CostumerCreate-1",
@@ -61,7 +62,14 @@ function onSubmit(e: React.FormEvent<HTMLFormElement>) {
 
   try {
     createCostumer(save);
-  } catch (e) {}
+    toast({
+      description: "Created new costumer",
+    });
+  } catch (e) {
+    toast({
+      description: "Error, try again",
+    });
+  }
 
   type project = {
     title: string;
