@@ -6,6 +6,7 @@ import { addContact } from "./create/AddContact";
 import { addProject } from "./create/AddProject";
 import { addTag } from "./create/AddTag";
 import { toast } from "@/hooks/use-toast";
+import { useNavigate } from "react-router-dom";
 
 const id: string[] = [
   "CostumerCreate-1",
@@ -39,7 +40,10 @@ function inputs() {
   return [company, project, contact, tag, address, phone, email];
 }
 
-function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+function onSubmit(
+  e: React.FormEvent<HTMLFormElement>,
+  navigate: ReturnType<typeof useNavigate>
+) {
   e.preventDefault();
   const list = id.map(
     (id) => (document.getElementById(id) as HTMLInputElement).value
@@ -65,7 +69,8 @@ function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     toast({
       description: "Created new costumer",
     });
-  } catch (e) {
+    navigate("/customer");
+  } catch {
     toast({
       description: "Error, try again",
     });

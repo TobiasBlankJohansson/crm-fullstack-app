@@ -9,7 +9,7 @@ type ProjectInfo = {
 
 export function addProject(
   setObject: React.Dispatch<React.SetStateAction<object[]>>,
-  setModal: React.Dispatch<React.SetStateAction<JSX.Element | null>>
+  setModal: React.Dispatch<React.SetStateAction<JSX.Element>>
 ) {
   const modalId = "addProjectCustomer";
 
