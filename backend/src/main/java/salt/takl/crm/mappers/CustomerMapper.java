@@ -7,24 +7,26 @@ import salt.takl.crm.dto.response.CustomerResponseDTO;
 import salt.takl.crm.model.Project;
 import salt.takl.crm.model.Customer;
 
+import java.util.List;
+
 @Component
 public class CustomerMapper {
 
-    public CustomerResponseDTO customerToResponseDTO(Customer customer){
+    public CustomerResponseDTO customerToResponseDTO(Customer customer) {
         return new CustomerResponseDTO(
                 customer.getId(),
                 customer.getCompanyName(),
                 customer.getAddress(),
                 customer.getPhoneNumber(),
                 customer.getEmail(),
-                customer.getProjects().stream().map(Project::getName).toList(),
-                customer.getContacts().stream().map(contact -> new ContactResponseDTO(
+                customer.getProjects() != null ? customer.getProjects().stream().map(Project::getName).toList() : List.of(),
+                customer.getContacts() != null ? customer.getContacts().stream().map(contact -> new ContactResponseDTO(
                         contact.getId(),
                         contact.getFirstName(),
                         contact.getPhone(),
-                        contact.getPhone())
-                ).toList(),
-                customer.getTags().stream().map(Enum::name).toList()
+                        contact.getEmail())
+                ).toList() : List.of(),
+                customer.getTags() != null ? customer.getTags().stream().map(Enum::name).toList() : List.of()
         );
     }
 

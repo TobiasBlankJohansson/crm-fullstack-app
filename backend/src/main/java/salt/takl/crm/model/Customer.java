@@ -1,6 +1,7 @@
 package salt.takl.crm.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.UUID;
 import java.util.List;
@@ -16,7 +17,12 @@ public class Customer {
     private String phoneNumber;
     private String email;
 
-    @ManyToOne
+    public void setUser(@NotNull User user) {
+        this.user = user;
+    }
+
+    @ManyToOne(optional = true)
+    @NotNull
     private User user;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
