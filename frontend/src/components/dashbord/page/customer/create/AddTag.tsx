@@ -24,7 +24,7 @@ export function addTag(
   setTimeout(() => {
     (document.getElementById(modalId) as HTMLDialogElement)?.showModal();
   }, 0);
-  
+
   function onClick() {
     setObject((prev) => [
       ...prev,

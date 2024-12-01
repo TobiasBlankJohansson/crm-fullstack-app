@@ -50,24 +50,3 @@ export function addProject(
 
   fetchItems();
 }
-
-export async function getItem(): Promise<ProjectInfo[]> {
-  return await new Promise((resolve) => {
-    setTimeout(() => {
-      resolve([
-        {
-          title: "Project Alpha",
-          id: "00000000-0000-4000-8000-000000000000" as UUID,
-        },
-        {
-          title: "Project Beta",
-          id: "00000000-0000-4000-8000-000000000001" as UUID,
-        },
-        {
-          title: "Project Gamma",
-          id: "00000000-0000-4000-8000-000000000002" as UUID,
-        },
-      ]);
-    }, 0);
-  });
-}
