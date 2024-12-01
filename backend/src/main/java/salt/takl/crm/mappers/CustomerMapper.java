@@ -1,6 +1,7 @@
 package salt.takl.crm.mappers;
 
 import org.springframework.stereotype.Component;
+import salt.takl.crm.dto.request.CustomerRequestDTO;
 import salt.takl.crm.dto.response.ContactResponseDTO;
 import salt.takl.crm.dto.response.CustomerResponseDTO;
 import salt.takl.crm.model.Project;
@@ -25,5 +26,14 @@ public class CustomerMapper {
                 ).toList(),
                 customer.getTags().stream().map(Enum::name).toList()
         );
+    }
+
+    public Customer requestDTOToCustomer(CustomerRequestDTO dto) {
+        Customer customer = new Customer();
+        customer.setCompanyName(dto.companyName());
+        customer.setAddress(dto.address());
+        customer.setPhoneNumber(dto.phoneNumber());
+        customer.setEmail(dto.email());
+        return customer;
     }
 }
