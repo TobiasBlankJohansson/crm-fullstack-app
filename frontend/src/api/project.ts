@@ -1,8 +1,10 @@
+import { ProjectInfo } from "@/components/dashbord/page/customer/create/AddProject";
+
 export const getProjects = async () => {
   return mockProject;
 };
 
-export const getProjectSelection = async () => {
+export const getProjectSelection = async (): Promise<ProjectInfo[]> => {
   return await new Promise((resolve) => {
     setTimeout(() => {
       resolve([

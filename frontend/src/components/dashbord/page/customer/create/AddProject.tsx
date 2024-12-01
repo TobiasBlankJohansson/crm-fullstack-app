@@ -2,7 +2,7 @@ import { getProjectSelection } from "@/api/project";
 import { Button } from "@/components/ui/button";
 import { UUID } from "crypto";
 
-type ProjectInfo = {
+export type ProjectInfo = {
   title: string;
   id: UUID;
 };
