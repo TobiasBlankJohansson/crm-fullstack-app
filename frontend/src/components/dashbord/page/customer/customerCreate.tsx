@@ -1,4 +1,4 @@
-import { CreateDto } from "@/api/costumer";
+import { createCostumer, CreateDto } from "@/api/costumer";
 import { ButtonCreate } from "../../create/ButtonCreate";
 import { CreateObject } from "../../create/Create";
 import { InputCreate } from "../../create/InputCreate";
@@ -58,7 +58,10 @@ function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     phone: list[5],
     email: list[6],
   };
-  console.log(save);
+
+  try {
+    createCostumer(save);
+  } catch (e) {}
 
   type project = {
     title: string;
