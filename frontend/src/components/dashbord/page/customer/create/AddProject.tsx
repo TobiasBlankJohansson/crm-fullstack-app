@@ -31,10 +31,11 @@ export function addProject(
     id: UUID;
   };
 
-  const render: projectInfo[] = [
-    { title: "First Item", id: "c1d4a17e-8f04-46a7-9c4f-05a173c6b9c3" },
-    { title: "Second Item", id: "f71e7e85-1d68-41c6-bf7c-452e1e78b9d7" },
-    { title: "Third Item", id: "fb98c62b-a31a-4e4d-8b18-b0c5f0c8a5b2" },
-    { title: "Fourth Item", id: "e2be2a5a-9b8d-4b7a-bca5-d8a66af4d7ea" },
-  ];
+  const render = async () => {
+    return (
+      <Button className="my-1" onClick={() => onClick(item)}>
+        {item.title}
+      </Button>
+    );
+  };
 }
