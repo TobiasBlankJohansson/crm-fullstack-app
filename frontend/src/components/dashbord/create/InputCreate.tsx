@@ -11,7 +11,7 @@ export function InputCreate({ id, label, type }: InputCreateProp) {
     <>
       <label className="flex items-center">{label}</label>
       <div className="flex items-center">
-        <Input type={type} id={id}></Input>
+        <Input required type={type} id={id}></Input>
       </div>
     </>
   );
