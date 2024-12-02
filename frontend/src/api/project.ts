@@ -1,4 +1,4 @@
-import { ProjectInfo } from "@/components/dashbord/page/customer/create/AddProject";
+import { ProjectInfo } from "@/components/dashboard/page/customer/create/AddProject";
 
 export type CreateProjectDto = {
   project: string;
