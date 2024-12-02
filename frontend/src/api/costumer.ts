@@ -1,4 +1,4 @@
-import { CostomerInfo } from "@/components/dashbord/page/projects/create/addCustomers";
+import { CostomerInfo } from "@/components/dashboard/page/projects/create/addCustomers";
 
 export type CreateCostumerDto = {
   company: string;
