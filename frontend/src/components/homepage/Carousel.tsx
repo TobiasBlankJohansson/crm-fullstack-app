@@ -29,7 +29,7 @@ export function Carousel() {
 
               <div className="text-left">
                 <h2 className="text-4xl font-bold mb-6">{slide.title}</h2>
-                <p className="text-gray-600 text-base leading-relaxed">{slide.description}</p>
+                <p className="text-stone-600 text-base leading-relaxed">{slide.description}</p>
               </div>
             </div>
           )}
