@@ -3,6 +3,8 @@ import { ButtonCreate } from "../../create/ButtonCreate";
 import { CreateObject } from "../../create/Create";
 import { InputCreate } from "../../create/InputCreate";
 import { toast } from "@/hooks/use-toast";
+import { addCustomers } from "./create/addCustomers";
+import { addNotes } from "./create/addNotes";
 
 const id: string[] = [
   "ProjectCreate-1",
@@ -18,11 +20,11 @@ export function projectsCreate(): CreateObject {
 
 function inputs() {
   const project = <InputCreate id={id[0]} label="Company" type="text" />;
-  const duration = <InputCreate id={id[1]} label="Company" type="number" />;
+  const duration = <InputCreate id={id[1]} label="Duration" type="number" />;
   const costumers = (
-    <ButtonCreate id={id[2]} label={"Contact"} click={addCostumers} />
+    <ButtonCreate id={id[2]} label={"Costumer"} click={addCustomers} />
   );
-  const notes = <ButtonCreate id={id[3]} label={"Tag"} click={addNotes} />;
+  const notes = <ButtonCreate id={id[3]} label={"Notes"} click={addNotes} />;
   return [project, duration, costumers, notes];
 }
 
@@ -77,7 +79,3 @@ function onSubmit(
     title: string;
   };
 }
-function addNotes(setObject: Dispatch<SetStateAction<object[]>>, setModal: Dispatch<SetStateAction<Element>>): void {
-  throw new Error("Function not implemented.");
-}
-

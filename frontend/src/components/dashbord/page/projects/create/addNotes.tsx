@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-export function addTag(
+export function addNotes(
   setObject: React.Dispatch<React.SetStateAction<object[]>>,
   setModal: React.Dispatch<React.SetStateAction<JSX.Element>>
 ) {
@@ -9,9 +9,9 @@ export function addTag(
   setModal(() => (
     <dialog id={modalId} className="modal">
       <div className="modal-box  bg-white">
-        <h3 className="font-bold text-lg">Add tag</h3>
+        <h3 className="font-bold text-lg">Add note</h3>
         <form method="dialog" className="">
-          <label>Tag</label>
+          <label>Note</label>
           <Input id={modalId + "Note"} type="text"></Input>
           <Button className="mt-2" onClick={onClick}>
             Create
