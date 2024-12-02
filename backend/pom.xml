@@ -55,6 +55,11 @@
 			<version>2.7.0</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>me.paulschwarz</groupId>
+			<artifactId>spring-dotenv</artifactId>
+			<version>3.0.1</version>
+		</dependency>
     </dependencies>
 
 	<build>

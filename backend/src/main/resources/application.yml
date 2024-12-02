@@ -3,9 +3,9 @@ spring:
     name: backend
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/crmdb
-    username: myuser
-    password: secret
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
   sql:
     init:
       mode: always
@@ -19,4 +19,4 @@ spring:
     show-sql: true
     defer-datasource-initialization: true
   config:
-    import: optional:file:.env.local
+    import: optional:file:.env.local[.properties]
