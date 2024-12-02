@@ -39,6 +39,10 @@ jobs:
       - name: Update Cloud Run service
         uses: google-github-actions/deploy-cloudrun@v1
         with:
+          env_vars: |-
+              DB_URL=${{vars.DB_URL}}
+              DB_USERNAME=${{vars.DB_USERNAME}}
+              DB_PASSWORD=${{secrets.DB_PASSWORD}}
           region: ${{ vars.GC_REGION }}
           service: ${{ vars.GC_REPO_NAME }}
           image: ${{ env.IMAGE_URL }}
