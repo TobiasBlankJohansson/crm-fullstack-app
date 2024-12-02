@@ -1,4 +1,5 @@
 import { ProjectInfo } from "@/components/dashboard/page/customer/create/AddProject";
+import axios from "axios";
 
 export type CreateProjectDto = {
   project: string;
@@ -8,7 +9,13 @@ export type CreateProjectDto = {
 };
 
 export const getProjects = async () => {
-  return mockProject;
+  try {
+    const response = await axios.get("http://localhost:8080/projects");
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const createProject = async (newProject: CreateProjectDto) => {
