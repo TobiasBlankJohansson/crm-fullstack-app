@@ -1,5 +1,16 @@
+export type CreateSalesDto = {
+  name: string;
+  company: string;
+  project: string;
+  sale: string;
+};
+
 export const getSales = async () => {
   return mockSales;
+};
+
+export const createSale = async (newSale: CreateSalesDto) => {
+  return newSale && true;
 };
 
 const mockSales = [

@@ -30,7 +30,7 @@ export function DisplayItem({
             return number != selected ? number : 0;
           })
         }
-        className="text-blue-700 font-bold pb-0 pl-0"
+        className="text-blue font-bold pb-0 pl-0"
       >
         {count}. {title}
       </Button>

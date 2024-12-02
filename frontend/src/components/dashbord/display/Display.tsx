@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { DisplayItem, Detail } from "./DisplayItem";
 import { ItemProperty, ItemPropertyProp } from "./ItemProperty";
-import { ScrollArea } from "@radix-ui/react-scroll-area";
 
 type DisplayProp = {
   title: string;
@@ -19,7 +18,7 @@ export function Display({ title, displayItems }: DisplayProp) {
   const [selected, SetSelected] = useState<number>(0);
 
   return (
-    <section className="pt-20 pb-10 pl-14 w-full h-full">
+    <section className="pt-10 pb-10 pl-14 w-full h-full">
       <main className="flex h-full w-full justify-between">
         <section className="w-1/2 h-full pl-5 flex flex-col">
           <h2 className="text-4xl font-semibold">My {title}</h2>

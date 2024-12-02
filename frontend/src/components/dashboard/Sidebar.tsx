@@ -1,18 +1,19 @@
+import { menuItems } from "@/data/SidebarItems";
 import { UserButton, useUser } from "@clerk/clerk-react";
-import { menuItems } from "../../data/SidebarItems";
+import { Link } from "react-router-dom";
 
 export function Sidebar() {
   const { user } = useUser();
 
   const sidebarOptions = menuItems.map((item, index) => (
     <li key={index}>
-      <a
-        href={item.href}
-        className="block px-4 py-2 rounded hover:bg-blue-700 hover:text-white flex items-center"
+      <Link
+        to={item.to}
+        className="px-4 py-2 rounded hover:bg-blue hover:text-white flex items-center"
       >
         {item.icon}
         {item.name}
-      </a>
+      </Link>
     </li>
   ));
 

@@ -1,5 +1,46 @@
+import { CostomerInfo } from "@/components/dashbord/page/projects/create/addCustomers";
+
+export type CreateCostumerDto = {
+  company: string;
+  project: string[];
+  contact: {
+    name: string;
+    phone: string;
+    email: string;
+  }[];
+  tag: string[];
+  address: string;
+  phone: string;
+  email: string;
+};
+
 export const getCostumer = async () => {
   return mockCostumer;
+};
+
+export const createCostumer = async (newCostumer: CreateCostumerDto) => {
+  return newCostumer && true;
+};
+
+export const getCustomerSelection = async (): Promise<CostomerInfo[]> => {
+  return await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve([
+        {
+          title: "Tech Innovators Inc",
+          id: "00000000-0000-4000-8000-000000000000",
+        },
+        {
+          title: "Green Energy Solutions",
+          id: "00000000-0000-4000-8000-000000000001",
+        },
+        {
+          title: "NextGen Robotics",
+          id: "00000000-0000-4000-8000-000000000002",
+        },
+      ]);
+    }, 0);
+  });
 };
 
 const mockCostumer = [

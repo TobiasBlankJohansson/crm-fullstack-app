@@ -1,8 +1,12 @@
 import AddIcon from "../../assets/icons/AddIcon";
 
-export function DashboardHeader() {
+type DashboardHeaderProp = {
+  setCreateNew: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export function DashboardHeader({ setCreateNew }: DashboardHeaderProp) {
   return (
-    <header className="fixed top-0 left-64 w-[calc(100%-16rem)] h-16 bg-transparent border-b border-gray-300 flex items-center px-6 shadow-sm">
+    <header className="h-16 border-b-2 border-gray-400 flex justify-end pr-10 shadow-sm">
       <div className="flex items-center gap-4 ml-auto">
         <input
           type="text"
@@ -10,7 +14,10 @@ export function DashboardHeader() {
           className="px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
 
-        <button className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 text-black rounded-full hover:bg-gray-100">
+        <button
+          className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 text-black rounded-full hover:bg-stone-100"
+          onClick={() => setCreateNew(() => true)}
+        >
           Add new
           <AddIcon className="w-5 h-5" />
         </button>
