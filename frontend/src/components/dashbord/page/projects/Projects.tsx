@@ -1,28 +1,42 @@
 import { useEffect, useState } from "react";
 import { Sidebar } from "../../../dashboard/Sidebar";
-import { Display, DisplayObject } from "../../display/Display";
+import { Display } from "../../display/Display";
 import { projectDisplay } from "./projectsDisplay";
 import { getProjects } from "@/api/project";
 import { DashboardHeader } from "@/components/dashboard/DashboardHeader";
 
 export function Projects() {
-  const [projects, setProjects] = useState<DisplayObject[]>([]);
+  const [createNew, setCreateNew] = useState<boolean>(false);
+  const [page, setPage] = useState<JSX.Element>(<></>);
+  const title = "customer";
 
   useEffect(() => {
-    const getProject = async () => {
+    if (createNew) {
+      const create = projectCreate();
+      setPage(() => (
+        <Create
+          title={title}
+          onSubmit={create.onSubmit}
+          input={create.input}
+          setCreateNew={setCreateNew}
+        />
+      ));
+      return;
+    }
+    const getCostemers = async () => {
       const fetchData = await getProjects();
-      const customer = projectDisplay(fetchData);
-      setProjects(() => customer);
+      const costumers = projectDisplay(fetchData);
+      setPage(() => <Display title={title} displayItems={costumers} />);
     };
-    getProject();
-  }, []);
+    getCostemers();
+  }, [createNew]);
 
   return (
     <main className="flex h-screen w-screen">
       <Sidebar />
       <section className="h-full w-4/5 flex flex-col">
-        <DashboardHeader />
-        <Display title="projects" displayItems={projects} />
+        <DashboardHeader setCreateNew={setCreateNew} />
+        {page}
       </section>
     </main>
   );
