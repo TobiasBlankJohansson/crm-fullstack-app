@@ -1,7 +1,18 @@
 import { ProjectInfo } from "@/components/dashbord/page/customer/create/AddProject";
 
+export type CreateProjectDto = {
+  project: string;
+  duration: string;
+  costumers: string[];
+  notes: string[];
+};
+
 export const getProjects = async () => {
   return mockProject;
+};
+
+export const createProject = async (newProject: CreateProjectDto) => {
+  return newProject && true;
 };
 
 export const getProjectSelection = async (): Promise<ProjectInfo[]> => {

@@ -1,6 +1,6 @@
 import { CostomerInfo } from "@/components/dashbord/page/projects/create/addCustomers";
 
-export type CreateDto = {
+export type CreateCostumerDto = {
   company: string;
   project: string[];
   contact: {
@@ -18,7 +18,7 @@ export const getCostumer = async () => {
   return mockCostumer;
 };
 
-export const createCostumer = async (newCostumer: CreateDto) => {
+export const createCostumer = async (newCostumer: CreateCostumerDto) => {
   return newCostumer && true;
 };
 

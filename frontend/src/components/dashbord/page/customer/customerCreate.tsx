@@ -1,4 +1,4 @@
-import { createCostumer, CreateDto } from "@/api/costumer";
+import { createCostumer, CreateCostumerDto } from "@/api/costumer";
 import { ButtonCreate } from "../../create/ButtonCreate";
 import { CreateObject } from "../../create/Create";
 import { InputCreate } from "../../create/InputCreate";
@@ -47,7 +47,7 @@ function onSubmit(
   const list = id.map(
     (id) => (document.getElementById(id) as HTMLInputElement).value
   );
-  const save: CreateDto = {
+  const save: CreateCostumerDto = {
     company: list[0],
     project: JSON.parse(list[1]).map((project: project) => project.id),
     contact: JSON.parse(list[2]).map((contact: contact) => {

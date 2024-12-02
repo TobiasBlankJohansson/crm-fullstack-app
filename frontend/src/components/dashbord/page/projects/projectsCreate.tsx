@@ -4,6 +4,7 @@ import { InputCreate } from "../../create/InputCreate";
 import { toast } from "@/hooks/use-toast";
 import { addCustomers } from "./create/addCustomers";
 import { addNotes } from "./create/addNotes";
+import { createProject, CreateProjectDto } from "@/api/project";
 
 const id: string[] = [
   "ProjectCreate-1",
@@ -18,7 +19,7 @@ export function projectsCreate(): CreateObject {
 }
 
 function inputs() {
-  const project = <InputCreate id={id[0]} label="Company" type="text" />;
+  const project = <InputCreate id={id[0]} label="Name" type="text" />;
   const duration = <InputCreate id={id[1]} label="Duration" type="number" />;
   const costumers = (
     <ButtonCreate id={id[2]} label={"Costumer"} click={addCustomers} />
@@ -35,18 +36,11 @@ function onSubmit(
   const list = id.map(
     (id) => (document.getElementById(id) as HTMLInputElement).value
   );
-  const save: CreateDto = {
+  const save: CreateProjectDto = {
     project: list[0],
     duration: list[1] + " month",
     costumers: JSON.parse(list[2]).map((costumer: costumer) => costumer.id),
     notes: JSON.parse(list[3]).map((note: notes) => note.title),
-  };
-
-  type CreateDto = {
-    project: string;
-    duration: string;
-    costumers: string[];
-    notes: string[];
   };
 
   try {
