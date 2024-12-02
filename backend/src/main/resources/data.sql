@@ -20,10 +20,7 @@ VALUES
     ('2f621bcb-8d42-4c10-a9ae-d9f7e010cb9f', '7a621bcb-8d42-4c10-a9ae-d9f7e010cb9b', '9a621bcb-8d42-4c10-a9ae-d9f7e010cb9d', 5000000)
 ON CONFLICT (id) DO NOTHING;
 
--- Inserting customer tags (ensure unique constraint on customer_id, tags)
-ALTER TABLE customer_tags
-    ADD CONSTRAINT customer_tags_unique UNIQUE (customer_id, tags);
-
+-- Inserting customer tags
 INSERT INTO customer_tags (customer_id, tags)
 VALUES
     ('6f621bcb-8d42-4c10-a9ae-d9f7e010cb9a', 'TECHNOLOGY'),
@@ -38,10 +35,7 @@ VALUES
     ('7d221cde-1a2b-4e3c-9f6d-1e78910ab20c', 'Jane', 'Doe', 'jane.doe@nextgensolutions.com', '987-654-3210', '7a621bcb-8d42-4c10-a9ae-d9f7e010cb9b')
 ON CONFLICT (id) DO NOTHING;
 
--- Mapping projects to customers (ensure unique constraint on customers_id, projects_id)
-ALTER TABLE project_customers
-    ADD CONSTRAINT project_customers_unique UNIQUE (customers_id, projects_id);
-
+-- Mapping projects to customers
 INSERT INTO project_customers (customers_id, projects_id)
 VALUES
     ('6f621bcb-8d42-4c10-a9ae-d9f7e010cb9a', '8f621bcb-8d42-4c10-a9ae-d9f7e010cb9c'), -- Tech Innovators and AI Development
