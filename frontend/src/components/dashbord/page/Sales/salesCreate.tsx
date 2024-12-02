@@ -1,7 +1,9 @@
-import { ButtonCreate } from "../../create/ButtonCreate";
 import { CreateObject } from "../../create/Create";
 import { InputCreate } from "../../create/InputCreate";
 import { toast } from "@/hooks/use-toast";
+import { SelectCreate } from "../../create/SelectCreate";
+import { createSale, CreateSalesDto } from "@/api/sales";
+import { selectCompany } from "./create/selectCompany";
 
 const id: string[] = [
   "ProjectCreate-1",
@@ -18,10 +20,10 @@ export function projectsCreate(): CreateObject {
 function inputs() {
   const name = <InputCreate id={id[0]} label="Name" type="text" />;
   const company = (
-    <ButtonCreate id={id[2]} label={"Project"} click={addCustomers} />
+    <SelectCreate id={id[2]} label={"Company"} click={selectCompany} />
   );
   const project = (
-    <ButtonCreate id={id[2]} label={"Project"} click={addCustomers} />
+    <SelectCreate id={id[2]} label={"Project"} click={selectProject} />
   );
   const sale = <InputCreate id={id[1]} label="Sale" type="number" />;
   return [name, company, project, sale];
@@ -35,15 +37,15 @@ function onSubmit(
   const list = id.map(
     (id) => (document.getElementById(id) as HTMLInputElement).value
   );
-  const save: CreateProjectDto = {
-    project: list[0],
-    duration: list[1] + " month",
-    costumers: JSON.parse(list[2]).map((costumer: costumer) => costumer.id),
-    notes: JSON.parse(list[3]).map((note: notes) => note.title),
+  const save: CreateSalesDto = {
+    name: list[0],
+    company: JSON.parse(list[1]).map((company: costumer) => company.id),
+    project: JSON.parse(list[2]).map((project: project) => project.id),
+    sale: list[3],
   };
 
   try {
-    createProject(save);
+    createSale(save);
     toast({
       description: "Created new project",
     });
@@ -59,7 +61,8 @@ function onSubmit(
     id: string;
   };
 
-  type notes = {
+  type project = {
     title: string;
+    id: string;
   };
 }
