@@ -44,8 +44,8 @@ const setItemProperty = (fetch: ProjectDisplayProp): ItemPropertyProp[] => {
     title: "Duration",
     info: [fetch.duration],
   };
-  const costomer: ItemPropertyProp = {
-    title: "Costomers",
+  const customer: ItemPropertyProp = {
+    title: "customers",
     info: fetch.customers,
   };
   const notes: ItemPropertyProp = { title: "Notes", info: fetch.notes };
@@ -53,5 +53,5 @@ const setItemProperty = (fetch: ProjectDisplayProp): ItemPropertyProp[] => {
     title: "Sales",
     info: fetch.sales.map((sale) => `Name: ${sale.name}, Sale: ${sale.sale}`),
   };
-  return [name, duration, costomer, notes, sales];
+  return [name, duration, customer, notes, sales];
 };

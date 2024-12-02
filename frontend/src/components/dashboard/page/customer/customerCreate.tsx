@@ -1,4 +1,4 @@
-import { createCostumer, CreateCostumerDto } from "@/api/costumer";
+import { createCustomer, CreateCustomerDto } from "@/api/customer";
 import { ButtonCreate } from "../../create/ButtonCreate";
 import { CreateObject } from "../../create/Create";
 import { InputCreate } from "../../create/InputCreate";
@@ -8,16 +8,16 @@ import { addTag } from "./create/AddTag";
 import { toast } from "@/hooks/use-toast";
 
 const id: string[] = [
-  "CostumerCreate-1",
-  "CostumerCreate-2",
-  "CostumerCreate-3",
-  "CostumerCreate-4",
-  "CostumerCreate-5",
-  "CostumerCreate-6",
-  "CostumerCreate-7",
+  "CustomerCreate-1",
+  "CustomerCreate-2",
+  "CustomerCreate-3",
+  "CustomerCreate-4",
+  "CustomerCreate-5",
+  "CustomerCreate-6",
+  "CustomerCreate-7",
 ];
 
-export function costumerCreate(): CreateObject {
+export function customerCreate(): CreateObject {
   const input: JSX.Element[] = inputs();
   return { input, onSubmit };
 }
@@ -46,7 +46,7 @@ function onSubmit(
   const list = id.map(
     (id) => (document.getElementById(id) as HTMLInputElement).value
   );
-  const save: CreateCostumerDto = {
+  const save: CreateCustomerDto = {
     company: list[0],
     project: JSON.parse(list[1]).map((project: project) => project.id),
     contact: JSON.parse(list[2]).map((contact: contact) => {
@@ -63,9 +63,9 @@ function onSubmit(
   };
 
   try {
-    createCostumer(save);
+    createCustomer(save);
     toast({
-      description: "Created new costumer",
+      description: "Created new customer",
     });
     setCreateNew(() => false);
   } catch {

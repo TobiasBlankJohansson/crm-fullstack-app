@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 import { Sidebar } from "../../Sidebar";
 import { Display } from "../../display/Display";
-import { getCostumer } from "@/api/costumer";
+import { getCustomer } from "@/api/customer";
 import { customerDisplay } from "./customerDisplay";
 import { Create } from "../../create/Create";
-import { costumerCreate } from "./customerCreate";
+import { customerCreate } from "./customerCreate";
 import { DashboardHeader } from "@/components/dashboard/DashboardHeader";
 
-export function Costumer() {
+export function Customer() {
   const [createNew, setCreateNew] = useState<boolean>(false);
   const [page, setPage] = useState<JSX.Element>(<></>);
   const title = "customer";
 
   useEffect(() => {
     if (createNew) {
-      const create = costumerCreate();
+      const create = customerCreate();
       setPage(() => (
         <Create
           title={title}
@@ -26,9 +26,9 @@ export function Costumer() {
       return;
     }
     const getCostemers = async () => {
-      const fetchData = await getCostumer();
-      const costumers = customerDisplay(fetchData);
-      setPage(() => <Display title={title} displayItems={costumers} />);
+      const fetchData = await getCustomer();
+      const customers = customerDisplay(fetchData);
+      setPage(() => <Display title={title} displayItems={customers} />);
     };
     getCostemers();
   }, [createNew]);

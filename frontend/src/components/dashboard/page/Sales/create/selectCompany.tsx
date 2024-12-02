@@ -1,4 +1,4 @@
-import { getCustomerSelection } from "@/api/costumer";
+import { getCustomerSelection } from "@/api/customer";
 import { Button } from "@/components/ui/button";
 import { UUID } from "crypto";
 

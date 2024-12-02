@@ -3,7 +3,7 @@ import { ProjectInfo } from "@/components/dashboard/page/customer/create/AddProj
 export type CreateProjectDto = {
   project: string;
   duration: string;
-  costumers: string[];
+  customers: string[];
   notes: string[];
 };
 

@@ -1,8 +1,8 @@
-import { getCustomerSelection } from "@/api/costumer";
+import { getCustomerSelection } from "@/api/customer";
 import { Button } from "@/components/ui/button";
 import { UUID } from "crypto";
 
-export type CostomerInfo = {
+export type CustomerInfo = {
   title: string;
   id: UUID;
 };
@@ -13,14 +13,14 @@ export function addCustomers(
 ) {
   const modalId = "addProjectCustomer";
 
-  let items: CostomerInfo[] = [];
+  let items: CustomerInfo[] = [];
 
   const fetchItems = async () => {
     items = await getCustomerSelection();
     renderModal();
   };
 
-  const onClick = (item: CostomerInfo) => {
+  const onClick = (item: CustomerInfo) => {
     setObject((prev) => [...prev, { title: item.title, id: item.id }]);
   };
 

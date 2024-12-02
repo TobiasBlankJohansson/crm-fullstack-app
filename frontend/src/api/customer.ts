@@ -1,6 +1,6 @@
-import { CostomerInfo } from "@/components/dashboard/page/projects/create/addCustomers";
+import { CustomerInfo } from "@/components/dashboard/page/projects/create/addCustomers";
 
-export type CreateCostumerDto = {
+export type CreateCustomerDto = {
   company: string;
   project: string[];
   contact: {
@@ -14,15 +14,15 @@ export type CreateCostumerDto = {
   email: string;
 };
 
-export const getCostumer = async () => {
-  return mockCostumer;
+export const getCustomer = async () => {
+  return mockCustomer;
 };
 
-export const createCostumer = async (newCostumer: CreateCostumerDto) => {
-  return newCostumer && true;
+export const createCustomer = async (newCustomer: CreateCustomerDto) => {
+  return newCustomer && true;
 };
 
-export const getCustomerSelection = async (): Promise<CostomerInfo[]> => {
+export const getCustomerSelection = async (): Promise<CustomerInfo[]> => {
   return await new Promise((resolve) => {
     setTimeout(() => {
       resolve([
@@ -43,7 +43,7 @@ export const getCustomerSelection = async (): Promise<CostomerInfo[]> => {
   });
 };
 
-const mockCostumer = [
+const mockCustomer = [
   {
     company: "Tech Innovators Inc.",
     project: ["AI Development", "Web App Overhaul"],

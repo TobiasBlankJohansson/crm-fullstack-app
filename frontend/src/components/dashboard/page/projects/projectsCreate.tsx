@@ -21,11 +21,11 @@ export function projectsCreate(): CreateObject {
 function inputs() {
   const project = <InputCreate id={id[0]} label="Name" type="text" />;
   const duration = <InputCreate id={id[1]} label="Duration" type="number" />;
-  const costumers = (
-    <ButtonCreate id={id[2]} label={"Costumer"} click={addCustomers} />
+  const customers = (
+    <ButtonCreate id={id[2]} label={"Customer"} click={addCustomers} />
   );
   const notes = <ButtonCreate id={id[3]} label={"Notes"} click={addNotes} />;
-  return [project, duration, costumers, notes];
+  return [project, duration, customers, notes];
 }
 
 function onSubmit(
@@ -39,7 +39,7 @@ function onSubmit(
   const save: CreateProjectDto = {
     project: list[0],
     duration: list[1] + " month",
-    costumers: JSON.parse(list[2]).map((costumer: costumer) => costumer.id),
+    customers: JSON.parse(list[2]).map((customer: customer) => customer.id),
     notes: JSON.parse(list[3]).map((note: notes) => note.title),
   };
 
@@ -55,7 +55,7 @@ function onSubmit(
     });
   }
 
-  type costumer = {
+  type customer = {
     title: string;
     id: string;
   };
