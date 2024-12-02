@@ -5,7 +5,6 @@ export type CreateSalesDto = {
   sale: string;
 };
 
-
 export const getSales = async () => {
   return mockSales;
 };
