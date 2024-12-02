@@ -17,7 +17,7 @@ export function Carousel() {
       return (
         <div
           key={slide.id}
-          className={`absolute transition-transform duration-500 ease-in-out transform bg-gray-100 w-[40rem] h-[26rem] rounded-lg shadow-2xl flex items-center justify-center ${position}`}
+          className={`absolute transition-transform duration-500 ease-in-out transform bg-stone-100 w-[40rem] h-[26rem] rounded-lg shadow-2xl flex items-center justify-center ${position}`}
         >
           {isActive && (
             <div className="p-12 flex items-center">
@@ -55,8 +55,8 @@ export function Carousel() {
             onClick={() => goToSlide(index)}
             className={`w-4 h-4 rounded-full transition-colors duration-300 ${
               index === currentSlide
-                ? "bg-gray-800" 
-                : "bg-gray-400 hover:bg-gray-600" 
+                ? "bg-stone-800" 
+                : "bg-stone-400 hover:bg-stone-600" 
             }`}
           ></button>
         ))}
