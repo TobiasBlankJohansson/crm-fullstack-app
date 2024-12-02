@@ -1,4 +1,5 @@
 import { CustomerInfo } from "@/components/dashboard/page/projects/create/addCustomers";
+import axios from "axios";
 
 export type CreateCustomerDto = {
   company: string;
@@ -15,7 +16,13 @@ export type CreateCustomerDto = {
 };
 
 export const getCustomer = async () => {
-  return mockCustomer;
+  try {
+    const response = await axios.get("http://localhost:8080/api/customers");
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const createCustomer = async (newCustomer: CreateCustomerDto) => {
