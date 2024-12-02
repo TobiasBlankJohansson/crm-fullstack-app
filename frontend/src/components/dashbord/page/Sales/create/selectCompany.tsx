@@ -8,7 +8,7 @@ export type CompanyInfo = {
 };
 
 export function selectCompany(
-  setObject: React.Dispatch<React.SetStateAction<object[]>>,
+  setObject: React.Dispatch<React.SetStateAction<object>>,
   setModal: React.Dispatch<React.SetStateAction<JSX.Element>>
 ) {
   const modalId = "selectCompanySales";
@@ -21,14 +21,14 @@ export function selectCompany(
   };
 
   const onClick = (item: CompanyInfo) => {
-    setObject((prev) => [...prev, { title: item.title, id: item.id }]);
+    setObject(() => ({ title: item.title, id: item.id }));
   };
 
   const renderModal = () => {
     setModal(() => (
       <dialog id={modalId} className="modal">
         <div className="modal-box bg-white">
-          <h3 className="font-bold text-lg">Add Customer</h3>
+          <h3 className="font-bold text-lg">Select company</h3>
           <form method="dialog" className="grid">
             {items.map((item) => (
               <Button

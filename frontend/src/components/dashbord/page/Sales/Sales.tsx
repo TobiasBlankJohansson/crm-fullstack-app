@@ -5,6 +5,7 @@ import { getSales } from "@/api/sales";
 import { salesDisplay } from "./salesDisplay";
 import { DashboardHeader } from "@/components/dashboard/DashboardHeader";
 import { Create, CreateObject } from "../../create/Create";
+import { salesCreate } from "./salesCreate";
 
 export function Sales() {
   const [createNew, setCreateNew] = useState<boolean>(false);

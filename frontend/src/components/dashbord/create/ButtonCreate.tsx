@@ -29,7 +29,6 @@ export function ButtonCreate({ id, label, click }: PropButtonCreate) {
         ))}
         <button
           className="bg-gray rounded-full px-2 flex justify-center items-center"
-          type="button"
           onClick={() => click(setObject, setModal)}
         >
           +

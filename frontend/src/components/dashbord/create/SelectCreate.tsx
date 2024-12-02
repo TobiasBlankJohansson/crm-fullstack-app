@@ -4,7 +4,7 @@ type PropButtonCreate = {
   id: string;
   label: string;
   click: (
-    setObject: React.Dispatch<React.SetStateAction<object[]>>,
+    setObject: React.Dispatch<React.SetStateAction<object>>,
     setModal: React.Dispatch<React.SetStateAction<JSX.Element>>
   ) => void;
 };
@@ -27,7 +27,7 @@ export function SelectCreate({ id, label, click }: PropButtonCreate) {
           type="button"
           onClick={() => click(setObject, setModal)}
         >
-          {obj.title}
+          {objects.title}
         </button>
         {modal}
       </div>

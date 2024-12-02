@@ -31,7 +31,6 @@ function inputs() {
     <ButtonCreate id={id[2]} label={"Contact"} click={addContact} />
   );
   const tag = <ButtonCreate id={id[3]} label={"Tag"} click={addTag} />;
-
   const address = <InputCreate id={id[4]} label="Address" type="text" />;
   const phone = <InputCreate id={id[5]} label="Phone" type="tel" />;
   const email = <InputCreate id={id[6]} label="Email" type="email" />;

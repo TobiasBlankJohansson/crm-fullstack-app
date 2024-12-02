@@ -4,6 +4,7 @@ import { toast } from "@/hooks/use-toast";
 import { SelectCreate } from "../../create/SelectCreate";
 import { createSale, CreateSalesDto } from "@/api/sales";
 import { selectCompany } from "./create/selectCompany";
+import { selectProject } from "./create/selectProject";
 
 const id: string[] = [
   "ProjectCreate-1",
@@ -12,7 +13,7 @@ const id: string[] = [
   "ProjectCreate-4",
 ];
 
-export function projectsCreate(): CreateObject {
+export function salesCreate(): CreateObject {
   const input: JSX.Element[] = inputs();
   return { input, onSubmit };
 }
@@ -66,3 +67,4 @@ function onSubmit(
     id: string;
   };
 }
+
