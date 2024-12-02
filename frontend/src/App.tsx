@@ -3,9 +3,9 @@ import { HomePage } from "./pages/HomePage";
 import { HomePageHeader } from "./components/homepage/HomePageHeader";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Dashboard } from "./pages/Dashboard";
-import { Costumer } from "./components/dashbord/page/customer/Customer";
-import { Sales } from "./components/dashbord/page/Sales/Sales";
-import { Projects } from "./components/dashbord/page/projects/Projects";
+import { Costumer } from "./components/dashboard/page/customer/Customer";
+import { Sales } from "./components/dashboard/page/Sales/Sales";
+import { Projects } from "./components/dashboard/page/projects/Projects";
 import { Toaster } from "./components/ui/toaster";
 
 export function App() {
