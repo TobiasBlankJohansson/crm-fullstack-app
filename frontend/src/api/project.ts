@@ -10,7 +10,7 @@ export type CreateProjectDto = {
 
 export const getProjects = async () => {
   try {
-    const response = await axios.get("http://localhost:8080/api/projects");
+    const response = await axios.get("http://localhost:8080/projects");
     console.log(response.data);
     return response.data;
   } catch (error) {
