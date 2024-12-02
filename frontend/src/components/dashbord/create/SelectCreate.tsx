@@ -17,11 +17,7 @@ export function SelectCreate({ id, label, click }: PropButtonCreate) {
     <>
       <label className="flex items-center">{label}</label>
       <div className="flex p-2">
-        <input
-          className="hidden"
-          id={id}
-          value={JSON.stringify(objects)}
-        ></input>
+        <input className="hidden" id={id} value={objects.id}></input>
         <button
           className="bg-gray rounded-full px-2 flex justify-center items-center"
           type="button"

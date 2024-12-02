@@ -21,12 +21,12 @@ export function salesCreate(): CreateObject {
 function inputs() {
   const name = <InputCreate id={id[0]} label="Name" type="text" />;
   const company = (
-    <SelectCreate id={id[2]} label={"Company"} click={selectCompany} />
+    <SelectCreate id={id[1]} label={"Company"} click={selectCompany} />
   );
   const project = (
     <SelectCreate id={id[2]} label={"Project"} click={selectProject} />
   );
-  const sale = <InputCreate id={id[1]} label="Sale" type="number" />;
+  const sale = <InputCreate id={id[3]} label="Sale" type="number" />;
   return [name, company, project, sale];
 }
 
@@ -40,8 +40,8 @@ function onSubmit(
   );
   const save: CreateSalesDto = {
     name: list[0],
-    company: JSON.parse(list[1]).map((company: costumer) => company.id),
-    project: JSON.parse(list[2]).map((project: project) => project.id),
+    company: list[1],
+    project: list[2],
     sale: list[3],
   };
 
@@ -56,15 +56,4 @@ function onSubmit(
       description: "Error, try again",
     });
   }
-
-  type costumer = {
-    title: string;
-    id: string;
-  };
-
-  type project = {
-    title: string;
-    id: string;
-  };
 }
-

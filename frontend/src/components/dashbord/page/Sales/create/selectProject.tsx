@@ -1,4 +1,4 @@
-import { getCustomerSelection } from "@/api/costumer";
+import { getProjectSelection } from "@/api/project";
 import { Button } from "@/components/ui/button";
 import { UUID } from "crypto";
 
@@ -16,7 +16,7 @@ export function selectProject(
   let items: CompanyInfo[] = [];
 
   const fetchItems = async () => {
-    items = await getCustomerSelection();
+    items = await getProjectSelection();
     renderModal();
   };
 
