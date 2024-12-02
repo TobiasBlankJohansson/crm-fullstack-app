@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export type CreateSalesDto = {
   name: string;
   company: string;
@@ -6,7 +8,13 @@ export type CreateSalesDto = {
 };
 
 export const getSales = async () => {
-  return mockSales;
+  try {
+    const response = await axios.get("http://localhost:8080/api/sales");
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const createSale = async (newSale: CreateSalesDto) => {
