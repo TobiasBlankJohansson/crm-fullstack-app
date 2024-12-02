@@ -1,4 +1,3 @@
-import { createCostumer, CreateDto } from "@/api/costumer";
 import { ButtonCreate } from "../../create/ButtonCreate";
 import { CreateObject } from "../../create/Create";
 import { InputCreate } from "../../create/InputCreate";
@@ -37,25 +36,23 @@ function onSubmit(
     (id) => (document.getElementById(id) as HTMLInputElement).value
   );
   const save: CreateDto = {
-    company: list[0],
-    project: JSON.parse(list[1]).map((project: project) => project.id),
-    contact: JSON.parse(list[2]).map((contact: contact) => {
-      return {
-        name: contact.title,
-        phone: contact.phone,
-        email: contact.email,
-      };
-    }),
-    tag: JSON.parse(list[3]).map((tag: tag) => tag.title),
-    address: list[4],
-    phone: list[5],
-    email: list[6],
+    project: list[0],
+    duration: list[1] + " month",
+    costumers: JSON.parse(list[2]).map((costumer: costumer) => costumer.id),
+    notes: JSON.parse(list[3]).map((note: notes) => note.title),
+  };
+
+  type CreateDto = {
+    project: string;
+    duration: string;
+    costumers: string[];
+    notes: string[];
   };
 
   try {
-    createCostumer(save);
+    createProject(save);
     toast({
-      description: "Created new costumer",
+      description: "Created new project",
     });
     setCreateNew(() => false);
   } catch {
@@ -64,18 +61,12 @@ function onSubmit(
     });
   }
 
-  type project = {
+  type costumer = {
     title: string;
     id: string;
   };
 
-  type contact = {
-    title: string;
-    phone: string;
-    email: string;
-  };
-
-  type tag = {
+  type notes = {
     title: string;
   };
 }
