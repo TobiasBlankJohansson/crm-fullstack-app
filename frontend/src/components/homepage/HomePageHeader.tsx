@@ -2,7 +2,7 @@ import { SignInButton } from "@clerk/clerk-react";
 
 export function HomePageHeader() {
   return (
-    <header className="sticky top-0 z-50 bg-white flex w-screen shadow-lg justify-between items-center p-4">
+    <header className="sticky top-0 z-50 bg-white flex w-full shadow-lg justify-between items-center p-4">
       <div>
         <img src="/logo.png" alt="Logo" className="h-12 w-auto" />
       </div>
