@@ -4,15 +4,17 @@ import { Display } from "../../display/Display";
 import { projectDisplay } from "./projectsDisplay";
 import { getProjects } from "@/api/project";
 import { DashboardHeader } from "@/components/dashboard/DashboardHeader";
+import { Create, CreateObject } from "../../create/Create";
+import { projectsCreate } from "./projectsCreate";
 
 export function Projects() {
   const [createNew, setCreateNew] = useState<boolean>(false);
   const [page, setPage] = useState<JSX.Element>(<></>);
-  const title = "customer";
+  const title = "project";
 
   useEffect(() => {
     if (createNew) {
-      const create = projectCreate();
+      const create: CreateObject = projectsCreate();
       setPage(() => (
         <Create
           title={title}

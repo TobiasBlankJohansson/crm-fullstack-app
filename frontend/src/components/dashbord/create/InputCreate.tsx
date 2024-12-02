@@ -2,7 +2,7 @@ import { Input } from "@/components/ui/input";
 
 type InputCreateProp = {
   label: string;
-  type: "text" | "email" | "tel";
+  type: "text" | "email" | "tel" | "number";
   id: string;
 };
 
