@@ -5,7 +5,6 @@ import salt.takl.crm.model.Customer;
 import salt.takl.crm.repository.CustomerRepository;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
