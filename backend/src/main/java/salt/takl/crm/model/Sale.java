@@ -17,6 +17,10 @@ public class Sale {
     @ManyToOne
     private Project project;
 
+    private BigDecimal salesAmount;
+
+    private String name;
+
     public BigDecimal getSalesAmount() {
         return salesAmount;
     }
@@ -49,8 +53,6 @@ public class Sale {
         this.id = id;
     }
 
-    private BigDecimal salesAmount;
-
     public String name() {
         return this.customer.getCompanyName();
     }
@@ -61,7 +63,8 @@ public class Sale {
 
     public Sale () {}
 
-    public Sale(Customer customer, Project project, BigDecimal salesAmount) {
+    public Sale(String name,Customer customer, Project project, BigDecimal salesAmount) {
+        this.name = name;
         this.customer = customer;
         this.project = project;
         this.salesAmount = salesAmount;

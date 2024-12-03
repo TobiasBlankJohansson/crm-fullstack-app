@@ -32,7 +32,7 @@ public class SalesController {
     }
 
     @PostMapping("/sales")
-    public ResponseEntity<SalesResponseDTO> createSale(){
+    public ResponseEntity<SalesResponseDTO> createSale(@RequestBody SalesCreateRequestDTO sale) {
         return ResponseEntity.status(HttpStatus.CREATED).body(null);
     }
 
