@@ -1,10 +1,9 @@
-package salt.takl.crm.controller;
+package salt.takl.crm.controller.Sales;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import salt.takl.crm.dto.response.SalesResponseDTO;
 import salt.takl.crm.service.CustomerService;
 import salt.takl.crm.service.SalesService;
 
@@ -32,4 +31,7 @@ public class SalesController {
 
         return ResponseEntity.ok(sales);
     }
+
+
+
 }
