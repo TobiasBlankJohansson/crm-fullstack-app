@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import salt.takl.crm.service.SalesService;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.UUID;
 
 @Tag(name = "Sales", description = "API for managing sales data")
@@ -64,5 +65,10 @@ public class SalesController {
             @Parameter(description = "ID of the sale to delete") @PathVariable UUID id) {
         salesService.deleteSale(id);
         return ResponseEntity.accepted().build();
+    }
+
+    @ExceptionHandler({NoSuchElementException.class})
+    public ResponseEntity<String> handleException(NoSuchElementException e) {
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
     }
 }
