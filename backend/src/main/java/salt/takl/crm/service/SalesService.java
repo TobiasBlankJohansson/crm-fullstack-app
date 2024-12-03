@@ -8,6 +8,7 @@ import salt.takl.crm.repository.SaleRepository;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.UUID;
 
 @Service
@@ -29,10 +30,13 @@ public class SalesService {
         return sales;
     }
 
-    public Sale createSave(String name, UUID companyId, UUID projectId, String sale) {
-        var company = customerRepository.findById(companyId).orElseThrow();
-        var project = projectRepository.findById(projectId).orElseThrow();
+    public Sale createSale(String name, UUID companyId, UUID projectId, String sale) {
+        var company = customerRepository.findById(companyId)
+                .orElseThrow(() -> new NoSuchElementException("Company with ID " + companyId + " not found"));
+        var project = projectRepository.findById(projectId)
+                .orElseThrow(() -> new NoSuchElementException("Project with ID " + projectId + " not found"));
         var newSale = new Sale(name, company, project, new BigDecimal(sale));
+        return saleRepository.save(newSale);
     }
 
     public List<Sale> getSalesByCustomerId(UUID customerId) {
