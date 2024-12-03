@@ -5,6 +5,7 @@ import salt.takl.crm.model.Customer;
 import salt.takl.crm.repository.CustomerRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -24,7 +25,8 @@ public class CustomerService {
     }
 
     public Customer updateCustomer(UUID customerId, Customer updatedCustomer) {
-        Customer existingCustomer = customerRepository.findCustomerById(customerId);
+        Customer existingCustomer = customerRepository.findCustomerById(customerId)
+                .orElseThrow(() -> new RuntimeException("Customer not found with ID: " + customerId));;
 
         existingCustomer.setPhoneNumber(updatedCustomer.getPhoneNumber());
         existingCustomer.setEmail(updatedCustomer.getEmail());
@@ -38,7 +40,7 @@ public class CustomerService {
         customerRepository.delete(customer);
     }
 
-    public Customer getCustomerById(UUID id) {
+    public Optional<Customer> getCustomerById(UUID id) {
         return customerRepository.findCustomerById(id);
     }
 
