@@ -30,13 +30,27 @@ public class SalesService {
         return sales;
     }
 
-    public Sale createSale(String name, UUID companyId, UUID projectId, String sale) {
+    public Sale createSale(String name, UUID companyId, UUID projectId, String salesAmount) {
         var company = customerRepository.findById(companyId)
                 .orElseThrow(() -> new NoSuchElementException("Company with ID " + companyId + " not found"));
         var project = projectRepository.findById(projectId)
                 .orElseThrow(() -> new NoSuchElementException("Project with ID " + projectId + " not found"));
-        var newSale = new Sale(name, company, project, new BigDecimal(sale));
+        var newSale = new Sale(name, company, project, new BigDecimal(salesAmount));
         return saleRepository.save(newSale);
+    }
+
+    public Sale updateSale(UUID id,String name, UUID companyId, UUID projectId, String salesAmount){
+        var oldSale = saleRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Sale with ID " + id + " not found"));
+
+        oldSale.setName(name);
+        oldSale.setCustomer( customerRepository.findById(companyId)
+                .orElseThrow(() -> new NoSuchElementException("Company with ID " + companyId + " not found")));
+        oldSale.setProject( projectRepository.findById(projectId)
+                .orElseThrow(() -> new NoSuchElementException("Project with ID " + projectId + " not found")));
+        oldSale.setSalesAmount(new BigDecimal(salesAmount));
+
+        return saleRepository.save(oldSale);
     }
 
     public void deleteSale(UUID saleId) {
