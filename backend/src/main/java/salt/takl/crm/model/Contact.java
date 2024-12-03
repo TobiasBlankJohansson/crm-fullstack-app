@@ -19,7 +19,6 @@ public class Contact {
     @ManyToOne
     private Customer customer;
 
-
     public Contact() {}
 
     public UUID getId() {
