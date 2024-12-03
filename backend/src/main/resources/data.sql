@@ -14,10 +14,10 @@ VALUES
 ON CONFLICT (id) DO NOTHING;
 
 -- Inserting sales data
-INSERT INTO sale (id, customer_id, project_id, sales_amount)
+INSERT INTO sale (id, name, customer_id, project_id, sales_amount)
 VALUES
-    ('1f621bcb-8d42-4c10-a9ae-d9f7e010cb9e', '6f621bcb-8d42-4c10-a9ae-d9f7e010cb9a', '8f621bcb-8d42-4c10-a9ae-d9f7e010cb9c', 15000000),
-    ('2f621bcb-8d42-4c10-a9ae-d9f7e010cb9f', '7a621bcb-8d42-4c10-a9ae-d9f7e010cb9b', '9a621bcb-8d42-4c10-a9ae-d9f7e010cb9d', 5000000)
+    ('1f621bcb-8d42-4c10-a9ae-d9f7e010cb9e','Sold AI Development Services', '6f621bcb-8d42-4c10-a9ae-d9f7e010cb9a', '8f621bcb-8d42-4c10-a9ae-d9f7e010cb9c', 15000000),
+    ('2f621bcb-8d42-4c10-a9ae-d9f7e010cb9f','Completed Solar Panel Deployment', '7a621bcb-8d42-4c10-a9ae-d9f7e010cb9b', '9a621bcb-8d42-4c10-a9ae-d9f7e010cb9d', 5000000)
 ON CONFLICT (id) DO NOTHING;
 
 -- Inserting customer tags
