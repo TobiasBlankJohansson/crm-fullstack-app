@@ -39,6 +39,11 @@ public class SalesService {
         return saleRepository.save(newSale);
     }
 
+    public void deleteSale(UUID saleId) {
+        var sale = saleRepository.findById(saleId).get();
+        saleRepository.delete(sale);
+    }
+
     public List<Sale> getSalesByCustomerId(UUID customerId) {
         return saleRepository.findAllByCustomer_Id(customerId);
     }
