@@ -1,7 +1,7 @@
 package salt.takl.crm.service;
 
 import org.springframework.stereotype.Service;
-import salt.takl.crm.dto.ProjectResponseDTO;
+import salt.takl.crm.dto.response.ProjectResponseDTO;
 import salt.takl.crm.model.Project;
 import salt.takl.crm.repository.ProjectRepository;
 
@@ -19,7 +19,7 @@ public class ProjectService {
         this.projectRepository = projectRepository;
     }
 
-    public List<ProjectResponseDTO> getAllProjects() {
+    public List<salt.takl.crm.dto.response.ProjectResponseDTO> getAllProjects() {
         List<Project> projects = projectRepository.findAll();
 
         return projects.stream().map(this::mapToDTO).toList();

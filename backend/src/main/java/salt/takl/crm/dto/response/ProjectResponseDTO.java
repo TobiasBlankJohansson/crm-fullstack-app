@@ -1,4 +1,4 @@
-package salt.takl.crm.dto;
+package salt.takl.crm.dto.response;
 
 import java.util.List;
 
