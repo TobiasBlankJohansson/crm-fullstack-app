@@ -33,14 +33,14 @@ public class SalesController {
     }
 
     @PostMapping("/sales")
-    public ResponseEntity<SalesResponseDTO> createSale(@RequestBody SalesCreateRequestDTO saleDTO) {
-        var sale = salesService.createSale(saleDTO.name(),saleDTO.company(),saleDTO.project(),saleDTO.sale());
+    public ResponseEntity<SalesResponseDTO> createSale(@RequestBody SalesCreateRequestDTO saleDto) {
+        var sale = salesService.createSale(saleDto.name(),saleDto.company(),saleDto.project(),saleDto.sale());
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(SalesResponseDTO.saleToDto(sale));
     }
 
-    @PutMapping("/sales/{id}")
-    public ResponseEntity<SalesResponseDTO> updateSale(@PathVariable String id){
+    @PutMapping("/sales")
+    public ResponseEntity<SalesResponseDTO> updateSale(@RequestBody SalesCreateRequestDTO saleDto){
         return ResponseEntity.status(HttpStatus.CREATED).body(null);
     }
 
