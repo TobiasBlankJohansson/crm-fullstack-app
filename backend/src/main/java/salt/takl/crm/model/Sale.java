@@ -57,6 +57,10 @@ public class Sale {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String project() {
         return this.project.getName();
     }
