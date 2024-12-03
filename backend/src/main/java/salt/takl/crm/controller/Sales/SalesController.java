@@ -7,6 +7,7 @@ import salt.takl.crm.service.CustomerService;
 import salt.takl.crm.service.SalesService;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api")
@@ -44,7 +45,8 @@ public class SalesController {
     }
 
     @DeleteMapping("/sales/{id}")
-    public ResponseEntity<Void> deleteSale(@PathVariable int id){
+    public ResponseEntity<Void> deleteSale(@PathVariable UUID id){
+        salesService.deleteSale(id);
         return ResponseEntity.accepted().build();
     }
 
