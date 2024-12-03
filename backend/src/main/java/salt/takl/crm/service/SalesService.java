@@ -30,22 +30,22 @@ public class SalesService {
         return sales;
     }
 
-    public Sale createSale(String name, UUID companyId, UUID projectId, String salesAmount) {
-        var company = customerRepository.findById(companyId)
-                .orElseThrow(() -> new NoSuchElementException("Company with ID " + companyId + " not found"));
+    public Sale createSale(String name, UUID customerId, UUID projectId, String salesAmount) {
+        var customer = customerRepository.findById(customerId)
+                .orElseThrow(() -> new NoSuchElementException("customer with ID " + customerId + " not found"));
         var project = projectRepository.findById(projectId)
                 .orElseThrow(() -> new NoSuchElementException("Project with ID " + projectId + " not found"));
-        var newSale = new Sale(name, company, project, new BigDecimal(salesAmount));
+        var newSale = new Sale(name, customer, project, new BigDecimal(salesAmount));
         return saleRepository.save(newSale);
     }
 
-    public Sale updateSale(UUID id,String name, UUID companyId, UUID projectId, String salesAmount){
+    public Sale updateSale(UUID id,String name, UUID customerId, UUID projectId, String salesAmount){
         var oldSale = saleRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Sale with ID " + id + " not found"));
 
         oldSale.setName(name);
-        oldSale.setCustomer( customerRepository.findById(companyId)
-                .orElseThrow(() -> new NoSuchElementException("Company with ID " + companyId + " not found")));
+        oldSale.setCustomer( customerRepository.findById(customerId)
+                .orElseThrow(() -> new NoSuchElementException("customer with ID " + customerId + " not found")));
         oldSale.setProject( projectRepository.findById(projectId)
                 .orElseThrow(() -> new NoSuchElementException("Project with ID " + projectId + " not found")));
         oldSale.setSalesAmount(new BigDecimal(salesAmount));
