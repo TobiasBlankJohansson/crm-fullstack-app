@@ -1,5 +1,6 @@
 package salt.takl.crm.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +26,7 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
+    @Operation(summary = "Get all customers", description = "Retrieves a list of all customers")
     @GetMapping
     public ResponseEntity<List <CustomerResponseDTO>> findAll() {
         List <Customer> customers = customerService.getAllCustomers();
@@ -34,6 +36,7 @@ public class CustomerController {
         return ResponseEntity.ok(customerResponseDTOS);
     }
 
+    @Operation(summary = "Find a customer by ID", description = "Retrieves a customer depending on its ID")
     @GetMapping("/{customerId}")
     public ResponseEntity<CustomerResponseDTO> findById(@PathVariable String customerId) {
         Customer customer = customerService.getCustomerById(UUID.fromString(customerId));
@@ -41,6 +44,7 @@ public class CustomerController {
         return ResponseEntity.ok(result);
     }
 
+    @Operation(summary = "Create a customer", description = "Creates a new customer")
     @PostMapping
     public ResponseEntity<CustomerResponseDTO> createCustomer(@RequestBody CustomerRequestDTO customerRequestDTO) {
         Customer customer = customerMapper.requestDTOToCustomer(customerRequestDTO);
@@ -49,6 +53,7 @@ public class CustomerController {
         return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
     }
 
+    @Operation(summary = "Update a customer", description = "Update the info of an existing customer")
     @PutMapping("/{customerId}")
     public ResponseEntity<CustomerResponseDTO> updateCustomer(@PathVariable String customerId, @RequestBody CustomerRequestDTO customerRequestDTO) {
         Customer updatedCustomerData = customerMapper.requestDTOToCustomer(customerRequestDTO);
@@ -57,6 +62,7 @@ public class CustomerController {
         return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }
 
+    @Operation(summary = "Delete a customer", description = "Delete a customer by ID")
     @DeleteMapping("/{customerId}")
     public ResponseEntity<CustomerResponseDTO> deleteCustomer(@PathVariable String customerId) {
         customerService.deleteCustomer(UUID.fromString(customerId));
