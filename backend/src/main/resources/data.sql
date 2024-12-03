@@ -25,8 +25,7 @@ INSERT INTO customer_tags (customer_id, tags)
 VALUES
     ('6f621bcb-8d42-4c10-a9ae-d9f7e010cb9a', 'TECHNOLOGY'),
     ('6f621bcb-8d42-4c10-a9ae-d9f7e010cb9a', 'INNOVATION'),
-    ('7a621bcb-8d42-4c10-a9ae-d9f7e010cb9b', 'SOFTWARE')
-ON CONFLICT (customer_id, tags) DO NOTHING;
+    ('7a621bcb-8d42-4c10-a9ae-d9f7e010cb9b', 'SOFTWARE');
 
 -- Inserting customer contacts
 INSERT INTO contact (id, first_name, last_name, email, phone, customer_id)
