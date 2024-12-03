@@ -36,6 +36,11 @@ public class SalesController {
         return ResponseEntity.status(HttpStatus.CREATED).body(null);
     }
 
+    @PutMapping("/sales/{id}")
+    public ResponseEntity<SalesResponseDTO> updateSale(@PathVariable String id){
+        return ResponseEntity.status(HttpStatus.CREATED).body(null);
+    }
+
     @DeleteMapping("/sales/{id}")
     public ResponseEntity<Void> deleteSale(@PathVariable int id){
         return ResponseEntity.accepted().build();
