@@ -56,6 +56,25 @@ public class ProjectService {
         return mapToDTO(project);
     }
 
+    public ProjectResponseDTO updateProject(UUID projectId, ProjectRequestDTO projectRequestDTO) {
+        Project existingProject = projectRepository.findProjectById(projectId)
+                .orElseThrow(() -> new IllegalArgumentException("Project with ID " + projectId + " not found"));
+
+        existingProject.setName(projectRequestDTO.name());
+        existingProject.setDescription(projectRequestDTO.description());
+        existingProject.setStarted(projectRequestDTO.started());
+        existingProject.setEnded(projectRequestDTO.ended());
+
+        Project updatedProject = projectRepository.save(existingProject);
+        return mapToDTO(updatedProject);
+    }
+
+    public void deleteProject(UUID projectId) {
+        Project project = projectRepository.findById(projectId)
+                .orElseThrow(() -> new RuntimeException("Project not found with ID: " + projectId));
+        projectRepository.delete(project);
+    }
+
     private ProjectResponseDTO mapToDTO(Project project) {
         String duration = calculateDuration(project.getStarted(), project.getEnded());
 
