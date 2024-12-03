@@ -36,12 +36,15 @@ public class CustomerService {
         return customerRepository.save(existingCustomer);
     }
 
-    public void deleteCustomer(Customer customer) {
+    public void deleteCustomer(UUID customerId) {
+        Customer customer = customerRepository.findCustomerById(customerId)
+                .orElseThrow(() -> new RuntimeException("Customer not found with ID: " + customerId));
         customerRepository.delete(customer);
     }
 
-    public Optional<Customer> getCustomerById(UUID id) {
-        return customerRepository.findCustomerById(id);
+    public Customer getCustomerById(UUID id) {
+        return customerRepository.findCustomerById(id)
+                .orElseThrow(() -> new RuntimeException("Customer not found with ID: " + id));
     }
 
     public Customer saveCustomer(Customer customer) {
