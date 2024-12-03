@@ -9,7 +9,8 @@ import java.util.UUID;
 
 @Service
 public class CustomerService {
-    private CustomerRepository customerRepository;
+    private final CustomerRepository customerRepository;
+
     public CustomerService(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
@@ -22,8 +23,15 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
-    public Customer updateCustomer(Customer customer) {
-        return customerRepository.save(customer);
+    public Customer updateCustomer(UUID customerId, Customer updatedCustomer) {
+        Customer existingCustomer = customerRepository.findCustomerById(customerId);
+
+        existingCustomer.setPhoneNumber(updatedCustomer.getPhoneNumber());
+        existingCustomer.setEmail(updatedCustomer.getEmail());
+        existingCustomer.setAddress(updatedCustomer.getAddress());
+        existingCustomer.setCompanyName(updatedCustomer.getCompanyName());
+
+        return customerRepository.save(existingCustomer);
     }
 
     public void deleteCustomer(Customer customer) {
@@ -31,7 +39,7 @@ public class CustomerService {
     }
 
     public Customer getCustomerById(UUID id) {
-        return customerRepository.getCustomersById(id);
+        return customerRepository.findCustomerById(id);
     }
 
     public Customer saveCustomer(Customer customer) {
