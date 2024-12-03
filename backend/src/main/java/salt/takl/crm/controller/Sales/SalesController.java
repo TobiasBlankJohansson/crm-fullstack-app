@@ -2,10 +2,7 @@ package salt.takl.crm.controller.Sales;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import salt.takl.crm.service.CustomerService;
 import salt.takl.crm.service.SalesService;
 
@@ -35,8 +32,13 @@ public class SalesController {
     }
 
     @PostMapping("/sales")
-    public ResponseEntity<SalesResponseDTO> createSales(){
+    public ResponseEntity<SalesResponseDTO> createSale(){
         return ResponseEntity.status(HttpStatus.CREATED).body(null);
+    }
+
+    @DeleteMapping("/sales/{id}")
+    public ResponseEntity<Void> deleteSale(@PathVariable int id){
+        return ResponseEntity.accepted().build();
     }
 
 }
