@@ -7,6 +7,5 @@ import salt.takl.crm.model.Customer;
 import java.util.UUID;
 
 @Repository
-public interface CustomerRepository extends JpaRepository<Customer, Integer> {
-    Customer getCustomersById(UUID id);
+public interface CustomerRepository extends JpaRepository<Customer, UUID> {
 }

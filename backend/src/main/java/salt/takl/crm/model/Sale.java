@@ -54,7 +54,7 @@ public class Sale {
     }
 
     public String name() {
-        return this.customer.getCompanyName();
+        return name;
     }
 
     public String project() {

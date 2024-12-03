@@ -29,9 +29,10 @@ public class SalesService {
         return sales;
     }
 
-    public Sale createSave(String name, UUID company, UUID project, String sale) {
-
-        var newSale = new Sale(name,company, project,new BigDecimal(sale));
+    public Sale createSave(String name, UUID companyId, UUID projectId, String sale) {
+        var company = customerRepository.findById(companyId).orElseThrow();
+        var project = projectRepository.findById(projectId).orElseThrow();
+        var newSale = new Sale(name, company, project, new BigDecimal(sale));
     }
 
     public List<Sale> getSalesByCustomerId(UUID customerId) {
