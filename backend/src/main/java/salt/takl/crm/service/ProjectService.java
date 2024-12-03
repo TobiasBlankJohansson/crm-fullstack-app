@@ -77,6 +77,7 @@ public class ProjectService {
         );
 
         return new ProjectResponseDTO(
+                project.getId(),
                 project.getName(),
                 duration,
                 customers,
