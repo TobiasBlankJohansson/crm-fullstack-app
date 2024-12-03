@@ -32,8 +32,10 @@ public class SalesController {
     }
 
     @PostMapping("/sales")
-    public ResponseEntity<SalesResponseDTO> createSale(@RequestBody SalesCreateRequestDTO sale) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(null);
+    public ResponseEntity<SalesResponseDTO> createSale(@RequestBody SalesCreateRequestDTO saleDTO) {
+        var sale = salesService.createSale(saleDTO.name(),saleDTO.company(),saleDTO.project(),saleDTO.sale());
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body();
     }
 
     @PutMapping("/sales/{id}")
