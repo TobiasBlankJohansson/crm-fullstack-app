@@ -29,14 +29,14 @@ public class SalesController {
 
     @PostMapping("/sales")
     public ResponseEntity<SalesResponseDTO> createSale(@RequestBody SalesCreateRequestDTO saleDto) {
-        var sale = salesService.createSale(saleDto.name(),saleDto.company(),saleDto.project(),saleDto.sale());
+        var sale = salesService.createSale(saleDto.name(),saleDto.customer(),saleDto.project(),saleDto.sale());
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(SalesResponseDTO.saleToDto(sale));
     }
 
     @PutMapping("/sales/{id}")
     public ResponseEntity<SalesResponseDTO> updateSale(@PathVariable UUID id, @RequestBody SalesCreateRequestDTO saleDto){
-        var sale = salesService.updateSale(id,saleDto.name(),saleDto.company(),saleDto.project(),saleDto.sale());
+        var sale = salesService.updateSale(id,saleDto.name(),saleDto.customer(),saleDto.project(),saleDto.sale());
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(SalesResponseDTO.saleToDto(sale));
     }
