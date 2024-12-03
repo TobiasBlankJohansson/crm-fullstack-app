@@ -49,5 +49,13 @@ public class CustomerController {
         CustomerResponseDTO responseDTO = customerMapper.customerToResponseDTO(savedCustomer);
         return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
     }
+
+    @PutMapping("/{customerId}")
+    public ResponseEntity<CustomerResponseDTO> updateCustomer(@PathVariable String customerId, @RequestBody CustomerRequestDTO customerRequestDTO) {
+        Customer updatedCustomerData = customerMapper.requestDTOToCustomer(customerRequestDTO);
+        Customer updatedCustomer = customerService.updateCustomer(UUID.fromString(customerId), updatedCustomerData);
+        CustomerResponseDTO responseDTO = customerMapper.customerToResponseDTO(updatedCustomer);
+        return new ResponseEntity<>(responseDTO, HttpStatus.OK);
+    }
 }
 
