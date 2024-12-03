@@ -16,20 +16,17 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api")
 public class SalesController {
-    private final CustomerService customerService;
     private final SalesService salesService;
 
-    public SalesController(CustomerService customerService, SalesService salesService) {
-        this.customerService = customerService;
+    public SalesController(SalesService salesService) {
         this.salesService = salesService;
     }
 
     @Operation(summary = "Get all sales", description = "Retrieves a list of all sales")
     @GetMapping("/sales")
-    public ResponseEntity<List<SalesResponseDTO>> getAllSales() {
-        List<SalesResponseDTO> sales = salesService.getAllSales().stream()
-                .map(SalesResponseDTO::saleToDto).toList();
-        return ResponseEntity.ok(sales);
+    public ResponseEntity<List<SalesResponseDTO>> getSales() {
+        return ResponseEntity.ok( salesService.getAllSales().stream()
+                .map(SalesResponseDTO::saleToDto).toList());
     }
 
     @Operation(summary = "Create a new sale", description = "Creates a new sale entry")
