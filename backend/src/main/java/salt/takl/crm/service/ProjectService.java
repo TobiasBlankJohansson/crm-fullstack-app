@@ -40,7 +40,7 @@ public class ProjectService {
 
         List<ProjectResponseDTO.SaleDTO> sales = project.getSales().stream()
                 .map(sale -> new ProjectResponseDTO.SaleDTO(
-                        sale.name(),
+                        sale.getName(),
                         formatSale(sale.getSalesAmount())
                 ))
                 .toList();

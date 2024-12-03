@@ -14,7 +14,7 @@ public record SalesResponseDTO (
     public static SalesResponseDTO saleToDto(Sale sale) {
         return new SalesResponseDTO(
                 sale.getId(),
-                sale.name(),
+                sale.getName(),
                 sale.getCustomer().getCompanyName(),
                 sale.getProject().getName(),
                 sale.getSalesAmount()+"");
