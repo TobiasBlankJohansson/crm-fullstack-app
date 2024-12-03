@@ -39,9 +39,11 @@ public class SalesController {
                 .body(SalesResponseDTO.saleToDto(sale));
     }
 
-    @PutMapping("/sales")
-    public ResponseEntity<SalesResponseDTO> updateSale(@RequestBody SalesCreateRequestDTO saleDto){
-        return ResponseEntity.status(HttpStatus.CREATED).body(null);
+    @PutMapping("/sales/{id}")
+    public ResponseEntity<SalesResponseDTO> updateSale(@PathVariable UUID id, @RequestBody SalesCreateRequestDTO saleDto){
+        var sale = salesService.updateSale(id,saleDto.name(),saleDto.company(),saleDto.project(),saleDto.sale());
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(SalesResponseDTO.saleToDto(sale));
     }
 
     @DeleteMapping("/sales/{id}")
