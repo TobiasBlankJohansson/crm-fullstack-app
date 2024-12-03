@@ -57,5 +57,11 @@ public class CustomerController {
         CustomerResponseDTO responseDTO = customerMapper.customerToResponseDTO(updatedCustomer);
         return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }
+
+    @DeleteMapping("/{customerId}")
+    public ResponseEntity<CustomerResponseDTO> deleteCustomer(@PathVariable String customerId) {
+        customerService.deleteCustomer(UUID.fromString(customerId));
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
 
