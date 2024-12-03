@@ -1,6 +1,5 @@
 package salt.takl.crm.controller;
 
-import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -48,6 +47,20 @@ public class CustomerController {
         Customer savedCustomer = customerService.saveCustomer(customer);
         CustomerResponseDTO responseDTO = customerMapper.customerToResponseDTO(savedCustomer);
         return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{customerId}")
+    public ResponseEntity<CustomerResponseDTO> updateCustomer(@PathVariable String customerId, @RequestBody CustomerRequestDTO customerRequestDTO) {
+        Customer updatedCustomerData = customerMapper.requestDTOToCustomer(customerRequestDTO);
+        Customer updatedCustomer = customerService.updateCustomer(UUID.fromString(customerId), updatedCustomerData);
+        CustomerResponseDTO responseDTO = customerMapper.customerToResponseDTO(updatedCustomer);
+        return new ResponseEntity<>(responseDTO, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{customerId}")
+    public ResponseEntity<CustomerResponseDTO> deleteCustomer(@PathVariable String customerId) {
+        customerService.deleteCustomer(UUID.fromString(customerId));
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
 

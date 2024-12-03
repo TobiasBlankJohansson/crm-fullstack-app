@@ -1,7 +1,5 @@
 package salt.takl.crm.dto.response;
 
-import salt.takl.crm.model.Project;
-
 import java.util.List;
 import java.util.UUID;
 
