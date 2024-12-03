@@ -26,7 +26,28 @@ export const getCustomer = async () => {
 };
 
 export const createCustomer = async (newCustomer: CreateCustomerDto) => {
-  return newCustomer && true;
+  console.log(newCustomer);
+  try {
+    const response = await axios.post(
+      "http://localhost:8080/api/customers",
+      {
+        companyName: newCustomer.company,
+        address: newCustomer.address,
+        phoneNumber: newCustomer.phone,
+        email: newCustomer.email,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "*/*",
+        },
+      }
+    );
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error creating customer:", error);
+  }
 };
 
 export const getCustomerSelection = async (): Promise<CustomerInfo[]> => {
