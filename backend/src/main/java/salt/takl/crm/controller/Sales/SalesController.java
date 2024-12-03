@@ -22,13 +22,8 @@ public class SalesController {
 
     @GetMapping("/sales")
     public ResponseEntity<List<SalesResponseDTO>> getAllSales() {
-        List<SalesResponseDTO> sales = salesService.getAllSales().stream().map(sale -> new SalesResponseDTO(
-                sale.name(),
-                sale.getCustomer().getCompanyName(),
-                sale.project(),
-                sale.getSalesAmount().toPlainString()
-        )).toList();
-
+        List<SalesResponseDTO> sales = salesService.getAllSales().stream()
+                .map(SalesResponseDTO::saleToDto).toList();
         return ResponseEntity.ok(sales);
     }
 
