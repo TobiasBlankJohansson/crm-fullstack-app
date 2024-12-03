@@ -31,7 +31,7 @@ public class CustomerService {
     }
 
     public Customer getCustomerById(UUID id) {
-        return customerRepository.getCustomersById(id);
+        return customerRepository.findById(id).get();
     }
 
     public Customer saveCustomer(Customer customer) {
