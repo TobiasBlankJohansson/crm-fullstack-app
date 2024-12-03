@@ -35,7 +35,7 @@ public class SalesController {
     public ResponseEntity<SalesResponseDTO> createSale(@RequestBody SalesCreateRequestDTO saleDTO) {
         var sale = salesService.createSale(saleDTO.name(),saleDTO.company(),saleDTO.project(),saleDTO.sale());
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body();
+                .body(SalesResponseDTO.saleToDto(sale));
     }
 
     @PutMapping("/sales/{id}")
