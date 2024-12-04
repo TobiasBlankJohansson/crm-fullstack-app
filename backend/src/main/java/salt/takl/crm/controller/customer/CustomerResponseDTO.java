@@ -5,11 +5,11 @@ import java.util.UUID;
 
 public record CustomerResponseDTO(
         UUID id,
-        String companyName,
+        String company,
         String address,
-        String phoneNumber,
+        String phone,
         String email,
-        List<String> projects,
-        List<ContactResponseDTO> contacts,
-        List<String> tags
+        List<String> project,
+        List<ContactResponseDTO> contact,
+        List<String> tag
 ) {}
