@@ -28,6 +28,7 @@ export const projectDisplay = (
       count: count + "",
       detail: details,
       itemProperty: itemPropertys,
+      type: "project"
     };
   });
   return display;

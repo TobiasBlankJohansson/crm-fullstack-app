@@ -27,7 +27,9 @@ export function Projects() {
     }
     const getCostemers = async () => {
       const fetchData = await getProjects();
+      console.log(fetchData);
       const customers = projectDisplay(fetchData);
+      console.log(customers);
       setPage(() => <Display title={title} displayItems={customers} />);
     };
     getCostemers();
