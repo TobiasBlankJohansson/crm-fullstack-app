@@ -1,4 +1,4 @@
-package salt.takl.crm.controller.Sales;
+package salt.takl.crm.controller.sales;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

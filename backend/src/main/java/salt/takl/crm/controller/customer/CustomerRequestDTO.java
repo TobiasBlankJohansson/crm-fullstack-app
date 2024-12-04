@@ -1,4 +1,4 @@
-package salt.takl.crm.dto.request;
+package salt.takl.crm.controller.customer;
 
 import jakarta.validation.constraints.*;
 

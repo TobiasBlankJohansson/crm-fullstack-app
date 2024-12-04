@@ -9,6 +9,7 @@ export type CustomerObject = {
   company: string;
   project: string[];
   contact: {
+    id: UUID;
     name: string;
     phone: string;
     email: string;

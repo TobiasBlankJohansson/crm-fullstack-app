@@ -1,11 +1,9 @@
-package salt.takl.crm.controller;
+package salt.takl.crm.controller.customer;
 
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import salt.takl.crm.dto.request.CustomerRequestDTO;
-import salt.takl.crm.dto.response.CustomerResponseDTO;
 import salt.takl.crm.mappers.CustomerMapper;
 import salt.takl.crm.model.Customer;
 
@@ -34,6 +32,12 @@ public class CustomerController {
                 .map(customer -> customerMapper.customerToResponseDTO(customer)
                 ).toList();
         return ResponseEntity.ok(customerResponseDTOS);
+    }
+
+    @Operation(summary = "Get all customers with only name and id", description = "Retrieves a list of all customers with only name and id")
+    @GetMapping("/select")
+    public ResponseEntity<List <CustomerSelectDto>> getCustomersSelect() {
+        return ResponseEntity.ok(customerService.getAllCustomers().stream().map(CustomerSelectDto::customerToDto).toList());
     }
 
     @Operation(summary = "Find a customer by ID", description = "Retrieves a customer depending on its ID")
