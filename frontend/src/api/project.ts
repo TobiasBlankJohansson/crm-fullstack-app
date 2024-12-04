@@ -1,6 +1,8 @@
 import { ProjectInfo } from "@/components/dashboard/page/customer/create/AddProject";
 import axios from "axios";
 
+const path = import.meta.env.VITE_BACKEND_URL;
+
 export type CreateProjectDto = {
   project: string;
   duration: string;
@@ -8,18 +10,28 @@ export type CreateProjectDto = {
   notes: string[];
 };
 
-export const getProjects = async () => {
-  try {
-    const response = await axios.get("http://localhost:8080/projects");
-    console.log(response.data);
-    return response.data;
-  } catch (error) {
-    console.error(error);
-  }
-};
+export const createProject = async (newProject: CreateProjectDto): Promise<boolean> => {
+  const response = await axios.post(
+    `${path}/api/project`,
+    {
+      project: newProject.project,
+      duration: newProject.duration,
+      customers: newProject.customers,
+      notes: newProject.notes,
+    },
+    {
+      headers: {
+        accept: "*/*",
+        "Content-Type": "application/json",
+      },
+    }
+  );
 
-export const createProject = async (newProject: CreateProjectDto) => {
-  return newProject && true;
+  if (response.status >= 200 && response.status < 300) {
+    return true;
+  } else {
+    throw new Error(`Unexpected response status: ${response.data}`);
+  }
 };
 
 export const getProjectSelection = async (): Promise<ProjectInfo[]> => {
