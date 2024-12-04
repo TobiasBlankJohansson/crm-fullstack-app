@@ -57,16 +57,16 @@ export const createProject = async (
 };
 
 export const updateProject = async (
-  updatedSale: projectObject
+  updatedProject: projectObject
 ): Promise<projectObject> => {
   const response = await axios.put(
-    `${path}/api/projects/${updatedSale.id}`,
+    `${path}/api/projects/${updatedProject.id}`,
     {
-      project: updatedSale.name,
-      duration: updatedSale.duration,
-      customers: updatedSale.customers,
-      notes: updatedSale.notes,
-      sales: updatedSale.sales,
+      project: updatedProject.name,
+      duration: updatedProject.duration,
+      customers: updatedProject.customers,
+      notes: updatedProject.notes,
+      sales: updatedProject.sales,
     },
     {
       headers: {
