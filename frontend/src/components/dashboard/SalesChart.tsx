@@ -41,7 +41,10 @@ export function SalesChart() {
           margin={{ top: 20, right: 30, left: 40, bottom: 20 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
+          <XAxis
+            dataKey="name"
+            tick={{ fontSize: 10 }} // Adjust the font size of the tick labels
+          />
           <YAxis />
           <Tooltip />
           <Bar dataKey="amount" fill="rgba(30, 144, 255, 0.8)" />

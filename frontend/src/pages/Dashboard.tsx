@@ -53,7 +53,6 @@ export function Dashboard() {
   return (
     <SignedIn>
       <div className="flex">
-        {/* Sidebar with sticky behavior */}
         <div className="sticky top-0 h-screen">
           <Sidebar />
         </div>
