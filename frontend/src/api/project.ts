@@ -1,5 +1,6 @@
 import { ProjectInfo } from "@/components/dashboard/page/customer/create/AddProject";
 import axios from "axios";
+import { UUID } from "crypto";
 
 const path = import.meta.env.VITE_BACKEND_URL;
 
@@ -59,7 +60,7 @@ export const updateProject = async (
   updatedSale: projectObject
 ): Promise<projectObject> => {
   const response = await axios.put(
-    `${path}/api/sales/${updatedSale.id}`,
+    `${path}/api/projects/${updatedSale.id}`,
     {
       project: updatedSale.name,
       duration: updatedSale.duration,
@@ -77,6 +78,15 @@ export const updateProject = async (
 
   if (response.status >= 200 && response.status < 300) {
     return response.data;
+  } else {
+    throw new Error(`Unexpected response status: ${response.status}`);
+  }
+};
+
+export const deleteProject = async (projectId: UUID): Promise<boolean> => {
+  const response = await axios.delete(`${path}/api/projects/${projectId}`);
+  if (response.status >= 200 && response.status < 300) {
+    return true;
   } else {
     throw new Error(`Unexpected response status: ${response.status}`);
   }
