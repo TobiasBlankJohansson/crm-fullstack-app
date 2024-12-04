@@ -5,7 +5,7 @@ const path = import.meta.env.VITE_BACKEND_URL;
 
 export type CreateSalesDto = {
   name: string;
-  company: string;
+  customer: string;
   project: string;
   sale: string;
 };
@@ -24,7 +24,27 @@ export const getSales = async (): Promise<sale[]> => {
 };
 
 export const createSale = async (newSale: CreateSalesDto) => {
-  return newSale && true;
+  const response = await axios.post(
+    `${path}/api/sales`,
+    {
+      name: newSale.name,
+      customer: newSale.customer,
+      project: newSale.project,
+      sale: Number(newSale.sale),
+    },
+    {
+      headers: {
+        accept: "*/*",
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  console.log(response);
+  if (!response.data.ok) {
+    throw new Error();
+  }
+
+  return response && true;
 };
 
 // const mockSales = [
