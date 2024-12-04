@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import salt.takl.crm.controller.customer.CustomerSelectDto;
 import salt.takl.crm.service.ProjectService;
 
 import java.util.List;
@@ -30,7 +31,13 @@ public class ProjectController {
     @Operation(summary = "Get all projects", description = "Retrieves a list of all projects")
     @GetMapping
     public List<ProjectResponseDTO> getAllProjects() {
-        return projectService.getAllProjects();
+        return projectService.getAllProjects().stream().map(ProjectResponseDTO::projectToDTO).toList();
+    }
+
+    @Operation(summary = "Get all customers with only name and id", description = "Retrieves a list of all customers with only name and id")
+    @GetMapping("/select")
+    public ResponseEntity<List <ProjectSelectDto>> getCustomersSelect() {
+        return ResponseEntity.ok(projectService.getAllProjects().stream().map(ProjectSelectDto::projectToDto).toList());
     }
 
     @Operation(summary = "Find a project by ID", description = "Retrieves a project depending on its ID")

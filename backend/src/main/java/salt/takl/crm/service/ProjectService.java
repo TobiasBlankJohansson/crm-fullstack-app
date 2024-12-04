@@ -24,9 +24,8 @@ public class ProjectService {
         this.customerRepository = customerRepository;
     }
 
-    public List<ProjectResponseDTO> getAllProjects() {
-        List<Project> projects = projectRepository.findAll();
-        return projects.stream().map(this::mapToDTO).toList();
+    public List<Project> getAllProjects() {
+        return projectRepository.findAll();
     }
 
     public List<ProjectResponseDTO> getProjectsByCustomerId(UUID customerId) {
@@ -85,7 +84,7 @@ public class ProjectService {
         List<ProjectResponseDTO.SaleDTO> sales = project.getSales().stream()
                 .map(sale -> new ProjectResponseDTO.SaleDTO(
                         sale.getName(),
-                        formatSale(sale.getSalesAmount())
+                        sale.getSalesAmount()
                 ))
                 .toList();
 
