@@ -34,6 +34,12 @@ public class CustomerController {
         return ResponseEntity.ok(customerResponseDTOS);
     }
 
+    @Operation(summary = "Get all customers with only name and id", description = "Retrieves a list of all customers with only name and id")
+    @GetMapping("/select")
+    public ResponseEntity<List <CustomerSelectDto>> getCustomersSelect() {
+        return ResponseEntity.ok(customerService.getAllCustomers().stream().map(CustomerSelectDto::customerToDto).toList());
+    }
+
     @Operation(summary = "Find a customer by ID", description = "Retrieves a customer depending on its ID")
     @GetMapping("/{customerId}")
     public ResponseEntity<CustomerResponseDTO> findById(@PathVariable String customerId) {
