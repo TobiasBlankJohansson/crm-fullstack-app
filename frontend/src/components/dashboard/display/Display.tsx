@@ -21,11 +21,12 @@ type DisplayProp = {
 };
 
 export type DisplayObject = {
-  id: number;
+  id: string;
   title: string;
   count: string;
   detail: Detail[];
   itemProperty: ItemPropertyProp[];
+  type: string;
 };
 
 export type Detail = {
@@ -54,6 +55,7 @@ export function Display({ title, displayItems }: DisplayProp) {
   );
 
   const handleUpdate = (item: DisplayObject) => {
+    console.log(item + "update");
     setSelectedItem(item);
     setFormData({ ...item });
   };
@@ -88,54 +90,20 @@ export function Display({ title, displayItems }: DisplayProp) {
               </DialogHeader>
               <div className="space-y-4">
                 <div>
-                  <Label htmlFor="title">Title</Label>
-                  <Input
-                    id="title"
-                    value={formData.title || ""}
-                    onChange={(e) => handleFormChange("title", e.target.value)}
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="count">Count</Label>
-                  <Input
-                    id="count"
-                    value={formData.count || ""}
-                    onChange={(e) => handleFormChange("count", e.target.value)}
-                  />
-                </div>
-                <div>
-                  <Label>Details</Label>
-                  {formData.detail?.map((detail, index) => (
+                  {formData.itemProperty?.map((detail, index) => (
                     <div key={index} className="space-y-2">
                       <Label htmlFor={`detail-title-${index}`}>
-                        Detail Title
+                        {detail.title}
                       </Label>
                       <Input
                         id={`detail-title-${index}`}
-                        value={detail.title}
+                        value={detail.info}
                         onChange={(e) =>
                           setFormData((prev) => {
                             const updatedDetails = [...(prev.detail || [])];
                             updatedDetails[index] = {
                               ...updatedDetails[index],
                               title: e.target.value,
-                            };
-                            return { ...prev, detail: updatedDetails };
-                          })
-                        }
-                      />
-                      <Label htmlFor={`detail-value-${index}`}>
-                        Detail Value
-                      </Label>
-                      <Input
-                        id={`detail-value-${index}`}
-                        value={detail.value}
-                        onChange={(e) =>
-                          setFormData((prev) => {
-                            const updatedDetails = [...(prev.detail || [])];
-                            updatedDetails[index] = {
-                              ...updatedDetails[index],
-                              value: e.target.value,
                             };
                             return { ...prev, detail: updatedDetails };
                           })

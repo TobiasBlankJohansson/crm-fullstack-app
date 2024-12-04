@@ -7,6 +7,14 @@ export type CreateSalesDto = {
   sale: string;
 };
 
+export type UpdateSaleDto = {
+  id: string;
+  name: string;
+  company: string;
+  project: string;
+  sale: string;
+};
+
 export const getSales = async () => {
   try {
     const response = await axios.get("http://localhost:8080/api/sales");
@@ -18,6 +26,10 @@ export const getSales = async () => {
 };
 
 export const createSale = async (newSale: CreateSalesDto) => {
+  return newSale && true;
+};
+
+export const updateSale = async (newSale: UpdateSaleDto) => {
   return newSale && true;
 };
 
