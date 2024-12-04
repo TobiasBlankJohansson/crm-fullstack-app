@@ -40,7 +40,7 @@ function onSubmit(
   );
   const save: CreateSalesDto = {
     name: list[0],
-    company: list[1],
+    customer: list[1],
     project: list[2],
     sale: list[3],
   };
