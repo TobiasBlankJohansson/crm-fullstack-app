@@ -1,7 +1,23 @@
 import { CustomerInfo } from "@/components/dashboard/page/projects/create/addCustomers";
 import axios from "axios";
+import { UUID } from "crypto";
 
 const path = import.meta.env.VITE_BACKEND_URL;
+
+export type CustomerObject = {
+  id: UUID;
+  company: string;
+  project: string[];
+  contact: {
+    name: string;
+    phone: string;
+    email: string;
+  }[];
+  tag: string[];
+  address: string;
+  phone: string;
+  email: string;
+};
 
 export type CreateCustomerDto = {
   company: string;
@@ -22,28 +38,59 @@ export const getCustomer = async () => {
   return await response.data;
 };
 
-export const createCustomer = async (newCustomer: CreateCustomerDto) => {
-  console.log(newCustomer);
-  try {
-    const response = await axios.post(
-      "http://localhost:8080/api/customers",
-      {
-        companyName: newCustomer.company,
-        address: newCustomer.address,
-        phoneNumber: newCustomer.phone,
-        email: newCustomer.email,
+export const createCustomer = async (
+  newCustomer: CreateCustomerDto
+): Promise<boolean> => {
+  const response = await axios.post(
+    `${path}/api/customers`,
+    {
+      company: newCustomer.company,
+      project: newCustomer.project,
+      contact: newCustomer.contact,
+      tag: newCustomer.tag,
+      address: newCustomer.address,
+      phone: newCustomer.phone,
+      email: newCustomer.email,
+    },
+    {
+      headers: {
+        accept: "*/*",
+        "Content-Type": "application/json",
       },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "*/*",
-        },
-      }
-    );
-    console.log(response.data);
+    }
+  );
+
+  if (response.status >= 200 && response.status < 300) {
+    return true;
+  } else {
+    throw new Error(`Unexpected response status: ${response.data}`);
+  }
+};
+
+export const updateProject = async (
+  updatedSale: projectObject
+): Promise<projectObject> => {
+  const response = await axios.put(
+    `${path}/api/projects/${updatedSale.id}`,
+    {
+      project: updatedSale.name,
+      duration: updatedSale.duration,
+      customers: updatedSale.customers,
+      notes: updatedSale.notes,
+      sales: updatedSale.sales,
+    },
+    {
+      headers: {
+        accept: "*/*",
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  if (response.status >= 200 && response.status < 300) {
     return response.data;
-  } catch (error) {
-    console.error("Error creating customer:", error);
+  } else {
+    throw new Error(`Unexpected response status: ${response.status}`);
   }
 };
 
