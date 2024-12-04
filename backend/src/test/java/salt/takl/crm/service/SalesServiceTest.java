@@ -61,7 +61,7 @@ class SalesServiceTest {
         var customer = new Customer();
         var project = new Project();
         var sale = new Sale("Sale1", customer, project, BigDecimal.valueOf(100));
-        var salesAmount = "100";
+        var salesAmount = BigDecimal.valueOf(100);
 
         when(customerRepository.findById(customerId)).thenReturn(Optional.of(customer));
         when(projectRepository.findById(projectId)).thenReturn(Optional.of(project));
@@ -84,10 +84,10 @@ class SalesServiceTest {
         when(customerRepository.findById(customerId)).thenReturn(Optional.empty());
 
         var exception = assertThrows(NoSuchElementException.class, () ->
-                salesService.createSale("Sale1", customerId, projectId, "100")
+                salesService.createSale("Sale1", customerId, projectId, BigDecimal.valueOf(100))
         );
 
-        assertEquals("Company with ID " + customerId + " not found", exception.getMessage());
+        assertEquals("Customer with ID " + customerId + " not found", exception.getMessage());
     }
 
     @Test
@@ -104,7 +104,7 @@ class SalesServiceTest {
         when(projectRepository.findById(projectId)).thenReturn(Optional.of(project));
         when(saleRepository.save(any(Sale.class))).thenReturn(oldSale);
 
-        var result = salesService.updateSale(saleId, "UpdatedSale", customerId, projectId, "200");
+        var result = salesService.updateSale(saleId, "UpdatedSale", customerId, projectId, BigDecimal.valueOf(200));
 
         assertEquals("UpdatedSale", result.getName());
         assertEquals(BigDecimal.valueOf(200), result.getSalesAmount());
