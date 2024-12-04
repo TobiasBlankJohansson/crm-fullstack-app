@@ -1,15 +1,19 @@
 package salt.takl.crm.model;
 
 import jakarta.persistence.*;
-
 import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity
 public class Sale {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+
+    private String name;
+
+    private BigDecimal salesAmount;
 
     @ManyToOne
     private Customer customer;
@@ -17,28 +21,13 @@ public class Sale {
     @ManyToOne
     private Project project;
 
-    public BigDecimal getSalesAmount() {
-        return salesAmount;
-    }
+    public Sale() {}
 
-    public void setSalesAmount(BigDecimal salesAmount) {
-        this.salesAmount = salesAmount;
-    }
-
-    public Project getProject() {
-        return project;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
+    public Sale(String name, Customer customer, Project project, BigDecimal salesAmount) {
+        this.name = name;
         this.customer = customer;
+        this.project = project;
+        this.salesAmount = salesAmount;
     }
 
     public UUID getId() {
@@ -49,21 +38,35 @@ public class Sale {
         this.id = id;
     }
 
-    private BigDecimal salesAmount;
-
-    public String name() {
-        return this.customer.getCompanyName();
+    public String getName() {
+        return name;
     }
 
-    public String project() {
-        return this.project.getName();
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Sale () {}
+    public BigDecimal getSalesAmount() {
+        return salesAmount;
+    }
 
-    public Sale(Customer customer, Project project, BigDecimal salesAmount) {
-        this.customer = customer;
-        this.project = project;
+    public void setSalesAmount(BigDecimal salesAmount) {
         this.salesAmount = salesAmount;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
     }
 }

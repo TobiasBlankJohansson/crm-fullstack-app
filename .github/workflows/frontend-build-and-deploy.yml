@@ -45,6 +45,7 @@ jobs:
       - name: Build
         env:
           VITE_CLERK_PUBLISHABLE_KEY: ${{ secrets.VITE_CLERK_PUBLISHABLE_KEY }}
+          VITE_BACKEND_URL: ${{vars.VITE_BACKEND_URL}}
         run: npm run build
         working-directory: ./frontend
 
