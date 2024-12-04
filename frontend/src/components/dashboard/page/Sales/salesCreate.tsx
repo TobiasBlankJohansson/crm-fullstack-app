@@ -30,7 +30,7 @@ function inputs() {
   return [name, company, project, sale];
 }
 
-function onSubmit(
+async function onSubmit(
   e: React.FormEvent<HTMLFormElement>,
   setCreateNew: React.Dispatch<React.SetStateAction<boolean>>
 ) {
@@ -46,7 +46,7 @@ function onSubmit(
   };
 
   try {
-    createSale(save);
+    await createSale(save);
     toast({
       description: "Created new project",
     });

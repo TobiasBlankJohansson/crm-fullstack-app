@@ -39,12 +39,12 @@ export const createSale = async (newSale: CreateSalesDto) => {
       },
     }
   );
-  console.log(response);
-  if (!response.data.ok) {
-    throw new Error();
-  }
 
-  return response && true;
+  if (response.status >= 200 && response.status < 300) {
+    return true;
+  } else {
+    throw new Error(`Unexpected response status: ${response.data}`);
+  }
 };
 
 // const mockSales = [
