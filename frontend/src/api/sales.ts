@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const path = import.meta.env.VITE_BACKEND_URL;
+
 export type CreateSalesDto = {
   name: string;
   company: string;
@@ -9,7 +11,7 @@ export type CreateSalesDto = {
 
 export const getSales = async () => {
   try {
-    const response = await axios.get("http://localhost:8080/api/sales");
+    const response = await axios.get(`${path}/api/sales`);
     console.log(response.data);
     return response.data;
   } catch (error) {
