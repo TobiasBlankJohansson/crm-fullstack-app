@@ -20,6 +20,7 @@ export const salesDisplay = (fetch: salesDisplayProp[]): DisplayObject[] => {
       count: count + "",
       detail: details,
       itemProperty: itemPropertys,
+      type: "sale",
     };
   });
   return display;

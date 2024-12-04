@@ -18,6 +18,30 @@ export type saleObject = {
   sale: string;
 };
 
+export type UpdateSaleDto = {
+  id: string;
+  name: string;
+  customer: string;
+  project: string;
+  sale: string;
+};
+
+export type saleObject = {
+  Id: UUID;
+  name: string;
+  customer: string;
+  project: string;
+  sale: string;
+};
+
+export type UpdateSaleDto = {
+  id: string;
+  name: string;
+  company: string;
+  project: string;
+  sale: string;
+};
+
 export const getSales = async (): Promise<saleObject[]> => {
   const response = await axios.get(`${path}/api/sales`);
   return await response.data;

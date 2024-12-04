@@ -31,6 +31,7 @@ export const customerDisplay = (
       count: count + "",
       detail: details,
       itemProperty: itemPropertys,
+      type: "customer"
     };
   });
   return display;
