@@ -10,7 +10,7 @@ export type CreateSalesDto = {
   sale: string;
 };
 
-type sale = {
+export type saleObject = {
   Id: UUID;
   name: string;
   customer: string;
@@ -18,12 +18,12 @@ type sale = {
   sale: string;
 };
 
-export const getSales = async (): Promise<sale[]> => {
+export const getSales = async (): Promise<saleObject[]> => {
   const response = await axios.get(`${path}/api/sales`);
   return await response.data;
 };
 
-export const createSale = async (newSale: CreateSalesDto) => {
+export const createSale = async (newSale: CreateSalesDto): Promise<boolean> => {
   const response = await axios.post(
     `${path}/api/sales`,
     {
@@ -46,6 +46,33 @@ export const createSale = async (newSale: CreateSalesDto) => {
     throw new Error(`Unexpected response status: ${response.data}`);
   }
 };
+
+export const updateSale = async (
+  updatedSale: saleObject
+): Promise<saleObject> => {
+  const response = await axios.put(
+    `${path}/api/sales/${updatedSale.Id}`,
+    {
+      name: updatedSale.name,
+      customer: updatedSale.customer,
+      project: updatedSale.project,
+      sale: Number(updatedSale.sale),
+    },
+    {
+      headers: {
+        accept: "*/*",
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  if (response.status >= 200 && response.status < 300) {
+    return response.data;
+  } else {
+    throw new Error(`Unexpected response status: ${response.status}`);
+  }
+};
+
 
 // const mockSales = [
 //   {
