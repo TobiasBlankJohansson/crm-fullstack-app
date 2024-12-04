@@ -15,20 +15,24 @@ export function ButtonCreate({ id, label, click }: PropButtonCreate) {
 
   return (
     <>
-      <label className="flex items-center">{label}</label>
-      <div className="flex p-2">
-        <input
-          className="hidden"
-          id={id}
-          value={JSON.stringify(objects)}
-        ></input>
-        {objects?.map((obj) => (
-          <label className="mr-2 bg-gray rounded-full px-4 flex justify-center items-center">
+      <label className="flex items-center text-sm font-medium mb-2">{label}</label>
+      <div className="flex items-center gap-2">
+        {/* Hidden input for storing object values */}
+        <input className="hidden" id={id} value={JSON.stringify(objects)} />
+
+        {/* Render objects as labels */}
+        {objects?.map((obj, index) => (
+          <span
+            key={index}
+            className="bg-gray-200 rounded-full px-2 py-1 text-sm font-medium text-gray-700"
+          >
             {obj.title}
-          </label>
+          </span>
         ))}
+
+        {/* Circular "+" Button */}
         <button
-          className="bg-gray rounded-full px-2 flex justify-center items-center"
+          className="bg-black/70 text-white rounded-full h-10 w-10 flex items-center justify-center text-lg font-bold hover:bg-black/90"
           onClick={() => click(setObject, setModal)}
         >
           +
