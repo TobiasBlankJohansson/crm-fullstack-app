@@ -15,15 +15,18 @@ export function SelectCreate({ id, label, click }: PropButtonCreate) {
 
   return (
     <>
-      <label className="flex items-center">{label}</label>
-      <div className="flex p-2">
-        <input className="hidden" id={id} value={objects.id}></input>
+      <label className="flex items-center text-sm font-medium mb-2">{label}</label>
+      <div className="flex items-center gap-2">
+        {/* Hidden input for storing the selected value */}
+        <input className="hidden" id={id} value={(objects as any).id}></input>
+
+        {/* Select Button with black background and transparency */}
         <button
-          className="bg-gray rounded-full px-2 flex justify-center items-center"
+          className="bg-black bg-opacity-60 text-white rounded-full h-8 px-4 flex items-center justify-center text-sm font-medium hover:bg-opacity-80"
           type="button"
           onClick={() => click(setObject, setModal)}
         >
-          {objects.title}
+          {(objects as any).title}
         </button>
         {modal}
       </div>
