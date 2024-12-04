@@ -1,6 +1,8 @@
 import { CustomerInfo } from "@/components/dashboard/page/projects/create/addCustomers";
 import axios from "axios";
 
+const path = import.meta.env.VITE_BACKEND_URL;
+
 export type CreateCustomerDto = {
   company: string;
   project: string[];
@@ -16,13 +18,8 @@ export type CreateCustomerDto = {
 };
 
 export const getCustomer = async () => {
-  try {
-    const response = await axios.get("http://localhost:8080/api/customers");
-    console.log(response.data);
-    return response.data;
-  } catch (error) {
-    console.error(error);
-  }
+  const response = await axios.get(`${path}/api/customers`);
+  return await response.data;
 };
 
 export const createCustomer = async (newCustomer: CreateCustomerDto) => {
