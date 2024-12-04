@@ -9,7 +9,7 @@ public record SalesResponseDTO (
         String name,
         String customer,
         String project,
-        String sales
+        String sale
 ){
     public static SalesResponseDTO saleToDto(Sale sale) {
         return new SalesResponseDTO(
