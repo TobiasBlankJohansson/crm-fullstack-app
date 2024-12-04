@@ -1,11 +1,9 @@
-package salt.takl.crm.controller;
+package salt.takl.crm.controller.customer;
 
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import salt.takl.crm.dto.request.CustomerRequestDTO;
-import salt.takl.crm.dto.response.CustomerResponseDTO;
 import salt.takl.crm.mappers.CustomerMapper;
 import salt.takl.crm.model.Customer;
 

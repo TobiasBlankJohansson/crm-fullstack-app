@@ -1,13 +1,9 @@
-package salt.takl.crm.controller;
+package salt.takl.crm.controller.project;
 
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import salt.takl.crm.dto.request.ProjectRequestDTO;
-import salt.takl.crm.dto.response.ProjectResponseDTO;
-import salt.takl.crm.model.Project;
-import salt.takl.crm.repository.ProjectRepository;
 import salt.takl.crm.service.ProjectService;
 
 import java.util.List;

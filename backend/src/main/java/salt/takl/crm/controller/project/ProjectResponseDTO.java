@@ -1,4 +1,4 @@
-package salt.takl.crm.dto.response;
+package salt.takl.crm.controller.project;
 
 import java.util.List;
 import java.util.UUID;
