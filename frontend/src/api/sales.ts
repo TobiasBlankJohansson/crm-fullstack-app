@@ -21,22 +21,6 @@ export type saleObject = {
 export type UpdateSaleDto = {
   id: string;
   name: string;
-  customer: string;
-  project: string;
-  sale: string;
-};
-
-export type saleObject = {
-  Id: UUID;
-  name: string;
-  customer: string;
-  project: string;
-  sale: string;
-};
-
-export type UpdateSaleDto = {
-  id: string;
-  name: string;
   company: string;
   project: string;
   sale: string;
@@ -71,9 +55,8 @@ export const createSale = async (newSale: CreateSalesDto): Promise<boolean> => {
   }
 };
 
-export const updateSale = async (
-  updatedSale: saleObject
-): Promise<saleObject> => {
+export const updateSale = async (updatedSale: any): Promise<saleObject> => {
+  console.log("Updatesale " + updatedSale.detail[0].value);
   const response = await axios.put(
     `${path}/api/sales/${updatedSale.Id}`,
     {

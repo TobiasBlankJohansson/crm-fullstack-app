@@ -14,6 +14,8 @@ import {
 import { Pagination } from "@/components/ui/pagination"; // Assuming you add a pagination component or utility
 import { DialogHeader, DialogFooter } from "@/components/ui/dialog";
 import { Dialog, DialogContent, DialogTitle } from "@radix-ui/react-dialog";
+import { updateSale } from "@/api/sales";
+import { updateProject } from "@/api/project";
 
 type DisplayProp = {
   title: string;
@@ -61,6 +63,7 @@ export function Display({ title, displayItems }: DisplayProp) {
   };
 
   const handleCancel = () => {
+    console.log(displayItems);
     setSelectedItem(null);
   };
 
@@ -68,9 +71,34 @@ export function Display({ title, displayItems }: DisplayProp) {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleSave = () => {
-    console.log("Updated Data:", formData);
-    setSelectedItem(null);
+  const handleSave = async () => {
+    if (!formData) return;
+    console.log("FormData on Save:", JSON.stringify(formData, null, 2)); // Logs the entire formData object in a readable format
+
+    try {
+      // Map object type to update function
+      const apiMap: Record<string, Function> = {
+        sale: updateSale,
+        project: updateProject,
+      };
+
+      // Infer object type from `type` or `title`
+      const objectType = formData.type?.toLowerCase() || title.toLowerCase();
+      const updateFunction = apiMap[objectType];
+
+      if (!updateFunction) {
+        console.error(`No API mapped for object type: ${objectType}`);
+        return;
+      }
+
+      // Call the API
+      const response = await updateFunction(formData);
+
+      console.log(`${objectType} updated successfully:`, response);
+      setSelectedItem(null);
+    } catch (error) {
+      console.error("Error updating object:", error);
+    }
   };
 
   const handlePageChange = (page: number) => {
@@ -86,7 +114,7 @@ export function Display({ title, displayItems }: DisplayProp) {
           <div className="fixed inset-0 flex items-center justify-center bg-black/50">
             <DialogContent className="max-h-[60vh] overflow-y-auto w-full max-w-2xl bg-white rounded-lg">
               <DialogHeader>
-                <DialogTitle>Update {selectedItem.title}</DialogTitle>
+                <DialogTitle>Update {selectedItem?.title}</DialogTitle>
               </DialogHeader>
               <div className="space-y-4">
                 <div>
@@ -97,15 +125,17 @@ export function Display({ title, displayItems }: DisplayProp) {
                       </Label>
                       <Input
                         id={`detail-title-${index}`}
-                        value={detail.info}
+                        value={detail.info[0] || ""}
                         onChange={(e) =>
                           setFormData((prev) => {
-                            const updatedDetails = [...(prev.detail || [])];
-                            updatedDetails[index] = {
-                              ...updatedDetails[index],
-                              title: e.target.value,
+                            const updatedProperties = [
+                              ...(prev.itemProperty || []),
+                            ];
+                            updatedProperties[index] = {
+                              ...updatedProperties[index],
+                              info: [e.target.value],
                             };
-                            return { ...prev, detail: updatedDetails };
+                            return { ...prev, itemProperty: updatedProperties };
                           })
                         }
                       />

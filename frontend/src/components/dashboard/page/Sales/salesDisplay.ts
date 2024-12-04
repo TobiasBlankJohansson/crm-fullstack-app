@@ -3,6 +3,7 @@ import { Detail } from "../../display/DisplayItem";
 import { ItemPropertyProp } from "../../display/ItemProperty";
 
 type salesDisplayProp = {
+  Id: string;
   name: string;
   company: string;
   project: string;
@@ -16,6 +17,7 @@ export const salesDisplay = (fetch: salesDisplayProp[]): DisplayObject[] => {
     const details = setDetails(fetch);
     const itemPropertys = setItemProperty(fetch);
     return {
+      id: fetch.Id,
       title: fetch.name,
       count: count + "",
       detail: details,
