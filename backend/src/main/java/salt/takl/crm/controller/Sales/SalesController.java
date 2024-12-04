@@ -69,6 +69,6 @@ public class SalesController {
 
     @ExceptionHandler({NoSuchElementException.class})
     public ResponseEntity<String> handleException(NoSuchElementException e) {
-        return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
 }
