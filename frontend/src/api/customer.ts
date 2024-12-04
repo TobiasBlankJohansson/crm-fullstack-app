@@ -67,17 +67,19 @@ export const createCustomer = async (
   }
 };
 
-export const updateProject = async (
-  updatedSale: projectObject
-): Promise<projectObject> => {
+export const updateCustomer = async (
+  updatedCustomer: CustomerObject
+): Promise<CustomerObject> => {
   const response = await axios.put(
-    `${path}/api/projects/${updatedSale.id}`,
+    `${path}/api/projects/${updatedCustomer.id}`,
     {
-      project: updatedSale.name,
-      duration: updatedSale.duration,
-      customers: updatedSale.customers,
-      notes: updatedSale.notes,
-      sales: updatedSale.sales,
+      company: updatedCustomer.company,
+      project: updatedCustomer.project,
+      contact: updatedCustomer.contact,
+      tag: updatedCustomer.tag,
+      address: updatedCustomer.address,
+      phone: updatedCustomer.phone,
+      email: updatedCustomer.email,
     },
     {
       headers: {
