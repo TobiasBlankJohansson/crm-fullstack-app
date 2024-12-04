@@ -30,7 +30,7 @@ function inputs() {
   return [name, company, project, sale];
 }
 
-function onSubmit(
+async function onSubmit(
   e: React.FormEvent<HTMLFormElement>,
   setCreateNew: React.Dispatch<React.SetStateAction<boolean>>
 ) {
@@ -40,13 +40,13 @@ function onSubmit(
   );
   const save: CreateSalesDto = {
     name: list[0],
-    company: list[1],
+    customer: list[1],
     project: list[2],
     sale: list[3],
   };
 
   try {
-    createSale(save);
+    await createSale(save);
     toast({
       description: "Created new project",
     });

@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { Sidebar } from "../../Sidebar";
 import { Display } from "../../display/Display";
 import { projectDisplay } from "./projectsDisplay";
-import { getProjects } from "@/api/project";
 import { DashboardHeader } from "@/components/dashboard/DashboardHeader";
 import { Create, CreateObject } from "../../create/Create";
 import { projectsCreate } from "./projectsCreate";
+import { getProject } from "@/api/project";
 
 export function Projects() {
   const [createNew, setCreateNew] = useState<boolean>(false);
@@ -26,8 +26,7 @@ export function Projects() {
       return;
     }
     const getCostemers = async () => {
-      const fetchData = await getProjects();
-      console.log(fetchData);
+      const fetchData = await getProject();
       const customers = projectDisplay(fetchData);
       console.log(customers);
       setPage(() => <Display title={title} displayItems={customers} />);
