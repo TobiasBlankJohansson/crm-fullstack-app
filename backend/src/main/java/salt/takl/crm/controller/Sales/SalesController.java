@@ -5,11 +5,13 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import salt.takl.crm.service.SalesService;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.UUID;
 
 @Tag(name = "Sales", description = "API for managing sales data")
@@ -70,5 +72,11 @@ public class SalesController {
     @ExceptionHandler({NoSuchElementException.class})
     public ResponseEntity<String> handleException(NoSuchElementException e) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
+
+    @ExceptionHandler({MethodArgumentNotValidException.class})
+    public ResponseEntity<String> handleException(MethodArgumentNotValidException e) {
+        return ResponseEntity.badRequest().body(Objects.requireNonNull(
+                e.getBindingResult().getFieldError()).getDefaultMessage());
     }
 }
