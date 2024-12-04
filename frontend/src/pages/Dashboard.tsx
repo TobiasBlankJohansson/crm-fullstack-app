@@ -3,6 +3,7 @@ import { Sidebar } from "../components/dashboard/Sidebar";
 import customersData from "../data/customersData.json";
 import salesData from "../data/salesData.json";
 import projectsData from "../data/projectsData.json";
+import { SalesChart } from "@/components/dashboard/SalesChart";
 
 export function Dashboard() {
   const { user } = useUser();
@@ -23,6 +24,7 @@ export function Dashboard() {
   const sortedSales = [...salesData].sort(
     (a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
   );
+
   const latestSales = sortedSales.slice(0, 3).map((sale, index) => (
     <div key={index}>
       <h3 className="text-l font-semibold text-gray-600 mt-5">{sale.name}</h3>
@@ -36,6 +38,7 @@ export function Dashboard() {
   const sortedProjects = [...projectsData].sort(
     (a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
   );
+
   const latestProjects = sortedProjects.slice(0, 3).map((project, index) => (
     <div key={index}>
       <h3 className="text-l font-semibold text-gray-600 mt-5">
@@ -50,8 +53,11 @@ export function Dashboard() {
   return (
     <SignedIn>
       <div className="flex">
-        <Sidebar />
-        <div className="flex-1">
+        {/* Sidebar with sticky behavior */}
+        <div className="sticky top-0 h-screen">
+          <Sidebar />
+        </div>
+        <div className="flex-1 overflow-auto">
           <main className="mt-16 p-8">
             <h2 className="text-3xl font-semibold text-blue-700 text-center mb-8 mt-10">
               Welcome to ANCHOR {user?.firstName}!
@@ -81,6 +87,9 @@ export function Dashboard() {
                 </h3>
                 {latestCustomers}
               </div>
+            </div>
+            <div className="mt-10">
+              <SalesChart />
             </div>
           </main>
         </div>
