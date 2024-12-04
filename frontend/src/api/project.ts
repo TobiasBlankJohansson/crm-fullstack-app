@@ -25,7 +25,7 @@ export type CreateProjectDto = {
 };
 
 export const getProject = async (): Promise<projectObject[]> => {
-  const response = await axios.get(`${path}/api/sales`);
+  const response = await axios.get(`${path}/api/projects`);
   return await response.data;
 };
 
@@ -33,7 +33,7 @@ export const createProject = async (
   newProject: CreateProjectDto
 ): Promise<boolean> => {
   const response = await axios.post(
-    `${path}/api/project`,
+    `${path}/api/projects`,
     {
       project: newProject.name,
       duration: newProject.duration,
