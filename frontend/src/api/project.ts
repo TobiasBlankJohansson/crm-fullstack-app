@@ -3,6 +3,19 @@ import axios from "axios";
 
 const path = import.meta.env.VITE_BACKEND_URL;
 
+export type projectObject = {
+  name: string;
+  duration: string;
+  customers: string[];
+  notes: string[];
+  sales: sales[];
+};
+
+export type sales = {
+  name: string;
+  sale: string;
+};
+
 export type CreateProjectDto = {
   project: string;
   duration: string;
@@ -10,7 +23,14 @@ export type CreateProjectDto = {
   notes: string[];
 };
 
-export const createProject = async (newProject: CreateProjectDto): Promise<boolean> => {
+export const getProject = async (): Promise<projectObject[]> => {
+  const response = await axios.get(`${path}/api/sales`);
+  return await response.data;
+};
+
+export const createProject = async (
+  newProject: CreateProjectDto
+): Promise<boolean> => {
   const response = await axios.post(
     `${path}/api/project`,
     {
