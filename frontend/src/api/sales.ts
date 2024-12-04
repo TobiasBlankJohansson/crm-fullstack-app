@@ -1,4 +1,5 @@
 import axios from "axios";
+import { UUID } from "crypto";
 
 const path = import.meta.env.VITE_BACKEND_URL;
 
@@ -9,14 +10,17 @@ export type CreateSalesDto = {
   sale: string;
 };
 
-export const getSales = async () => {
-  try {
-    const response = await axios.get(`${path}/api/sales`);
-    console.log(response.data);
-    return response.data;
-  } catch (error) {
-    console.error(error);
-  }
+type sale = {
+  Id: UUID;
+  name: string;
+  customer: string;
+  project: string;
+  sale: string;
+};
+
+export const getSales = async (): Promise<sale[]> => {
+  const response = await axios.get(`${path}/api/sales`);
+  return await response.data;
 };
 
 export const createSale = async (newSale: CreateSalesDto) => {
