@@ -32,6 +32,18 @@ public class Customer {
     @Enumerated(EnumType.STRING)
     private List<Tag> tags;
 
+    @ManyToMany
+    @JoinTable(
+            name = "customer_project", // Name of the join table
+            joinColumns = @JoinColumn(name = "customer_id"), // Foreign key for Customer
+            inverseJoinColumns = @JoinColumn(name = "project_id") // Foreign key for Project
+    )
+    private List<Project> projects;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "customer_id")
+    private List<Contact> contacts;
+
     public User getUser() {
         return user;
     }
@@ -48,13 +60,19 @@ public class Customer {
         return contacts;
     }
 
-    @ManyToMany (mappedBy = "customers")
-    private List<Project> projects;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Contact> contacts;
 
     public Customer() {}
+
+    public Customer(String companyName, String address, String phoneNumber, String email, List<Tag> tags, List<Contact> contacts, List<Project> projects) {
+        this.companyName = companyName;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.tags = tags;
+        this.contacts = contacts;
+        this.projects = projects;
+    }
 
     public UUID getId() {
         return id;

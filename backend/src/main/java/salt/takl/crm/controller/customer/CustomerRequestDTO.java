@@ -2,9 +2,18 @@ package salt.takl.crm.controller.customer;
 
 import jakarta.validation.constraints.*;
 
+import java.util.List;
+import java.util.UUID;
+
 public record CustomerRequestDTO(
         @NotBlank String companyName,
         @NotBlank String address,
-        @Pattern(regexp = "^\\d{3}-\\d{3}-\\d{4}$", message = "Phone number must match XXX-XXX-XXXX") String phoneNumber,
-        @Email String email
-) {}
+        String phoneNumber,
+        @Email String email,
+        List<UUID> projects,
+        List<String> tags,
+        List<ContactDTO> contacts
+) {
+    public static record ContactDTO(String name, String phone, String email) {}
+
+}
