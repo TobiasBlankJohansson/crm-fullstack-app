@@ -26,7 +26,7 @@ public class CustomerController {
 
     @Operation(summary = "Get all customers", description = "Retrieves a list of all customers")
     @GetMapping
-    public ResponseEntity<List <CustomerResponseDTO>> findAll() {
+    public ResponseEntity<List <CustomerResponseDTO>> getCustomers() {
         List <Customer> customers = customerService.getAllCustomers();
         List <CustomerResponseDTO> customerResponseDTOS = customers.stream()
                 .map(customer -> customerMapper.customerToResponseDTO(customer)
