@@ -35,6 +35,20 @@ public class Project {
     public Project() {
     }
 
+    public Project(String name, int duration, List<Notes> notes, List<Customer> customers) {
+        this.name = name;
+        this.duration = duration;
+        this.notes = notes;
+        this.customers = customers;
+    }
+
+    public Project(String name, int duration, List<Sale> sales, List<Notes> notes, List<Customer> customers) {
+        this.name = name;
+        this.duration = duration;
+        this.sales = sales;
+        this.notes = notes;
+        this.customers = customers;
+    }
 
     public UUID getId() {
         return id;
@@ -52,36 +66,28 @@ public class Project {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public int getDuration() {
+        return duration;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public LocalDateTime getStarted() {
-        return started;
-    }
-
-    public void setStarted(LocalDateTime started) {
-        this.started = started;
-    }
-
-    public LocalDateTime getEnded() {
-        return ended;
-    }
-
-    public void setEnded(LocalDateTime ended) {
-        this.ended = ended;
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 
     public List<Sale> getSales() {
         return sales;
     }
 
-    public void setSales(Sale sale) {
-        sales.add(sale);
+    public void setSales(List<Sale> sales) {
+        this.sales = sales;
+    }
+
+    public List<Notes> getNotes() {
+        return notes;
+    }
+
+    public void setNotes(List<Notes> notes) {
+        this.notes = notes;
     }
 
     public List<Customer> getCustomers() {
