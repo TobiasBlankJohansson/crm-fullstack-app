@@ -24,8 +24,10 @@ public class ProjectController {
     @Operation(summary = "Create a project", description = "Creates a new project")
     @PostMapping
     public ResponseEntity<ProjectResponseDTO> createProject(@RequestBody ProjectRequestDTO projectRequestDTO) {
-        ProjectResponseDTO createdProject = projectService.createProject(projectRequestDTO);
-        return new ResponseEntity<>(createdProject, HttpStatus.CREATED);
+        var project = projectService.createProject(
+                projectRequestDTO.name(),projectRequestDTO.duration(),
+                projectRequestDTO.customers(),projectRequestDTO.notes());
+        return new ResponseEntity<>(ProjectResponseDTO.projectToDTO(project), HttpStatus.CREATED);
     }
 
     @Operation(summary = "Get all projects", description = "Retrieves a list of all projects")
