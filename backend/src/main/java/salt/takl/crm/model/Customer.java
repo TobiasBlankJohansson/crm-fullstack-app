@@ -28,10 +28,6 @@ public class Customer {
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Sale> sales;
 
-    @ElementCollection(targetClass = Tags.class)
-    @Enumerated(EnumType.STRING)
-    private List<Tags> tags;
-
     @ManyToMany
     @JoinTable(
             name = "customer_project",
@@ -44,11 +40,15 @@ public class Customer {
     @JoinColumn(name = "customer_id")
     private List<Contact> contacts;
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "tag_id")
+    private List<Tag> tags;
+
     public User getUser() {
         return user;
     }
 
-    public List<Tags> getTags() {
+    public List<Tag> getTags() {
         return tags;
     }
 
@@ -64,7 +64,7 @@ public class Customer {
 
     public Customer() {}
 
-    public Customer(String companyName, String address, String phoneNumber, String email, List<Tags> tags, List<Contact> contacts, List<Project> projects) {
+    public Customer(String companyName, String address, String phoneNumber, String email, List<Tag> tags, List<Contact> contacts, List<Project> projects) {
         this.companyName = companyName;
         this.address = address;
         this.phoneNumber = phoneNumber;
