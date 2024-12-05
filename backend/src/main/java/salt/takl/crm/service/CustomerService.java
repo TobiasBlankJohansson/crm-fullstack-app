@@ -7,6 +7,7 @@ import salt.takl.crm.controller.customer.CustomerRequestDTO;
 import salt.takl.crm.model.Contact;
 import salt.takl.crm.model.Customer;
 import salt.takl.crm.model.Project;
+import salt.takl.crm.model.Tag;
 import salt.takl.crm.repository.CustomerRepository;
 import salt.takl.crm.repository.ProjectRepository;
 
@@ -31,14 +32,14 @@ public class CustomerService {
 
     public Customer createCustomer(String companyName, String address, String phoneNumber, String email,
                                    List<UUID> projectsId, List<String> tags, List<CustomerRequestDTO.ContactDTO> contactDto) {
-        List<Contact> contacts = contactDto.stream().map(contact -> new Contact(contact.name(),contact.phone(),contact.email())).toList();
+        List<Contact> contacts = contactDto.stream().map(contact -> new Contact(contact.name(), contact.phone(), contact.email())).toList();
 
         List<Project> projects = projectsId.stream().map(projectId -> projectRepository.findById(projectId)
                 .orElseThrow(() -> new NoSuchElementException("Customer with ID " + projectId + " not found"))).toList();
 
-        Customer customer = new Customer(companyName,address,phoneNumber,email,new ArrayList<>(),contacts,projects);
+        List<Tag> tag = tags.stream().map(Tag::new).toList();
 
-
+        Customer customer = new Customer(companyName, address, phoneNumber, email, tag, contacts, projects);
 
         return customerRepository.save(customer);
     }
