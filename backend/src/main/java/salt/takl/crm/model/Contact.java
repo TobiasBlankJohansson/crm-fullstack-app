@@ -21,9 +21,8 @@ public class Contact {
 
     public Contact() {}
 
-    public Contact(String firstName, String lastName, String email, String phone) {
+    public Contact(String firstName, String email, String phone) {
         this.firstName = firstName;
-        this.lastName = lastName;
         this.email = email;
         this.phone = phone;
     }

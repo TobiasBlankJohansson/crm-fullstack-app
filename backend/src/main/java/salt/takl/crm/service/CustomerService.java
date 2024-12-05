@@ -10,6 +10,7 @@ import salt.takl.crm.model.Project;
 import salt.takl.crm.repository.CustomerRepository;
 import salt.takl.crm.repository.ProjectRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.UUID;
@@ -29,13 +30,13 @@ public class CustomerService {
     }
 
     public Customer createCustomer(String companyName, String address, String phoneNumber, String email,
-                                   List<UUID> projectsId, List<String> tags, List<CustomerRequestDTO.ContactDTO> contact) {
-        List<Contact> contacts = contact.stream().map(new Contact())
+                                   List<UUID> projectsId, List<String> tags, List<CustomerRequestDTO.ContactDTO> contactDto) {
+        List<Contact> contacts = contactDto.stream().map(contact -> new Contact(contact.name(),contact.phone(),contact.email())).toList();
 
         List<Project> projects = projectsId.stream().map(projectId -> projectRepository.findById(projectId)
                 .orElseThrow(() -> new NoSuchElementException("Customer with ID " + projectId + " not found"))).toList();
 
-        Customer customer = new Customer(companyName,address,phoneNumber,email,projects);
+        Customer customer = new Customer(companyName,address,phoneNumber,email,new ArrayList<>(),contacts,projects);
         return customerRepository.save(customer);
     }
 
