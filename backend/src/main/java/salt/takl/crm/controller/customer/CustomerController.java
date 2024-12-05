@@ -29,7 +29,7 @@ public class CustomerController {
     public ResponseEntity<List <CustomerResponseDTO>> getCustomers() {
         List <Customer> customers = customerService.getAllCustomers();
         List <CustomerResponseDTO> customerResponseDTOS = customers.stream()
-                .map(customer -> customerMapper.customerToResponseDTO(customer)
+                .map(customerMapper::customerToResponseDTO
                 ).toList();
         return ResponseEntity.ok(customerResponseDTOS);
     }
