@@ -1,6 +1,9 @@
 package salt.takl.crm.service;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import org.springframework.stereotype.Service;
+import salt.takl.crm.controller.customer.CustomerRequestDTO;
 import salt.takl.crm.model.Customer;
 import salt.takl.crm.repository.CustomerRepository;
 
@@ -19,13 +22,17 @@ public class CustomerService {
         return customerRepository.findAll();
     }
 
-    public Customer createCustomer(Customer customer) {
+    public Customer createCustomer(String companyName, String address, String phoneNumber, String email,
+                                   List<String> projects, List<String> tags, List<CustomerRequestDTO.ContactDTO> contacts) {
+
+        Customer customer = new Customer();
         return customerRepository.save(customer);
     }
 
     public Customer updateCustomer(UUID customerId, Customer updatedCustomer) {
         Customer existingCustomer = customerRepository.findCustomerById(customerId)
-                .orElseThrow(() -> new RuntimeException("Customer not found with ID: " + customerId));;
+                .orElseThrow(() -> new RuntimeException("Customer not found with ID: " + customerId));
+        ;
 
         existingCustomer.setPhoneNumber(updatedCustomer.getPhoneNumber());
         existingCustomer.setEmail(updatedCustomer.getEmail());
