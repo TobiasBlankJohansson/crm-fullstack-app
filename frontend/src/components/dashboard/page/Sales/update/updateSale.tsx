@@ -81,6 +81,7 @@ export default function UpdateSaleForm({
 
   const handleSave = async () => {
     try {
+      console.log(formData);
       const updatedSale = {
         id: formData.id,
         name:
@@ -92,7 +93,8 @@ export default function UpdateSaleForm({
         project:
           formData.itemProperty.find((prop) => prop.title === "Project")
             ?.info[0] || "",
-        sale: formData.detail.find((d) => d.title === "Sale")?.value || "",
+        sale: formData.itemProperty.find((prop) => prop.title === "Sales")
+          ?.info[0],
       };
 
       await updateSale(updatedSale);
