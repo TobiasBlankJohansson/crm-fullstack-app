@@ -40,7 +40,8 @@ public class Customer {
     @JoinColumn(name = "customer_id")
     private List<Contact> contacts;
 
-    @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "customer_id")
     private List<Tag> tags;
 
     public User getUser() {
