@@ -15,8 +15,6 @@ import java.util.UUID;
 public interface ProjectRepository extends JpaRepository<Project, UUID> {
     Optional<Project> findProjectById(UUID id);
 
-    @Query("SELECT p FROM Project p WHERE p.started <= :currentDate AND p.ended >= :currentDate")
-    List<Project> findActiveProjects(@Param("currentDate") LocalDateTime currentDate);
 
     @Query("SELECT p FROM Project p JOIN p.customers c WHERE c.id = :customerId")
     List<Project> findProjectsByCustomerId(@Param("customerId") UUID customerId);

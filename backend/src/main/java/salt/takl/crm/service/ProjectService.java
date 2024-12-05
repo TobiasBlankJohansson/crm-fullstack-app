@@ -70,7 +70,7 @@ public class ProjectService {
     }
 
     private ProjectResponseDTO mapToDTO(Project project) {
-        String duration = calculateDuration(project.getStarted(), project.getEnded());
+        int duration = project.getDuration();
 
         List<String> customers = project.getCustomers().stream()
                 .map(customer -> customer.getCompanyName())
