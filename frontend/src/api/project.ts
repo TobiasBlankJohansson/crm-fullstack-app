@@ -93,22 +93,6 @@ export const deleteProject = async (projectId: UUID): Promise<boolean> => {
 };
 
 export const getProjectSelection = async (): Promise<ProjectInfo[]> => {
-  return await new Promise((resolve) => {
-    setTimeout(() => {
-      resolve([
-        {
-          title: "Project Alpha",
-          id: "00000000-0000-4000-8000-000000000000",
-        },
-        {
-          title: "Project Beta",
-          id: "00000000-0000-4000-8000-000000000001",
-        },
-        {
-          title: "Project Gamma",
-          id: "00000000-0000-4000-8000-000000000002",
-        },
-      ]);
-    }, 0);
-  });
+  const response = await axios.get(`${path}/api/projects/select`);
+  return await response.data;
 };
