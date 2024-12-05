@@ -55,29 +55,31 @@ export const createSale = async (newSale: CreateSalesDto): Promise<boolean> => {
   }
 };
 
-export const updateSale = async (updatedSale: any): Promise<saleObject> => {
-  console.log("Updatesale " + updatedSale.detail[0].value);
-  const response = await axios.put(
-    `${path}/api/sales/${updatedSale.Id}`,
-    {
+export const updateSale = async (
+  updatedSale: UpdateSaleDto
+): Promise<saleObject> => {
+  console.log("upd  : " + updatedSale.sale);
+
+  const response = await fetch(`${path}/api/sales/${updatedSale.id}`, {
+    method: "PUT",
+    headers: {
+      Accept: "*/*",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
       name: updatedSale.name,
-      customer: updatedSale.customer,
+      customer: updatedSale.company,
       project: updatedSale.project,
       sale: Number(updatedSale.sale),
-    },
-    {
-      headers: {
-        accept: "*/*",
-        "Content-Type": "application/json",
-      },
-    }
-  );
+    }),
+  });
 
-  if (response.status >= 200 && response.status < 300) {
-    return response.data;
-  } else {
+  if (!response.ok) {
     throw new Error(`Unexpected response status: ${response.status}`);
   }
+
+  const responseData = await response.json();
+  return responseData;
 };
 
 export const deleteSale = async (saleId: UUID): Promise<boolean> => {
