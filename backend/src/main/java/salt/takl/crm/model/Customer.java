@@ -32,6 +32,13 @@ public class Customer {
     @Enumerated(EnumType.STRING)
     private List<Tag> tags;
 
+    @ManyToMany (mappedBy = "customers")
+    private List<Project> projects;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "customer_id")
+    private List<Contact> contacts;
+
     public User getUser() {
         return user;
     }
@@ -48,11 +55,7 @@ public class Customer {
         return contacts;
     }
 
-    @ManyToMany (mappedBy = "customers")
-    private List<Project> projects;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Contact> contacts;
 
     public Customer() {}
 

@@ -51,10 +51,10 @@ public class CustomerController {
     @Operation(summary = "Create a customer", description = "Creates a new customer")
     @PostMapping
     public ResponseEntity<CustomerResponseDTO> createCustomer(@RequestBody CustomerRequestDTO customerRequestDTO) {
-        Customer customer = customerMapper.requestDTOToCustomer(customerRequestDTO);
-        Customer savedCustomer = customerService.saveCustomer(customer);
-        CustomerResponseDTO responseDTO = customerMapper.customerToResponseDTO(savedCustomer);
-        return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
+        Customer customer = customerService.createCustomer(
+                customerRequestDTO.companyName(), customerRequestDTO.address(), customerRequestDTO.phoneNumber(), customerRequestDTO.email(),
+                customerRequestDTO.projects(), customerRequestDTO.tags(), customerRequestDTO.contacts());
+        return new ResponseEntity<>(customerMapper.customerToResponseDTO(customer), HttpStatus.CREATED);
     }
 
     @Operation(summary = "Update a customer", description = "Update the info of an existing customer")

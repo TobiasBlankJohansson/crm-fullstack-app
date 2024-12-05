@@ -37,7 +37,12 @@ public class CustomerService {
                 .orElseThrow(() -> new NoSuchElementException("Customer with ID " + projectId + " not found"))).toList();
 
         Customer customer = new Customer(companyName,address,phoneNumber,email,new ArrayList<>(),contacts,projects);
-        return customerRepository.save(customer);
+
+        projects.forEach(project -> project.getCustomers().add(customer));
+        UUID customerId = customerRepository.save(customer).getId();
+        projectRepository.saveAll(projects);
+
+        return customerRepository.findById(customerId).get();
     }
 
     public Customer updateCustomer(UUID customerId, Customer updatedCustomer) {
