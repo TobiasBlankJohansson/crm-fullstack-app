@@ -28,15 +28,15 @@ public class Customer {
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Sale> sales;
 
-    @ElementCollection(targetClass = Tag.class)
+    @ElementCollection(targetClass = Tags.class)
     @Enumerated(EnumType.STRING)
-    private List<Tag> tags;
+    private List<Tags> tags;
 
     @ManyToMany
     @JoinTable(
-            name = "customer_project", // Name of the join table
-            joinColumns = @JoinColumn(name = "customer_id"), // Foreign key for Customer
-            inverseJoinColumns = @JoinColumn(name = "project_id") // Foreign key for Project
+            name = "customer_project",
+            joinColumns = @JoinColumn(name = "customer_id"),
+            inverseJoinColumns = @JoinColumn(name = "project_id")
     )
     private List<Project> projects;
 
@@ -48,7 +48,7 @@ public class Customer {
         return user;
     }
 
-    public List<Tag> getTags() {
+    public List<Tags> getTags() {
         return tags;
     }
 
@@ -64,7 +64,7 @@ public class Customer {
 
     public Customer() {}
 
-    public Customer(String companyName, String address, String phoneNumber, String email, List<Tag> tags, List<Contact> contacts, List<Project> projects) {
+    public Customer(String companyName, String address, String phoneNumber, String email, List<Tags> tags, List<Contact> contacts, List<Project> projects) {
         this.companyName = companyName;
         this.address = address;
         this.phoneNumber = phoneNumber;
