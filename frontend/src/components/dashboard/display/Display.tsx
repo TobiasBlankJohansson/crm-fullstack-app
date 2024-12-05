@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -10,8 +9,10 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Pagination } from "@/components/ui/pagination";
-import { Dialog } from "@radix-ui/react-dialog";
+import { HiPencilAlt, HiTrash } from "react-icons/hi";
 import UpdateSaleForm from "../page/Sales/update/updateSale";
+// import UpdateProjectForm from "@/components/forms/UpdateProjectForm"; // Placeholder for UpdateProjectForm
+// import UpdateCustomerForm from "@/components/forms/UpdateCustomerForm"; // Placeholder for UpdateCustomerForm
 
 type DisplayProp = {
   title: string;
@@ -66,40 +67,39 @@ export function Display({ title, displayItems }: DisplayProp) {
       <h2 className="text-4xl font-semibold mb-6">My {title}</h2>
 
       {selectedItem && (
-        <Dialog open={true} onOpenChange={handleCancel}>
-          <div className="fixed inset-0 flex items-center justify-center bg-black/50">
-            {selectedItem.type === "sale" && (
-              <UpdateSaleForm
-                sale={selectedItem} // Pass the selected sale object
-                onClose={handleCancel}
-                onUpdate={() => {
-                  handleCancel();
-                  // Optionally refresh data here if needed
-                }}
-              />
-            )}
-            {/* {selectedItem.type === "project" && (
-              <UpdateProjectForm
-                project={selectedItem} // Pass the selected project object
-                onClose={handleCancel}
-                onUpdate={() => {
-                  handleCancel();
-                  // Optionally refresh data here if needed
-                }}
-              />
-            )}
-            {selectedItem.type === "customer" && (
-              <UpdateCustomerForm
-                customer={selectedItem} // Pass the selected customer object
-                onClose={handleCancel}
-                onUpdate={() => {
-                  handleCancel();
-                  // Optionally refresh data here if needed
-                }}
-              />
-            )} */}
-          </div>
-        </Dialog>
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          {selectedItem.type === "sale" && (
+            <UpdateSaleForm
+              sale={selectedItem} // Pass the selected sale object
+              onClose={handleCancel}
+              onUpdate={() => {
+                handleCancel();
+                // Optionally refresh data here if needed
+              }}
+            />
+          )}
+          {/* Uncomment and use these when UpdateProjectForm and UpdateCustomerForm are available */}
+          {/* {selectedItem.type === "project" && (
+      <UpdateProjectForm
+        project={selectedItem} // Pass the selected project object
+        onClose={handleCancel}
+        onUpdate={() => {
+          handleCancel();
+          // Optionally refresh data here if needed
+        }}
+      />
+    )}
+    {selectedItem.type === "customer" && (
+      <UpdateCustomerForm
+        customer={selectedItem} // Pass the selected customer object
+        onClose={handleCancel}
+        onUpdate={() => {
+          handleCancel();
+          // Optionally refresh data here if needed
+        }}
+      />
+    )} */}
+        </div>
       )}
 
       <Table>
@@ -124,20 +124,22 @@ export function Display({ title, displayItems }: DisplayProp) {
                   </div>
                 ))}
               </TableCell>
-              <TableCell className="text-right">
-                <Button
-                  variant="outline"
-                  className="mr-2"
+              <TableCell className="text-right flex justify-end space-x-4">
+                <HiPencilAlt
+                  className="text-blue-500 hover:text-blue-700 cursor-pointer"
+                  size={20}
                   onClick={() => handleUpdate(item)}
-                >
-                  Update
-                </Button>
-                <Button variant="destructive">Delete</Button>
+                />
+                <HiTrash
+                  className="text-gray-500 hover:text-gray-700 cursor-pointer"
+                  size={20}
+                />
               </TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
+
       <div className="mt-4 flex justify-center">
         <Pagination
           currentPage={currentPage}

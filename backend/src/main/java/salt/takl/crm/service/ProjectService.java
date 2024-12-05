@@ -1,8 +1,8 @@
 package salt.takl.crm.service;
 
 import org.springframework.stereotype.Service;
-import salt.takl.crm.dto.request.ProjectRequestDTO;
-import salt.takl.crm.dto.response.ProjectResponseDTO;
+import salt.takl.crm.controller.project.ProjectRequestDTO;
+import salt.takl.crm.controller.project.ProjectResponseDTO;
 import salt.takl.crm.model.Customer;
 import salt.takl.crm.model.Project;
 import salt.takl.crm.repository.CustomerRepository;
@@ -24,9 +24,8 @@ public class ProjectService {
         this.customerRepository = customerRepository;
     }
 
-    public List<salt.takl.crm.dto.response.ProjectResponseDTO> getAllProjects() {
-        List<Project> projects = projectRepository.findAll();
-        return projects.stream().map(this::mapToDTO).toList();
+    public List<Project> getAllProjects() {
+        return projectRepository.findAll();
     }
 
     public List<ProjectResponseDTO> getProjectsByCustomerId(UUID customerId) {
@@ -85,7 +84,7 @@ public class ProjectService {
         List<ProjectResponseDTO.SaleDTO> sales = project.getSales().stream()
                 .map(sale -> new ProjectResponseDTO.SaleDTO(
                         sale.getName(),
-                        formatSale(sale.getSalesAmount())
+                        sale.getSalesAmount()
                 ))
                 .toList();
 

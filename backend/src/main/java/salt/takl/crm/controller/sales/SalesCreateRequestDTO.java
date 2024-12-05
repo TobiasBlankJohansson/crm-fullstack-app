@@ -1,4 +1,4 @@
-package salt.takl.crm.controller.Sales;
+package salt.takl.crm.controller.sales;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;

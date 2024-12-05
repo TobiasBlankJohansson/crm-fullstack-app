@@ -3,12 +3,12 @@ import { Detail } from "../../display/DisplayItem";
 import { ItemPropertyProp } from "../../display/ItemProperty";
 
 type CustomerDisplayProp = {
-  companyName: string;
-  projects: string[];
-  contacts: contact[];
-  tags: string[];
+  company: string;
+  project: string[];
+  contact: contact[];
+  tag: string[];
   address: string;
-  phoneNumber: string;
+  phone: string;
   email: string;
 };
 
@@ -27,7 +27,7 @@ export const customerDisplay = (
     const details = setDetails(fetch);
     const itemPropertys = setItemProperty(fetch);
     return {
-      title: fetch.companyName,
+      title: fetch.company,
       count: count + "",
       detail: details,
       itemProperty: itemPropertys,
@@ -38,8 +38,8 @@ export const customerDisplay = (
 };
 
 const setDetails = (fetch: CustomerDisplayProp): Detail[] => {
-  const tag: Detail = { title: "Tag", value: fetch.tags.join(", ") };
-  const phone: Detail = { title: "Phone", value: fetch.phoneNumber };
+  const tag: Detail = { title: "Tag", value: fetch.tag.join(", ") };
+  const phone: Detail = { title: "Phone", value: fetch.phone };
   const email: Detail = { title: "Email", value: fetch.email };
   return [tag, phone, email];
 };
@@ -47,22 +47,22 @@ const setDetails = (fetch: CustomerDisplayProp): Detail[] => {
 const setItemProperty = (fetch: CustomerDisplayProp): ItemPropertyProp[] => {
   const company: ItemPropertyProp = {
     title: "Company",
-    info: [fetch.companyName],
+    info: [fetch.company],
   };
   const project: ItemPropertyProp = {
     title: "Project",
-    info: [fetch.projects.join(", ")],
+    info: [fetch.project.join(", ")],
   };
   const contact: ItemPropertyProp = {
     title: "Contacs",
-    info: fetch.contacts.map(
+    info: fetch.contact.map(
       (person) =>
         `Name: ${person.name}, Phone: ${person.phone}, Email: ${person.email}`
     ),
   };
-  const tag: ItemPropertyProp = { title: "Tag", info: [fetch.tags.join(", ")] };
+  const tag: ItemPropertyProp = { title: "Tag", info: [fetch.tag.join(", ")] };
   const address: ItemPropertyProp = { title: "Address", info: [fetch.address] };
-  const phone: ItemPropertyProp = { title: "Phone", info: [fetch.phoneNumber] };
+  const phone: ItemPropertyProp = { title: "Phone", info: [fetch.phone] };
   const email: ItemPropertyProp = { title: "Email", info: [fetch.email] };
   return [company, project, contact, tag, address, phone, email];
 };
