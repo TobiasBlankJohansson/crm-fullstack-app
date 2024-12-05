@@ -37,8 +37,8 @@ function onSubmit(
     (id) => (document.getElementById(id) as HTMLInputElement).value
   );
   const save: CreateProjectDto = {
-    project: list[0],
-    duration: list[1] + " month",
+    name: list[0],
+    duration: list[1],
     customers: JSON.parse(list[2]).map((customer: customer) => customer.id),
     notes: JSON.parse(list[3]).map((note: notes) => note.title),
   };
