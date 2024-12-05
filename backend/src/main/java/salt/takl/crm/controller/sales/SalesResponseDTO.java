@@ -1,4 +1,4 @@
-package salt.takl.crm.controller.Sales;
+package salt.takl.crm.controller.sales;
 
 import salt.takl.crm.model.Sale;
 

@@ -1,11 +1,9 @@
-package salt.takl.crm.controller;
+package salt.takl.crm.controller.customer;
 
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import salt.takl.crm.dto.request.CustomerRequestDTO;
-import salt.takl.crm.dto.response.CustomerResponseDTO;
 import salt.takl.crm.mappers.CustomerMapper;
 import salt.takl.crm.model.Customer;
 
@@ -28,12 +26,18 @@ public class CustomerController {
 
     @Operation(summary = "Get all customers", description = "Retrieves a list of all customers")
     @GetMapping
-    public ResponseEntity<List <CustomerResponseDTO>> findAll() {
+    public ResponseEntity<List <CustomerResponseDTO>> getCustomers() {
         List <Customer> customers = customerService.getAllCustomers();
         List <CustomerResponseDTO> customerResponseDTOS = customers.stream()
-                .map(customer -> customerMapper.customerToResponseDTO(customer)
+                .map(customerMapper::customerToResponseDTO
                 ).toList();
         return ResponseEntity.ok(customerResponseDTOS);
+    }
+
+    @Operation(summary = "Get all customers with only name and id", description = "Retrieves a list of all customers with only name and id")
+    @GetMapping("/select")
+    public ResponseEntity<List <CustomerSelectDto>> getCustomersSelect() {
+        return ResponseEntity.ok(customerService.getAllCustomers().stream().map(CustomerSelectDto::customerToDto).toList());
     }
 
     @Operation(summary = "Find a customer by ID", description = "Retrieves a customer depending on its ID")
@@ -47,10 +51,10 @@ public class CustomerController {
     @Operation(summary = "Create a customer", description = "Creates a new customer")
     @PostMapping
     public ResponseEntity<CustomerResponseDTO> createCustomer(@RequestBody CustomerRequestDTO customerRequestDTO) {
-        Customer customer = customerMapper.requestDTOToCustomer(customerRequestDTO);
-        Customer savedCustomer = customerService.saveCustomer(customer);
-        CustomerResponseDTO responseDTO = customerMapper.customerToResponseDTO(savedCustomer);
-        return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
+        Customer customer = customerService.createCustomer(
+                customerRequestDTO.companyName(), customerRequestDTO.address(), customerRequestDTO.phoneNumber(), customerRequestDTO.email(),
+                customerRequestDTO.projects(), customerRequestDTO.tags(), customerRequestDTO.contacts());
+        return new ResponseEntity<>(customerMapper.customerToResponseDTO(customer), HttpStatus.CREATED);
     }
 
     @Operation(summary = "Update a customer", description = "Update the info of an existing customer")

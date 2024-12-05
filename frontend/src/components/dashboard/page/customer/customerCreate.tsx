@@ -47,7 +47,7 @@ function onSubmit(
     (id) => (document.getElementById(id) as HTMLInputElement).value
   );
   const save: CreateCustomerDto = {
-    company: list[0],
+    companyName: list[0],
     project: JSON.parse(list[1]).map((project: project) => project.id),
     contact: JSON.parse(list[2]).map((contact: contact) => {
       return {
@@ -58,9 +58,10 @@ function onSubmit(
     }),
     tag: JSON.parse(list[3]).map((tag: tag) => tag.title),
     address: list[4],
-    phone: list[5],
+    phoneNumber: list[5],
     email: list[6],
   };
+  console.log(save);
 
   try {
     createCustomer(save);

@@ -37,7 +37,7 @@ export const projectDisplay = (
 };
 
 const setDetails = (fetch: ProjectDisplayProp): Detail[] => {
-  const duration: Detail = { title: "Sale", value: fetch.duration };
+  const duration: Detail = { title: "Duration", value: fetch.duration };
   return [duration];
 };
 

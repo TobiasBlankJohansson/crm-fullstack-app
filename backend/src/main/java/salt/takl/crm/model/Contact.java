@@ -21,6 +21,12 @@ public class Contact {
 
     public Contact() {}
 
+    public Contact(String firstName, String email, String phone) {
+        this.firstName = firstName;
+        this.email = email;
+        this.phone = phone;
+    }
+
     public UUID getId() {
         return id;
     }

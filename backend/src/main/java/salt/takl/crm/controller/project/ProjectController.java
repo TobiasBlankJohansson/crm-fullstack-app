@@ -1,13 +1,11 @@
-package salt.takl.crm.controller;
+package salt.takl.crm.controller.project;
 
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import salt.takl.crm.dto.request.ProjectRequestDTO;
-import salt.takl.crm.dto.response.ProjectResponseDTO;
+import salt.takl.crm.controller.customer.CustomerSelectDto;
 import salt.takl.crm.model.Project;
-import salt.takl.crm.repository.ProjectRepository;
 import salt.takl.crm.service.ProjectService;
 
 import java.util.List;
@@ -27,14 +25,22 @@ public class ProjectController {
     @Operation(summary = "Create a project", description = "Creates a new project")
     @PostMapping
     public ResponseEntity<ProjectResponseDTO> createProject(@RequestBody ProjectRequestDTO projectRequestDTO) {
-        ProjectResponseDTO createdProject = projectService.createProject(projectRequestDTO);
-        return new ResponseEntity<>(createdProject, HttpStatus.CREATED);
+        var project = projectService.createProject(
+                projectRequestDTO.name(),projectRequestDTO.duration(),
+                projectRequestDTO.customers(),projectRequestDTO.notes());
+        return new ResponseEntity<>(ProjectResponseDTO.projectToDTO(project), HttpStatus.CREATED);
     }
 
     @Operation(summary = "Get all projects", description = "Retrieves a list of all projects")
     @GetMapping
     public List<ProjectResponseDTO> getAllProjects() {
-        return projectService.getAllProjects();
+        return projectService.getAllProjects().stream().map(ProjectResponseDTO::projectToDTO).toList();
+    }
+
+    @Operation(summary = "Get all customers with only name and id", description = "Retrieves a list of all customers with only name and id")
+    @GetMapping("/select")
+    public ResponseEntity<List <ProjectSelectDto>> getCustomersSelect() {
+        return ResponseEntity.ok(projectService.getAllProjects().stream().map(ProjectSelectDto::projectToDto).toList());
     }
 
     @Operation(summary = "Find a project by ID", description = "Retrieves a project depending on its ID")
@@ -47,8 +53,10 @@ public class ProjectController {
     @Operation(summary = "Update a project", description = "Update the info of an existing project")
     @PutMapping("/{projectId}")
     public ResponseEntity<ProjectResponseDTO> updateProject(@PathVariable String projectId, @RequestBody ProjectRequestDTO projectRequestDTO) {
-        ProjectResponseDTO updatedProject = projectService.updateProject(UUID.fromString(projectId), projectRequestDTO);
-        return new ResponseEntity<>(updatedProject, HttpStatus.OK);
+        Project project = projectService.updateProject(
+                UUID.fromString(projectId), projectRequestDTO.name(),Integer.parseInt(projectRequestDTO.duration()),
+                projectRequestDTO.customers(),projectRequestDTO.notes());
+        return new ResponseEntity<>(ProjectResponseDTO.projectToDTO(project), HttpStatus.OK);
     }
 
     @Operation(summary = "Delete a project", description = "Delete a project by ID")

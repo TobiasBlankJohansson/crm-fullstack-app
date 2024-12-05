@@ -1,5 +1,6 @@
 import { ProjectInfo } from "@/components/dashboard/page/customer/create/AddProject";
 import axios from "axios";
+import { UUID } from "crypto";
 
 const path = import.meta.env.VITE_BACKEND_URL;
 
@@ -25,17 +26,18 @@ export type CreateProjectDto = {
 };
 
 export const getProject = async (): Promise<projectObject[]> => {
-  const response = await axios.get(`${path}/api/sales`);
+  const response = await axios.get(`${path}/api/projects`);
   return await response.data;
 };
 
 export const createProject = async (
   newProject: CreateProjectDto
 ): Promise<boolean> => {
+  console.log(newProject);
   const response = await axios.post(
-    `${path}/api/project`,
+    `${path}/api/projects`,
     {
-      project: newProject.name,
+      name: newProject.name,
       duration: newProject.duration,
       customers: newProject.customers,
       notes: newProject.notes,
@@ -56,16 +58,16 @@ export const createProject = async (
 };
 
 export const updateProject = async (
-  updatedSale: projectObject
+  updatedProject: projectObject
 ): Promise<projectObject> => {
   const response = await axios.put(
-    `${path}/api/sales/${updatedSale.id}`,
+    `${path}/api/projects/${updatedProject.id}`,
     {
-      project: updatedSale.name,
-      duration: updatedSale.duration,
-      customers: updatedSale.customers,
-      notes: updatedSale.notes,
-      sales: updatedSale.sales,
+      project: updatedProject.name,
+      duration: updatedProject.duration,
+      customers: updatedProject.customers,
+      notes: updatedProject.notes,
+      sales: updatedProject.sales,
     },
     {
       headers: {
@@ -82,23 +84,16 @@ export const updateProject = async (
   }
 };
 
+export const deleteProject = async (projectId: UUID): Promise<boolean> => {
+  const response = await axios.delete(`${path}/api/projects/${projectId}`);
+  if (response.status >= 200 && response.status < 300) {
+    return true;
+  } else {
+    throw new Error(`Unexpected response status: ${response.status}`);
+  }
+};
+
 export const getProjectSelection = async (): Promise<ProjectInfo[]> => {
-  return await new Promise((resolve) => {
-    setTimeout(() => {
-      resolve([
-        {
-          title: "Project Alpha",
-          id: "00000000-0000-4000-8000-000000000000",
-        },
-        {
-          title: "Project Beta",
-          id: "00000000-0000-4000-8000-000000000001",
-        },
-        {
-          title: "Project Gamma",
-          id: "00000000-0000-4000-8000-000000000002",
-        },
-      ]);
-    }, 0);
-  });
+  const response = await axios.get(`${path}/api/projects/select`);
+  return await response.data;
 };

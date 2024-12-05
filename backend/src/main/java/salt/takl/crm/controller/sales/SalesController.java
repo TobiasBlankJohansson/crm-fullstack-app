@@ -1,4 +1,4 @@
-package salt.takl.crm.controller.Sales;
+package salt.takl.crm.controller.sales;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
