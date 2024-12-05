@@ -49,17 +49,18 @@ public class ProjectService {
         return mapToDTO(project);
     }
 
-    public ProjectResponseDTO updateProject(UUID projectId, ProjectRequestDTO projectRequestDTO) {
+    public Project updateProject(UUID projectId,String name,int duration, List<String> customers,
+                                            List<String> notes) {
         Project existingProject = projectRepository.findProjectById(projectId)
                 .orElseThrow(() -> new IllegalArgumentException("Project with ID " + projectId + " not found"));
 
-        existingProject.setName(projectRequestDTO.name());
-        existingProject.setDescription(projectRequestDTO.description());
-        existingProject.setStarted(projectRequestDTO.started());
-        existingProject.setEnded(projectRequestDTO.ended());
+        existingProject.setName(name);
+        existingProject.setDuration(duration);
+        existingProject.setCustomers(customers.stream()
+                .map(customer -> customerRepository.findById(UUID.fromString(customer)).get()).toList());
+        existingProject.setNotes(notes.stream().map(Notes::new).toList());
 
-        Project updatedProject = projectRepository.save(existingProject);
-        return mapToDTO(updatedProject);
+        return projectRepository.save(existingProject);
     }
 
     public void deleteProject(UUID projectId) {
