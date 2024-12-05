@@ -38,11 +38,9 @@ public class CustomerService {
 
         Customer customer = new Customer(companyName,address,phoneNumber,email,new ArrayList<>(),contacts,projects);
 
-        projects.forEach(project -> project.getCustomers().add(customer));
-        UUID customerId = customerRepository.save(customer).getId();
-        projectRepository.saveAll(projects);
 
-        return customerRepository.findById(customerId).get();
+
+        return customerRepository.save(customer);
     }
 
     public Customer updateCustomer(UUID customerId, Customer updatedCustomer) {

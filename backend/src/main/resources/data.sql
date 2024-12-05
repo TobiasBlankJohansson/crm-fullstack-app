@@ -39,9 +39,8 @@ VALUES
 ON CONFLICT (id) DO NOTHING;
 
 -- Mapping projects to customers
-INSERT INTO project_customers (customers_id, projects_id)
+INSERT INTO customer_project (customer_id, project_id)
 VALUES
     ('6f621bcb-8d42-4c10-a9ae-d9f7e010cb9a', '8f621bcb-8d42-4c10-a9ae-d9f7e010cb9c'), -- Tech Innovators and AI Development
     ('6f621bcb-8d42-4c10-a9ae-d9f7e010cb9a', '9a621bcb-8d42-4c10-a9ae-d9f7e010cb9d'), -- Tech Innovators and Web App Overhaul
     ('7a621bcb-8d42-4c10-a9ae-d9f7e010cb9b', '8d3f2bcb-2c34-4a10-a9cd-d3f5e011ab1f') -- Creative Solutions and Mobile App Launch
-ON CONFLICT (customers_id, projects_id) DO NOTHING;

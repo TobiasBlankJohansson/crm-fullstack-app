@@ -24,7 +24,12 @@ public class Project {
     private List<Sale> sales = new ArrayList<>();
 
     @ManyToMany
-    List<Customer> customers;
+    @JoinTable(
+            name = "customer_project", // Name of the join table (must be the same)
+            joinColumns = @JoinColumn(name = "project_id"), // Foreign key for Project
+            inverseJoinColumns = @JoinColumn(name = "customer_id") // Foreign key for Customer
+    )
+    private List<Customer> customers;
 
     public Project() {}
 

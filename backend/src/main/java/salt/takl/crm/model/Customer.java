@@ -32,7 +32,12 @@ public class Customer {
     @Enumerated(EnumType.STRING)
     private List<Tag> tags;
 
-    @ManyToMany (mappedBy = "customers")
+    @ManyToMany
+    @JoinTable(
+            name = "customer_project", // Name of the join table
+            joinColumns = @JoinColumn(name = "customer_id"), // Foreign key for Customer
+            inverseJoinColumns = @JoinColumn(name = "project_id") // Foreign key for Project
+    )
     private List<Project> projects;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
