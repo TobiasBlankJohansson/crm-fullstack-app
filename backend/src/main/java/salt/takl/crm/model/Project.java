@@ -15,13 +15,14 @@ public class Project {
     private UUID id;
 
     private String name;
-    private String description;
-
-    private LocalDateTime started;
-    private LocalDateTime ended;
+    private int duration;
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Sale> sales = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "project_id")
+    private List<Notes> notes;
 
     @ManyToMany
     @JoinTable(
@@ -31,7 +32,8 @@ public class Project {
     )
     private List<Customer> customers;
 
-    public Project() {}
+    public Project() {
+    }
 
 
     public UUID getId() {
