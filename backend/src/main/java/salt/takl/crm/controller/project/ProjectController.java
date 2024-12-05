@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import salt.takl.crm.controller.customer.CustomerSelectDto;
+import salt.takl.crm.model.Project;
 import salt.takl.crm.service.ProjectService;
 
 import java.util.List;
@@ -24,8 +25,10 @@ public class ProjectController {
     @Operation(summary = "Create a project", description = "Creates a new project")
     @PostMapping
     public ResponseEntity<ProjectResponseDTO> createProject(@RequestBody ProjectRequestDTO projectRequestDTO) {
-        ProjectResponseDTO createdProject = projectService.createProject(projectRequestDTO);
-        return new ResponseEntity<>(createdProject, HttpStatus.CREATED);
+        var project = projectService.createProject(
+                projectRequestDTO.name(),projectRequestDTO.duration(),
+                projectRequestDTO.customers(),projectRequestDTO.notes());
+        return new ResponseEntity<>(ProjectResponseDTO.projectToDTO(project), HttpStatus.CREATED);
     }
 
     @Operation(summary = "Get all projects", description = "Retrieves a list of all projects")
@@ -50,8 +53,10 @@ public class ProjectController {
     @Operation(summary = "Update a project", description = "Update the info of an existing project")
     @PutMapping("/{projectId}")
     public ResponseEntity<ProjectResponseDTO> updateProject(@PathVariable String projectId, @RequestBody ProjectRequestDTO projectRequestDTO) {
-        ProjectResponseDTO updatedProject = projectService.updateProject(UUID.fromString(projectId), projectRequestDTO);
-        return new ResponseEntity<>(updatedProject, HttpStatus.OK);
+        Project project = projectService.updateProject(
+                UUID.fromString(projectId), projectRequestDTO.name(),Integer.parseInt(projectRequestDTO.duration()),
+                projectRequestDTO.customers(),projectRequestDTO.notes());
+        return new ResponseEntity<>(ProjectResponseDTO.projectToDTO(project), HttpStatus.OK);
     }
 
     @Operation(summary = "Delete a project", description = "Delete a project by ID")

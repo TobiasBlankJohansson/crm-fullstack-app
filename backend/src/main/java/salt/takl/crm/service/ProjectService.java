@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import salt.takl.crm.controller.project.ProjectRequestDTO;
 import salt.takl.crm.controller.project.ProjectResponseDTO;
 import salt.takl.crm.model.Customer;
+import salt.takl.crm.model.Notes;
 import salt.takl.crm.model.Project;
 import salt.takl.crm.repository.CustomerRepository;
 import salt.takl.crm.repository.ProjectRepository;
@@ -33,19 +34,12 @@ public class ProjectService {
         return projects.stream().map(this::mapToDTO).toList();
     }
 
-    public ProjectResponseDTO createProject (ProjectRequestDTO projectRequestDTO) {
-        Project project = new Project();
-        project.setName(projectRequestDTO.name());
-        project.setDescription(projectRequestDTO.description());
-        project.setStarted(projectRequestDTO.started());
-        project.setEnded(projectRequestDTO.ended());
-
-        List<Customer> customers = customerRepository.findAllById(projectRequestDTO.customerIds());
-        project.setCustomers(customers);
-
-        Project savedProject = projectRepository.save(project);
-
-        return mapToDTO(savedProject);
+    public Project createProject(String name,String duration,List<String> customers, List<String> notes) {
+        List<Customer> customerList = customers.stream()
+                .map(customer -> customerRepository.findById(UUID.fromString(customer)).get()).toList();
+        List<Notes> notesList = notes.stream().map(Notes::new).toList();
+        Project project = new Project(name,Integer.parseInt(duration),notesList,customerList);
+        return projectRepository.save(project);
     }
 
     public ProjectResponseDTO getProjectById(UUID projectId) {
@@ -55,17 +49,18 @@ public class ProjectService {
         return mapToDTO(project);
     }
 
-    public ProjectResponseDTO updateProject(UUID projectId, ProjectRequestDTO projectRequestDTO) {
+    public Project updateProject(UUID projectId,String name,int duration, List<String> customers,
+                                            List<String> notes) {
         Project existingProject = projectRepository.findProjectById(projectId)
                 .orElseThrow(() -> new IllegalArgumentException("Project with ID " + projectId + " not found"));
 
-        existingProject.setName(projectRequestDTO.name());
-        existingProject.setDescription(projectRequestDTO.description());
-        existingProject.setStarted(projectRequestDTO.started());
-        existingProject.setEnded(projectRequestDTO.ended());
+        existingProject.setName(name);
+        existingProject.setDuration(duration);
+        existingProject.setCustomers(customers.stream()
+                .map(customer -> customerRepository.findById(UUID.fromString(customer)).get()).toList());
+        existingProject.setNotes(notes.stream().map(Notes::new).toList());
 
-        Project updatedProject = projectRepository.save(existingProject);
-        return mapToDTO(updatedProject);
+        return projectRepository.save(existingProject);
     }
 
     public void deleteProject(UUID projectId) {
@@ -75,7 +70,7 @@ public class ProjectService {
     }
 
     private ProjectResponseDTO mapToDTO(Project project) {
-        String duration = calculateDuration(project.getStarted(), project.getEnded());
+        int duration = project.getDuration();
 
         List<String> customers = project.getCustomers().stream()
                 .map(customer -> customer.getCompanyName())

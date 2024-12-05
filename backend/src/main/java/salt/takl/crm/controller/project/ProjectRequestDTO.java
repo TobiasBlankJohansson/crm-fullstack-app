@@ -6,9 +6,8 @@ import java.util.UUID;
 
 public record ProjectRequestDTO (
         String name,
-        String description,
-        LocalDateTime started,
-        LocalDateTime ended,
-        List<UUID> customerIds
+        String duration,
+        List<String> customers,
+        List<String> notes
 ) {
 }

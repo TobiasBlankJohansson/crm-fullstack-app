@@ -6,12 +6,19 @@ VALUES
 ON CONFLICT (id) DO NOTHING;
 
 -- Inserting projects
-INSERT INTO project (id, name, description, started, ended)
+INSERT INTO project (id, name, duration)
 VALUES
-    ('8f621bcb-8d42-4c10-a9ae-d9f7e010cb9c', 'AI Development', 'Develop AI-powered solutions', '2024-01-01', '2024-12-31'),
-    ('9a621bcb-8d42-4c10-a9ae-d9f7e010cb9d', 'Web App Overhaul', 'Revamp web platform for better user experience', '2024-02-01', '2024-06-30'),
-    ('8d3f2bcb-2c34-4a10-a9cd-d3f5e011ab1f', 'Mobile App Launch', 'Launch a cutting-edge mobile app', '2024-03-01', '2024-08-31')
+    ('8f621bcb-8d42-4c10-a9ae-d9f7e010cb9c', 'AI Development', 365),
+    ('9a621bcb-8d42-4c10-a9ae-d9f7e010cb9d', 'Web App Overhaul', 150),
+    ('8d3f2bcb-2c34-4a10-a9cd-d3f5e011ab1f', 'Mobile App Launch', 183)
 ON CONFLICT (id) DO NOTHING;
+
+INSERT INTO notes (id, project_id, note)
+VALUES
+    ('8f621bcb-8d42-4c10-a9ae-d9f7e010cb9c', '8f621bcb-8d42-4c10-a9ae-d9f7e010cb9c', 'Initial brainstorming session completed.'),
+    ('9a621bcb-8d42-4c10-a9ae-d9f7e010cb9d', '9a621bcb-8d42-4c10-a9ae-d9f7e010cb9d', 'Wireframe designs are finalized.'),
+    ('8d3f2bcb-2c34-4a10-a9cd-d3f5e011ab1f', '8d3f2bcb-2c34-4a10-a9cd-d3f5e011ab1f', 'Market research report submitted.')
+ON CONFLICT DO NOTHING;
 
 -- Inserting sales data
 INSERT INTO sale (id, name, customer_id, project_id, sales_amount)

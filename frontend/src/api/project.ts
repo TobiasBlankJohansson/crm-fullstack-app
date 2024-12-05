@@ -33,10 +33,11 @@ export const getProject = async (): Promise<projectObject[]> => {
 export const createProject = async (
   newProject: CreateProjectDto
 ): Promise<boolean> => {
+  console.log(newProject);
   const response = await axios.post(
     `${path}/api/projects`,
     {
-      project: newProject.name,
+      name: newProject.name,
       duration: newProject.duration,
       customers: newProject.customers,
       notes: newProject.notes,

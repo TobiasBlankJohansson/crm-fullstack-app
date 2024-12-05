@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-
 @Entity
 public class Project {
     @Id
@@ -15,13 +14,14 @@ public class Project {
     private UUID id;
 
     private String name;
-    private String description;
-
-    private LocalDateTime started;
-    private LocalDateTime ended;
+    private int duration;
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Sale> sales = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "project_id")
+    private List<Notes> notes;
 
     @ManyToMany
     @JoinTable(
@@ -31,8 +31,23 @@ public class Project {
     )
     private List<Customer> customers;
 
-    public Project() {}
+    public Project() {
+    }
 
+    public Project(String name, int duration, List<Notes> notes, List<Customer> customers) {
+        this.name = name;
+        this.duration = duration;
+        this.notes = notes;
+        this.customers = customers;
+    }
+
+    public Project(String name, int duration, List<Sale> sales, List<Notes> notes, List<Customer> customers) {
+        this.name = name;
+        this.duration = duration;
+        this.sales = sales;
+        this.notes = notes;
+        this.customers = customers;
+    }
 
     public UUID getId() {
         return id;
@@ -50,36 +65,28 @@ public class Project {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public int getDuration() {
+        return duration;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public LocalDateTime getStarted() {
-        return started;
-    }
-
-    public void setStarted(LocalDateTime started) {
-        this.started = started;
-    }
-
-    public LocalDateTime getEnded() {
-        return ended;
-    }
-
-    public void setEnded(LocalDateTime ended) {
-        this.ended = ended;
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 
     public List<Sale> getSales() {
         return sales;
     }
 
-    public void setSales(Sale sale) {
-        sales.add(sale);
+    public void setSales(List<Sale> sales) {
+        this.sales = sales;
+    }
+
+    public List<Notes> getNotes() {
+        return notes;
+    }
+
+    public void setNotes(List<Notes> notes) {
+        this.notes = notes;
     }
 
     public List<Customer> getCustomers() {
