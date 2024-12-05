@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import salt.takl.crm.controller.project.ProjectRequestDTO;
 import salt.takl.crm.controller.project.ProjectResponseDTO;
 import salt.takl.crm.model.Customer;
+import salt.takl.crm.model.Notes;
 import salt.takl.crm.model.Project;
 import salt.takl.crm.repository.CustomerRepository;
 import salt.takl.crm.repository.ProjectRepository;
@@ -33,19 +34,12 @@ public class ProjectService {
         return projects.stream().map(this::mapToDTO).toList();
     }
 
-    public ProjectResponseDTO createProject (ProjectRequestDTO projectRequestDTO) {
-        Project project = new Project();
-        project.setName(projectRequestDTO.name());
-        project.setDescription(projectRequestDTO.description());
-        project.setStarted(projectRequestDTO.started());
-        project.setEnded(projectRequestDTO.ended());
-
-        List<Customer> customers = customerRepository.findAllById(projectRequestDTO.customerIds());
-        project.setCustomers(customers);
-
-        Project savedProject = projectRepository.save(project);
-
-        return mapToDTO(savedProject);
+    public Project createProject(String name,String duration,List<String> customers, List<String> notes) {
+        List<Customer> customerList = customers.stream()
+                .map(customer -> customerRepository.findById(UUID.fromString(customer)).get()).toList();
+        List<Notes> notesList = notes.stream().map(Notes::new).toList();
+        Project project = new Project(name,Integer.parseInt(duration),notesList,customerList);
+        return projectRepository.save(project);
     }
 
     public ProjectResponseDTO getProjectById(UUID projectId) {
