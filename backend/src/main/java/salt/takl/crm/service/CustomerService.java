@@ -4,18 +4,24 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.stereotype.Service;
 import salt.takl.crm.controller.customer.CustomerRequestDTO;
+import salt.takl.crm.model.Contact;
 import salt.takl.crm.model.Customer;
+import salt.takl.crm.model.Project;
 import salt.takl.crm.repository.CustomerRepository;
+import salt.takl.crm.repository.ProjectRepository;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.UUID;
 
 @Service
 public class CustomerService {
     private final CustomerRepository customerRepository;
+    private final ProjectRepository projectRepository;
 
-    public CustomerService(CustomerRepository customerRepository) {
+    public CustomerService(CustomerRepository customerRepository, ProjectRepository projectRepository) {
         this.customerRepository = customerRepository;
+        this.projectRepository = projectRepository;
     }
 
     public List<Customer> getAllCustomers() {
@@ -23,9 +29,13 @@ public class CustomerService {
     }
 
     public Customer createCustomer(String companyName, String address, String phoneNumber, String email,
-                                   List<String> projects, List<String> tags, List<CustomerRequestDTO.ContactDTO> contacts) {
+                                   List<UUID> projectsId, List<String> tags, List<CustomerRequestDTO.ContactDTO> contact) {
+        List<Contact> contacts = contact.stream().map(new Contact())
 
-        Customer customer = new Customer();
+        List<Project> projects = projectsId.stream().map(projectId -> projectRepository.findById(projectId)
+                .orElseThrow(() -> new NoSuchElementException("Customer with ID " + projectId + " not found"))).toList();
+
+        Customer customer = new Customer(companyName,address,phoneNumber,email,projects);
         return customerRepository.save(customer);
     }
 

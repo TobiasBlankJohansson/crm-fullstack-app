@@ -56,12 +56,11 @@ public class Customer {
 
     public Customer() {}
 
-    public Customer(String companyName, String address, String phoneNumber, String email, List<Sale> sales, List<Tag> tags, List<Contact> contacts, List<Project> projects) {
+    public Customer(String companyName, String address, String phoneNumber, String email, List<Tag> tags, List<Contact> contacts, List<Project> projects) {
         this.companyName = companyName;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        this.sales = sales;
         this.tags = tags;
         this.contacts = contacts;
         this.projects = projects;
