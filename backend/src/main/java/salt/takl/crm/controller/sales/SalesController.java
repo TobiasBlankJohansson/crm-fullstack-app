@@ -16,7 +16,6 @@ import java.util.UUID;
 
 @Tag(name = "Sales", description = "API for managing sales data")
 @RestController
-@CrossOrigin
 @RequestMapping("/api")
 public class SalesController {
     private final SalesService salesService;
