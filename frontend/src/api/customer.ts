@@ -21,7 +21,7 @@ export type CustomerObject = {
 };
 
 export type CreateCustomerDto = {
-  company: string;
+  companyName: string;
   project: string[];
   contact: {
     name: string;
@@ -30,7 +30,7 @@ export type CreateCustomerDto = {
   }[];
   tag: string[];
   address: string;
-  phone: string;
+  phoneNumber: string;
   email: string;
 };
 
@@ -45,12 +45,12 @@ export const createCustomer = async (
   const response = await axios.post(
     `${path}/api/customers`,
     {
-      company: newCustomer.company,
+      companyName: newCustomer.companyName,
       project: newCustomer.project,
       contact: newCustomer.contact,
       tag: newCustomer.tag,
       address: newCustomer.address,
-      phone: newCustomer.phone,
+      phoneNumber: newCustomer.phoneNumber,
       email: newCustomer.email,
     },
     {
