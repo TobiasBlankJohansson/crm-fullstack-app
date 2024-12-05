@@ -106,12 +106,11 @@ export default function UpdateSaleForm({
   return (
     <Dialog open={true} onOpenChange={onClose}>
       <div className="fixed inset-0 flex items-center justify-center bg-black/50">
-        <DialogContent className="max-h-[60vh] overflow-y-auto w-full max-w-2xl bg-white rounded-lg">
+        <DialogContent className="max-h-[60vh] overflow-y-auto w-full max-w-2xl bg-white rounded-lg p-6">
           <DialogHeader>
             <DialogTitle>Update {formData.title || "Sale"}</DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
-            {/* Name input */}
             {formData.itemProperty.map((property, index) => (
               <div key={index} className="space-y-2">
                 <Label htmlFor={`property-${index}`}>{property.title}</Label>
@@ -122,6 +121,7 @@ export default function UpdateSaleForm({
                     onChange={(e) =>
                       handleFormChange(index, "info", e.target.value)
                     }
+                    className="block w-full px-3 py-2 border border-gray-300 bg-white text-black rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                   >
                     <option value="">Select a Company</option>
                     {customers.map((customer) => (
@@ -137,6 +137,7 @@ export default function UpdateSaleForm({
                     onChange={(e) =>
                       handleFormChange(index, "info", e.target.value)
                     }
+                    className="block w-full px-3 py-2 border border-gray-300 bg-white text-black rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                   >
                     <option value="">Select a Project</option>
                     {projects.map((project) => (
