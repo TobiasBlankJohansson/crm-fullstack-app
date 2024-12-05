@@ -25,9 +25,9 @@ public class Project {
 
     @ManyToMany
     @JoinTable(
-            name = "customer_project", // Name of the join table (must be the same)
-            joinColumns = @JoinColumn(name = "project_id"), // Foreign key for Project
-            inverseJoinColumns = @JoinColumn(name = "customer_id") // Foreign key for Customer
+            name = "customer_project",
+            joinColumns = @JoinColumn(name = "project_id"),
+            inverseJoinColumns = @JoinColumn(name = "customer_id")
     )
     private List<Customer> customers;
 

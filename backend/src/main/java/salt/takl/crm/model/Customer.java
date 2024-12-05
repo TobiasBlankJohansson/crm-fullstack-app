@@ -28,21 +28,21 @@ public class Customer {
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Sale> sales;
 
-    @ElementCollection(targetClass = Tag.class)
-    @Enumerated(EnumType.STRING)
-    private List<Tag> tags;
-
     @ManyToMany
     @JoinTable(
-            name = "customer_project", // Name of the join table
-            joinColumns = @JoinColumn(name = "customer_id"), // Foreign key for Customer
-            inverseJoinColumns = @JoinColumn(name = "project_id") // Foreign key for Project
+            name = "customer_project",
+            joinColumns = @JoinColumn(name = "customer_id"),
+            inverseJoinColumns = @JoinColumn(name = "project_id")
     )
     private List<Project> projects;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "customer_id")
     private List<Contact> contacts;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "customer_id")
+    private List<Tag> tags;
 
     public User getUser() {
         return user;

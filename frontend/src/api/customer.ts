@@ -36,19 +36,21 @@ export type CreateCustomerDto = {
 
 export const getCustomer = async () => {
   const response = await axios.get(`${path}/api/customers`);
+  console.log(response.data);
   return await response.data;
 };
 
 export const createCustomer = async (
   newCustomer: CreateCustomerDto
 ): Promise<boolean> => {
+  console.log(newCustomer);
   const response = await axios.post(
     `${path}/api/customers`,
     {
       companyName: newCustomer.companyName,
-      project: newCustomer.project,
-      contact: newCustomer.contact,
-      tag: newCustomer.tag,
+      projects: newCustomer.project,
+      contacts: newCustomer.contact,
+      tags: newCustomer.tag,
       address: newCustomer.address,
       phoneNumber: newCustomer.phoneNumber,
       email: newCustomer.email,

@@ -6,6 +6,7 @@ import salt.takl.crm.controller.customer.ContactResponseDTO;
 import salt.takl.crm.controller.customer.CustomerResponseDTO;
 import salt.takl.crm.model.Project;
 import salt.takl.crm.model.Customer;
+import salt.takl.crm.model.Tag;
 
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class CustomerMapper {
                         contact.getPhone(),
                         contact.getEmail())
                 ).toList() : List.of(),
-                customer.getTags() != null ? customer.getTags().stream().map(Enum::name).toList() : List.of()
+                customer.getTags() != null ? customer.getTags().stream().map(Tag::getTag).toList() : List.of()
         );
     }
 

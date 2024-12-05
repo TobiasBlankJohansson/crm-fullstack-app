@@ -25,11 +25,11 @@ VALUES
 ON CONFLICT (id) DO NOTHING;
 
 -- Inserting customer tags
-INSERT INTO customer_tags (customer_id, tags)
+INSERT INTO tag (id,customer_id, tag)
 VALUES
-    ('6f621bcb-8d42-4c10-a9ae-d9f7e010cb9a', 'TECHNOLOGY'),
-    ('6f621bcb-8d42-4c10-a9ae-d9f7e010cb9a', 'INNOVATION'),
-    ('7a621bcb-8d42-4c10-a9ae-d9f7e010cb9b', 'SOFTWARE');
+    ('1f621bcb-8d42-4c10-a9ae-d9f7e010cb9e','6f621bcb-8d42-4c10-a9ae-d9f7e010cb9a', 'TECHNOLOGY'),
+    ('2f621bcb-8d42-4c10-a9ae-d9f7e010cb9f', '6f621bcb-8d42-4c10-a9ae-d9f7e010cb9a', 'INNOVATION'),
+    ('3f621bcb-8d42-4c10-a9ae-d9f7e010cb91','7a621bcb-8d42-4c10-a9ae-d9f7e010cb9b', 'SOFTWARE');
 
 -- Inserting customer contacts
 INSERT INTO contact (id, first_name, last_name, email, phone, customer_id)
