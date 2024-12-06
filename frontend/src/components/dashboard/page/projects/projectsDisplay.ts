@@ -3,6 +3,7 @@ import { Detail } from "../../display/DisplayItem";
 import { ItemPropertyProp } from "../../display/ItemProperty";
 
 type ProjectDisplayProp = {
+  id: string;
   name: string;
   duration: string;
   customers: string[];
@@ -24,11 +25,12 @@ export const projectDisplay = (
     const details = setDetails(fetch);
     const itemPropertys = setItemProperty(fetch);
     return {
+      id: fetch.id,
       title: fetch.name,
       count: count + "",
       detail: details,
       itemProperty: itemPropertys,
-      type: "project"
+      type: "project",
     };
   });
   return display;
