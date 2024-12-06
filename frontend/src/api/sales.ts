@@ -51,7 +51,7 @@ export const createSale = async (newSale: CreateSalesDto): Promise<boolean> => {
 export const updateSale = async (
   updatedSale: UpdateSaleDto
 ): Promise<saleObject> => {
-  console.log("upd  : " + updatedSale.sale);
+  console.log("upd  : " + updatedSale);
 
   const response = await fetch(`${path}/api/sales/${updatedSale.id}`, {
     method: "PUT",
