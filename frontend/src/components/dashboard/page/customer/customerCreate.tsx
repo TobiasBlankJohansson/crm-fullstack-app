@@ -17,7 +17,7 @@ const id: string[] = [
   "CustomerCreate-7",
 ];
 
-export function customerCreate(): CreateObject {
+export function customerCreate(): CreateObject { 
   const input: JSX.Element[] = inputs();
   return { input, onSubmit };
 }
