@@ -10,6 +10,7 @@ import { salesCreate } from "./salesCreate";
 export function Sales() {
   const [createNew, setCreateNew] = useState<boolean>(false);
   const [page, setPage] = useState<JSX.Element>(<></>);
+  const [render, setRender] = useState<boolean>(false);
   const title = "project";
 
   useEffect(() => {
@@ -28,10 +29,29 @@ export function Sales() {
     const getCostemers = async () => {
       const fetchData = await getSales();
       const sales = salesDisplay(fetchData);
-      setPage(() => <Display title="sales" displayItems={sales} />);
+      setPage(() => (
+        <Display title="sales" displayItems={sales} setRender={setRender} />
+      ));
     };
     getCostemers();
   }, [createNew]);
+
+  useEffect(() => {});
+
+  useEffect(() => {
+    if (render) {
+      const getCostemers = async () => {
+        console.log("wq");
+        const fetchData = await getSales();
+        const sales = salesDisplay(fetchData);
+        setPage(() => (
+          <Display title="sales" displayItems={sales} setRender={setRender} />
+        ));
+      };
+      getCostemers();
+      setRender(() => false);
+    }
+  }, [render]);
 
   return (
     <main className="flex h-screen w-screen">

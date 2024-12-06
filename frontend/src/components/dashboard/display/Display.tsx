@@ -11,12 +11,11 @@ import {
 import { Pagination } from "@/components/ui/pagination";
 import { HiPencilAlt, HiTrash } from "react-icons/hi";
 import UpdateSaleForm from "../page/Sales/update/updateSale";
-// import UpdateProjectForm from "@/components/forms/UpdateProjectForm"; // Placeholder for UpdateProjectForm
-// import UpdateCustomerForm from "@/components/forms/UpdateCustomerForm"; // Placeholder for UpdateCustomerForm
 
 type DisplayProp = {
   title: string;
   displayItems: DisplayObject[];
+  setRender: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export type DisplayObject = {
@@ -38,7 +37,7 @@ export type ItemPropertyProp = {
   info: string[];
 };
 
-export function Display({ title, displayItems }: DisplayProp) {
+export function Display({ title, displayItems, setRender }: DisplayProp) {
   const [selectedItem, setSelectedItem] = useState<DisplayObject | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -76,6 +75,7 @@ export function Display({ title, displayItems }: DisplayProp) {
                 handleCancel();
                 // Optionally refresh data here if needed
               }}
+              setRender={setRender}
             />
           )}
           {/* Uncomment and use these when UpdateProjectForm and UpdateCustomerForm are available */}

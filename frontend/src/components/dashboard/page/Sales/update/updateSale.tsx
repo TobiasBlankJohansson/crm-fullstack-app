@@ -41,12 +41,14 @@ type UpdateSaleProps = {
   sale: SaleObject;
   onClose: () => void;
   onUpdate: () => void;
+  setRender: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export default function UpdateSaleForm({
   sale,
   onClose,
   onUpdate,
+  setRender,
 }: UpdateSaleProps) {
   const [formData, setFormData] = useState<SaleObject>({ ...sale });
   const [customers, setCustomers] = useState<CustomerInfo[]>([]);
@@ -54,6 +56,7 @@ export default function UpdateSaleForm({
 
   useEffect(() => {
     // Fetch customers and projects when the form is loaded
+    console.log("ewqe");
     const fetchSelections = async () => {
       const customerData = await getCustomerSelection();
       const projectData = await getProjectSelection();
@@ -98,6 +101,7 @@ export default function UpdateSaleForm({
       };
 
       await updateSale(updatedSale);
+      setRender(() => true);
       onUpdate();
       onClose();
     } catch (error) {
