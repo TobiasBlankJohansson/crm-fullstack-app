@@ -9,11 +9,11 @@ export const menuItems = [
     icon: <HomeIcon className="mr-2 hover:fill-white" />,
     to: "/",
   },
-  { name: "Sales", icon: <SalesIcon className="mr-2" />, to: "/sales" },
-  { name: "Projects", icon: <ProjectIcon className="mr-2" />, to: "/projects" },
   {
     name: "Customers",
     icon: <CustomerIcon className="mr-2" />,
     to: "/customer",
   },
+  { name: "Projects", icon: <ProjectIcon className="mr-2" />, to: "/projects" },
+  { name: "Sales", icon: <SalesIcon className="mr-2" />, to: "/sales" },
 ];
